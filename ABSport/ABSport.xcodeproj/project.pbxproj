@@ -144,6 +144,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2079D5B82B8533FE0057EA4C /* PBXTargetDependency */,
 			);
 			name = ABSport;
 			productName = ABSport;
@@ -218,6 +219,9 @@
 				Base,
 			);
 			mainGroup = 2079D5772B85330E0057EA4C;
+			packageReferences = (
+				2079D5B62B8533E90057EA4C /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 2079D5812B85330E0057EA4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -297,6 +301,10 @@
 			isa = PBXTargetDependency;
 			target = 2079D57F2B85330E0057EA4C /* ABSport */;
 			targetProxy = 2079D5A42B8533150057EA4C /* PBXContainerItemProxy */;
+		};
+		2079D5B82B8533FE0057EA4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2079D5B72B8533FE0057EA4C /* SwiftLintPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -607,6 +615,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2079D5B62B8533E90057EA4C /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2079D5B72B8533FE0057EA4C /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2079D5B62B8533E90057EA4C /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */ = {
