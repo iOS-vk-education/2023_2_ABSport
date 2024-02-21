@@ -1,0 +1,22 @@
+trailing_whitespace:
+ severity:
+    warning
+ ignores_empty_lines:
+    true
+ ignores_comments:
+    true
+ 
+line_length:
+ warning:
+    120
+ error:
+    200
+ ignores_urls:
+    true
+ ignores_function_declarations:
+    true
+ ignores_comments:
+    true
+
+excluded:
+  - Pods
