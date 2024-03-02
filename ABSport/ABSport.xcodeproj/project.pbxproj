@@ -17,6 +17,11 @@
 		2079D59E2B8533150057EA4C /* ABSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D59D2B8533150057EA4C /* ABSportTests.swift */; };
 		2079D5A82B8533150057EA4C /* ABSportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5A72B8533150057EA4C /* ABSportUITests.swift */; };
 		2079D5AA2B8533150057EA4C /* ABSportUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5A92B8533150057EA4C /* ABSportUITestsLaunchTests.swift */; };
+		6662D12F2B931DAB001FC95E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D12E2B931DAB001FC95E /* MainView.swift */; };
+		6662D1312B931DCB001FC95E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1302B931DCB001FC95E /* MainViewController.swift */; };
+		6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1322B931E24001FC95E /* MainViewModel.swift */; };
+		6662D1352B931E7E001FC95E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1342B931E7E001FC95E /* MainCoordinator.swift */; };
+		6662D1372B931EAC001FC95E /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1362B931EAC001FC95E /* MainModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		2079D5A32B8533150057EA4C /* ABSportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABSportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2079D5A72B8533150057EA4C /* ABSportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABSportUITests.swift; sourceTree = "<group>"; };
 		2079D5A92B8533150057EA4C /* ABSportUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABSportUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6662D12E2B931DAB001FC95E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6662D1302B931DCB001FC95E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6662D1322B931E24001FC95E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6662D1342B931E7E001FC95E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		6662D1362B931EAC001FC95E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,7 @@
 		2079D5822B85330E0057EA4C /* ABSport */ = {
 			isa = PBXGroup;
 			children = (
+				6662D12D2B931D57001FC95E /* Main */,
 				2079D5832B85330F0057EA4C /* AppDelegate.swift */,
 				2079D5852B85330F0057EA4C /* SceneDelegate.swift */,
 				2079D5872B85330F0057EA4C /* ViewController.swift */,
@@ -128,6 +139,18 @@
 				2079D5A92B8533150057EA4C /* ABSportUITestsLaunchTests.swift */,
 			);
 			path = ABSportUITests;
+			sourceTree = "<group>";
+		};
+		6662D12D2B931D57001FC95E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6662D12E2B931DAB001FC95E /* MainView.swift */,
+				6662D1302B931DCB001FC95E /* MainViewController.swift */,
+				6662D1322B931E24001FC95E /* MainViewModel.swift */,
+				6662D1342B931E7E001FC95E /* MainCoordinator.swift */,
+				6662D1362B931EAC001FC95E /* MainModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +288,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */,
+				6662D1352B931E7E001FC95E /* MainCoordinator.swift in Sources */,
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
 				2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */,
 				2079D5862B85330F0057EA4C /* SceneDelegate.swift in Sources */,
+				6662D1372B931EAC001FC95E /* MainModel.swift in Sources */,
+				6662D1312B931DCB001FC95E /* MainViewController.swift in Sources */,
+				6662D12F2B931DAB001FC95E /* MainView.swift in Sources */,
 				2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
