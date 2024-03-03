@@ -7,8 +7,8 @@
 
 import UIKit
 
-// MARK: - main coordinator (главный координатор, который пускает в приложение, либо в экран регистрации)
-final class MainCoordinator: Coordinator {
+// MARK: - app coordinator (главный координатор, который пускает в приложение, либо в экран регистрации)
+final class AppCoordinator: Coordinator {
     
     var childCoodinator: [Coordinator] = []
     
