@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04B8D3132B9859C600841B87 /* PersonalAccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8D3122B9859C600841B87 /* PersonalAccView.swift */; };
 		1A907EE32B9091C800FBF281 /* CoordinatorProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A907EE22B9091C800FBF281 /* CoordinatorProtocol .swift */; };
 		1A907EE52B9092EE00FBF281 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A907EE42B9092EE00FBF281 /* AuthCoordinator.swift */; };
 		1A907EE72B9096B300FBF281 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A907EE62B9096B300FBF281 /* AppCoordinator.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04B8D3122B9859C600841B87 /* PersonalAccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccView.swift; sourceTree = "<group>"; };
 		1A907EE22B9091C800FBF281 /* CoordinatorProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorProtocol .swift"; sourceTree = "<group>"; };
 		1A907EE42B9092EE00FBF281 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		1A907EE62B9096B300FBF281 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B8D3112B98577C00841B87 /* PersonalAccount */ = {
+			isa = PBXGroup;
+			children = (
+				04B8D3122B9859C600841B87 /* PersonalAccView.swift */,
+			);
+			path = PersonalAccount;
+			sourceTree = "<group>";
+		};
 		1A907EDE2B908EC200FBF281 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		2079D5822B85330E0057EA4C /* ABSport */ = {
 			isa = PBXGroup;
 			children = (
+				04B8D3112B98577C00841B87 /* PersonalAccount */,
 				6662D12D2B931D57001FC95E /* Main */,
 				1A907EE12B9091A100FBF281 /* Navigation */,
 				1A907EDE2B908EC200FBF281 /* Auth */,
@@ -326,6 +337,7 @@
 			files = (
 				6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */,
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
+				04B8D3132B9859C600841B87 /* PersonalAccView.swift in Sources */,
 				1A907EE72B9096B300FBF281 /* AppCoordinator.swift in Sources */,
 				1A907EE92B90A49500FBF281 /* RegistrationViewController.swift in Sources */,
 				2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */,
