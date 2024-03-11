@@ -22,7 +22,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         if hardcode {
-            window.rootViewController = ViewController()
+            window.rootViewController = TabBarController.createTabBar()
         } else {
             let navigationController = UINavigationController()
             window.rootViewController = navigationController
