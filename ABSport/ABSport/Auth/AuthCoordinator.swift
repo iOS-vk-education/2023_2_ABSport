@@ -24,8 +24,17 @@ final class AuthCoordinator: Coordinator {
     }
     
     func start() {
-        let registrationController = RegistrationViewController()
+        let viewModel = RegistrationViewModelImpl()
+        viewModel.coordinator = self
+        
+        let registrationController = RegistrationViewController(
+            viewModel: viewModel
+        )
         navigationController.setViewControllers([registrationController], animated: false)
+    }
+    
+    func showLogin() {
+        navigationController.pushViewController(LoginViewController(), animated: false)
     }
     
     func addDependency(_ coordinator: Coordinator) {
