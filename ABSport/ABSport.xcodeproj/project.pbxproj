@@ -10,8 +10,9 @@
 		1A41C0622B9DBC7300BD5B8D /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C0612B9DBC7300BD5B8D /* RegistrationViewModel.swift */; };
 		1A41C0642B9DC3CA00BD5B8D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C0632B9DC3CA00BD5B8D /* LoginViewController.swift */; };
 		1A41C0662B9DC3D500BD5B8D /* LoginModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C0652B9DC3D500BD5B8D /* LoginModelView.swift */; };
-		1A41C0682B9DD44300BD5B8D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C0672B9DD44300BD5B8D /* LoginView.swift */; };
+		1A41C0682B9DD44300BD5B8D /* LoginFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C0672B9DD44300BD5B8D /* LoginFullView.swift */; };
 		1A41C06B2B9EFB6A00BD5B8D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C06A2B9EFB6A00BD5B8D /* TabBarController.swift */; };
+		1A41C06D2BA05D4300BD5B8D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41C06C2BA05D4300BD5B8D /* LoginView.swift */; };
 		1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77F3462B9721D400C0D1F7 /* RegistrationView.swift */; };
 		1A77F3492B9724A400C0D1F7 /* RegistrationFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77F3482B9724A400C0D1F7 /* RegistrationFullView.swift */; };
 		1A907EE32B9091C800FBF281 /* CoordinatorProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A907EE22B9091C800FBF281 /* CoordinatorProtocol .swift */; };
@@ -55,8 +56,9 @@
 		1A41C0612B9DBC7300BD5B8D /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		1A41C0632B9DC3CA00BD5B8D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ABSport/Auth/Registration/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		1A41C0652B9DC3D500BD5B8D /* LoginModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginModelView.swift; path = ABSport/Auth/Registration/LoginModelView.swift; sourceTree = SOURCE_ROOT; };
-		1A41C0672B9DD44300BD5B8D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ABSport/Auth/Registration/LoginView.swift; sourceTree = SOURCE_ROOT; };
+		1A41C0672B9DD44300BD5B8D /* LoginFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginFullView.swift; path = ABSport/Auth/Registration/LoginFullView.swift; sourceTree = SOURCE_ROOT; };
 		1A41C06A2B9EFB6A00BD5B8D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		1A41C06C2BA05D4300BD5B8D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ABSport/TabBar/LoginView.swift; sourceTree = SOURCE_ROOT; };
 		1A77F3462B9721D400C0D1F7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1A77F3482B9724A400C0D1F7 /* RegistrationFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFullView.swift; sourceTree = "<group>"; };
 		1A907EE22B9091C800FBF281 /* CoordinatorProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorProtocol .swift"; sourceTree = "<group>"; };
@@ -108,6 +110,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A1F90D02BA0611F00CF7817 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2079D5852B85330F0057EA4C /* SceneDelegate.swift */,
+				2079D5832B85330F0057EA4C /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		1A1F90D12BA0613C00CF7817 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */,
+				2079D5942B8533140057EA4C /* Info.plist */,
+				2079D58F2B8533140057EA4C /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		1A41C0692B9EFB4F00BD5B8D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +163,8 @@
 			children = (
 				1A41C0652B9DC3D500BD5B8D /* LoginModelView.swift */,
 				1A41C0632B9DC3CA00BD5B8D /* LoginViewController.swift */,
-				1A41C0672B9DD44300BD5B8D /* LoginView.swift */,
+				1A41C0672B9DD44300BD5B8D /* LoginFullView.swift */,
+				1A41C06C2BA05D4300BD5B8D /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -187,17 +209,14 @@
 		2079D5822B85330E0057EA4C /* ABSport */ = {
 			isa = PBXGroup;
 			children = (
+				1A1F90D12BA0613C00CF7817 /* Resourses */,
+				1A1F90D02BA0611F00CF7817 /* Application */,
 				1AF1EA922B98ED2200F9A3CE /* ToolKit */,
 				1A41C0692B9EFB4F00BD5B8D /* TabBar */,
 				6662D12D2B931D57001FC95E /* Main */,
 				1A907EE12B9091A100FBF281 /* Navigation */,
 				1A907EDE2B908EC200FBF281 /* Auth */,
-				2079D5832B85330F0057EA4C /* AppDelegate.swift */,
-				2079D5852B85330F0057EA4C /* SceneDelegate.swift */,
 				2079D5872B85330F0057EA4C /* ViewController.swift */,
-				2079D58F2B8533140057EA4C /* Assets.xcassets */,
-				2079D5942B8533140057EA4C /* Info.plist */,
-				2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */,
 			);
 			path = ABSport;
 			sourceTree = "<group>";
@@ -372,6 +391,7 @@
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
 				1A907EE72B9096B300FBF281 /* AppCoordinator.swift in Sources */,
 				1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */,
+				1A41C06D2BA05D4300BD5B8D /* LoginView.swift in Sources */,
 				1A907EE92B90A49500FBF281 /* RegistrationViewController.swift in Sources */,
 				2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */,
 				1A907EE32B9091C800FBF281 /* CoordinatorProtocol .swift in Sources */,
@@ -383,7 +403,7 @@
 				666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */,
 				1A907EE52B9092EE00FBF281 /* AuthCoordinator.swift in Sources */,
 				1A41C06B2B9EFB6A00BD5B8D /* TabBarController.swift in Sources */,
-				1A41C0682B9DD44300BD5B8D /* LoginView.swift in Sources */,
+				1A41C0682B9DD44300BD5B8D /* LoginFullView.swift in Sources */,
 				2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,8 +571,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ABSport/Info.plist;
+				INFOPLIST_FILE = ABSport/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -578,8 +599,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ABSport/Info.plist;
+				INFOPLIST_FILE = ABSport/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -8,11 +8,23 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    weak var viewModel: RegistrationViewModel?
+    
+    // MARK: - private properties 
+    weak var viewModel: LoginViewModel?
+    private let loginFullView = LoginFullView()
+    
+    override func loadView() {
+        view = loginFullView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        
+        self.navigationItem.hidesBackButton = true
+        
+        loginFullView.onBackButtonTapped = {
+            self.navigationController?.popViewController(animated: false)
+        }
     }
 
 }

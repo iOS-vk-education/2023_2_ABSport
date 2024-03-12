@@ -4,19 +4,26 @@
 //
 //  Created by Егор Иванов on 10.03.2024.
 //
-
 import UIKit
 
-protocol LoginViewModelDelegate: AnyObject {
-    var onFinish: (() -> Void)? { get set }
+enum LoginViewResult {
+    case cancelled
+    case data(text: String)
 }
 
-final class LoginViewModel {
+protocol LoginModule: AnyObject {
+}
+
+protocol LoginViewModel: AnyObject {
     
-    var onFinish: (() -> Void)?
+    func viewDidLoad()
     
-    func didTapOnSendSmsButton(inputText: String?) {
-        guard let inputText, inputText.isEmpty else { return }
-        
+}
+
+final class LoginViewModelImpl: LoginViewModel, LoginModule {
+    weak var coordinator: AuthCoordinator?
+    
+    func viewDidLoad() {
     }
 }
+

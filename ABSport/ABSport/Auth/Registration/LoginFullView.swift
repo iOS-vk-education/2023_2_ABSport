@@ -1,22 +1,17 @@
 //
-//  RegistrationFullView.swift
+//  LoginView.swift
 //  ABSport
 //
-//  Created by Егор Иванов on 05.03.2024.
+//  Created by Егор Иванов on 10.03.2024.
 //
 
 import UIKit
 
-final class RegistrationFullView: UIView {
+final class LoginFullView: UIView {
     
-    var onLoginButtonTap: (() -> Void)? {
-        get { registrationView.onLoginButtonTap }
-        set { registrationView.onLoginButtonTap = newValue }
-    }
-    
-    var onSubmitButtonTap: (() -> Void)? {
-        get { registrationView.onSubmitButtonTap }
-        set { registrationView.onSubmitButtonTap = newValue }
+    var onBackButtonTapped: (() -> Void)? {
+        get { loginView.onBackButtonTap }
+        set { loginView.onBackButtonTap = newValue }
     }
     
     // MARK: - private properties
@@ -25,11 +20,11 @@ final class RegistrationFullView: UIView {
     }
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
-    private let registrationView = RegistrationView()
+    private let loginView = LoginView()
     
     private let loadScreenImageView = UIImageView()
     
-    private lazy var registrationViewBottomConstraint = registrationView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private lazy var loginViewBottomConstraint = loginView.bottomAnchor.constraint(equalTo: bottomAnchor)
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -73,25 +68,25 @@ final class RegistrationFullView: UIView {
         loadScreenImageView.image = processedImage
     }
     private func setupRegistationView() {
-        registrationView.layer.cornerRadius = Const.cornerRadiusView
-        registrationView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        loginView.layer.cornerRadius = Const.cornerRadiusView
+        loginView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private func addSubAndTransOff() {
-        [loadScreenImageView, registrationView].forEach({ element in
+        [loadScreenImageView, loginView].forEach({ element in
             addSubview(element)
             element.translatesAutoresizingMaskIntoConstraints = false
         })
     }
     @objc private func keyboardWillShow(notification: Notification) {
         let keyboardSize = (notification.userInfo?  [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        registrationViewBottomConstraint.constant = -(keyboardSize?.height ?? 250)
+        loginViewBottomConstraint.constant = -(keyboardSize?.height ?? 250)
         UIView.animate(withDuration: 0.5) {
             self.layoutIfNeeded()
         }
     }
     @objc private func keyboardWillHide(notification: Notification) {
-        registrationViewBottomConstraint.constant = 0
+        loginViewBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.5) {
             self.layoutIfNeeded()
         }
@@ -104,10 +99,10 @@ final class RegistrationFullView: UIView {
             loadScreenImageView.heightAnchor.constraint(equalToConstant: 210),
             loadScreenImageView.widthAnchor.constraint(equalToConstant: 210),
             
-            registrationView.heightAnchor.constraint(equalToConstant: 494),
-            registrationView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            registrationView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            registrationViewBottomConstraint
+            loginView.heightAnchor.constraint(equalToConstant: 494),
+            loginView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            loginView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            loginViewBottomConstraint
         ])
     }
 }

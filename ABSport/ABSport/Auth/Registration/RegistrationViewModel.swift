@@ -13,7 +13,7 @@ enum RegistrationViewResult {
 }
 
 protocol RegistrationModule: AnyObject {
-    var onFinish: ((RegistrationViewResult) -> ())? { get set }
+    var onFinish: ((RegistrationViewResult) -> Void)? { get set }
 }
 
 protocol RegistrationViewModel: AnyObject {
@@ -26,8 +26,7 @@ protocol RegistrationViewModel: AnyObject {
 final class RegistrationViewModelImpl: RegistrationViewModel, RegistrationModule {
     weak var coordinator: AuthCoordinator?
     
-    var onFinish: ((RegistrationViewResult) -> ())?
-    
+    var onFinish: ((RegistrationViewResult) -> Void)?
     
     func viewDidLoad() {
     }
