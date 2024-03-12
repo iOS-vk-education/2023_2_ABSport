@@ -23,7 +23,7 @@ struct ReciepButtonView: View {
                 Text("История аказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
-                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 150
+                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142
                     })
             }
             .buttonStyle()
@@ -31,7 +31,7 @@ struct ReciepButtonView: View {
                 Text("История зказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
-                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 150
+                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142
                     })
             }
             .buttonStyle()
@@ -39,9 +39,8 @@ struct ReciepButtonView: View {
                 Text("Сроки абонемента")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
-                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 150
+                    .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142
                     })
-                    
             }
             .buttonStyle()
         }
@@ -51,51 +50,4 @@ struct ReciepButtonView: View {
 
 #Preview {
     ReciepView()
-}
-
-
-struct Test2: View {
-    var body: some View {
-        VStack {
-            Text("Today's Weather")
-                .font(.title)
-                .alignmentGuide(HorizontalAlignment.center) {_ in 200}
-                
-                .border(.gray)
-
-            HStack {
-                Text("🌧")
-                    .alignmentGuide(VerticalAlignment.center) { _ in -20 }
-                    .border(.gray)
-                Text("Rain & Thunderstorms")
-                    .border(.gray)
-                Text("⛈")
-                    .alignmentGuide(VerticalAlignment.center) { _ in 20 }
-                    .border(.gray)
-            }
-        }
-    }
-}
-
-
-struct Test3: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            
-                
-            Text("Hello dorn bwei")
-                .font(.system(size: 20))
-                .foregroundColor(Color("TextColor"))
-                .multilineTextAlignment(.leading)
-                .padding(.leading, -25.0)
-                .frame(width: 180.0)
-            Text("Hello dorn bwei")
-                .font(.system(size: 20))
-                .foregroundColor(Color("TextColor"))
-                .multilineTextAlignment(.leading)
-                .padding(.leading, -50.0)
-                .frame(width: 180.0)
-            
-        }
-    }
 }
