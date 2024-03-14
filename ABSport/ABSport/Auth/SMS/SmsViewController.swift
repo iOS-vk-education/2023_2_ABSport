@@ -28,6 +28,8 @@ final class SmsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        
         smsFullView.onBackButtonTapped = { [weak self] in
             self?.navigationController?.popViewController(animated: false)
         }
