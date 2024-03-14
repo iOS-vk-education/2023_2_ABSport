@@ -36,6 +36,13 @@ final class AuthCoordinator: Coordinator {
     func showLogin() {
         navigationController.pushViewController(LoginViewController(), animated: false)
     }
+    func showSms() {
+        let viewModel = SmsViewModelModelImpl()
+        viewModel.coordinator = self
+        navigationController.pushViewController(SmsViewController(
+            viewModel: viewModel
+        ), animated: false)
+    }
     
     func addDependency(_ coordinator: Coordinator) {
         childCoodinator.append(coordinator)

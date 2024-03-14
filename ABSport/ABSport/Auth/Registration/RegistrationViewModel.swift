@@ -36,7 +36,7 @@ final class RegistrationViewModelImpl: RegistrationViewModel, RegistrationModule
     }
     
     func didTapOnSubmitButton() {
-
+        coordinator?.showSms()
     }
     
     func didTapOnLoginButton() {
