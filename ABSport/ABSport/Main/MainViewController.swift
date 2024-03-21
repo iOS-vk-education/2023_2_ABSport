@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainViewDelegate {
     
 //    var viewModel: MainViewModel?
 //    var coordinator: MainCoordinator?
@@ -20,141 +20,58 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpButtonTargets()
+        mainView.delegate = self
     }
     
-    // swiftlint:disable function_body_length
-    private func setUpButtonTargets() {
-
-        // Sport
-        mainView.bookingMachinesButton.addTarget(
-            self,
-            action: #selector(bookingMachinesButtonDidTapped),
-            for: .touchUpInside)
-        mainView.personalTrainingButton.addTarget(
-            self,
-            action: #selector(personalTrainingButtonDidTapped),
-            for: .touchUpInside)
-        mainView.groupTrainigButton.addTarget(
-            self,
-            action: #selector(groupTrainingButtonDidTapped),
-            for: .touchUpInside)
-        mainView.joinClubButton.addTarget(
-            self,
-            action: #selector(joinButtonDidTapped),
-            for: .touchUpInside)
-        
-        // Beauty
-        mainView.massageButton.addTarget(
-            self,
-            action: #selector(massageButtonDidTapped),
-            for: .touchUpInside)
-        mainView.nutritionButton.addTarget(
-            self,
-            action: #selector(nutritionButtonDidTapped),
-            for: .touchUpInside)
-        mainView.bookingRecoveryButton.addTarget(
-            self,
-            action: #selector(bookingRecoveryButtonDidTapped),
-            for: .touchUpInside)
-        mainView.bioimpedanceButton.addTarget(
-            self,
-            action: #selector(bioimpedanceButtonDidTapped),
-            for: .touchUpInside)
-        
-        // Other
-        mainView.bikeStorageButton.addTarget(
-            self,
-            action: #selector(bikeStorageButtonDidTapped),
-            for: .touchUpInside)
-        mainView.laundryButton.addTarget(
-            self,
-            action: #selector(laundryButtonDidTapped),
-            for: .touchUpInside)
-        mainView.coffeeRideButton.addTarget(
-            self,
-            action: #selector(coffeeRideButtonDidTapped),
-            for: .touchUpInside)
-        mainView.lectionButton.addTarget(
-            self,
-            action: #selector(lectionButtonDidTapped),
-            for: .touchUpInside)
-        mainView.sectionButton.addTarget(
-            self,
-            action: #selector(sectionButtonDidTapped),
-            for: .touchUpInside)
-    }
-    // swiftlint:enable function_body_length
-    
-    // Sport
-    
-    @objc
-    private func bookingMachinesButtonDidTapped() {
-        
+    func didTapSectionButton() {
+        //
     }
     
-    @objc
-    private func personalTrainingButtonDidTapped() {
-        
+    func didTapLectionButton() {
+        //
     }
     
-    @objc
-    private func groupTrainingButtonDidTapped() {
-        
+    func didTapCoffeeRideButton() {
+        //
     }
     
-    @objc
-    private func joinButtonDidTapped() {
-        
+    func didTapLaundryButton() {
+        //
     }
     
-    // Beauty
-    
-    @objc
-    private func massageButtonDidTapped() {
-        
+    func didTapBikeStorageButton() {
+        //
     }
     
-    @objc
-    private func nutritionButtonDidTapped() {
-        
+    func didTapMassageButton() {
+        //
     }
     
-    @objc
-    private func bookingRecoveryButtonDidTapped() {
-        
+    func didTapNutritionButton() {
+        //
     }
     
-    @objc
-    private func bioimpedanceButtonDidTapped() {
-        
+    func didTapBookingRecoveryButton() {
+        //
     }
     
-    // Other
-    
-    @objc
-    private func bikeStorageButtonDidTapped() {
-        
+    func didTapBioimpedanceButton() {
+        //
     }
     
-    @objc
-    private func laundryButtonDidTapped() {
-        
+    func didTapBookingMachinesButton() {
+        //
     }
     
-    @objc
-    private func coffeeRideButtonDidTapped() {
-        
+    func didTapPersonalTrainingButton() {
+        //
     }
     
-    @objc
-    private func lectionButtonDidTapped() {
-        
+    func didTapGroupTrainingButton() {
+        //
     }
     
-    @objc
-    private func sectionButtonDidTapped() {
-        
+    func didTapJoinClubButton() {
+        //
     }
-
 }

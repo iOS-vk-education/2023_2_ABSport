@@ -7,69 +7,88 @@
 
 import UIKit
 
+protocol MainViewDelegate: AnyObject {
+    func didTapSectionButton()
+    func didTapLectionButton()
+    func didTapCoffeeRideButton()
+    func didTapLaundryButton()
+    func didTapBikeStorageButton()
+    func didTapMassageButton()
+    func didTapNutritionButton()
+    func didTapBookingRecoveryButton()
+    func didTapBioimpedanceButton()
+    func didTapBookingMachinesButton()
+    func didTapPersonalTrainingButton()
+    func didTapGroupTrainingButton()
+    func didTapJoinClubButton()
+}
+// swiftlint:disable type_body_length
+// swiftlint: disable file_length
 final class MainView: UIView {
     
-    lazy var sectionButton: UIButton = {
+    weak var delegate: MainViewDelegate?
+    
+    private lazy var sectionButton: UIButton = {
         let button = configureButton(imageName: "SectionImage", title: "Статьи")
         return button
     }()
     
-    lazy var lectionButton: UIButton = {
+    private lazy var lectionButton: UIButton = {
         let button = configureButton(imageName: "LectionImage", title: "Лекции и подкасты")
         return button
     }()
     
-    lazy var coffeeRideButton: UIButton = {
+    private lazy var coffeeRideButton: UIButton = {
         let button = configureButton(imageName: "CoffeeRideImage", title: "Кофе-райды")
         return button
     }()
     
-    lazy var laundryButton: UIButton = {
+    private lazy var laundryButton: UIButton = {
         let button = configureButton(imageName: "LaundryImage", title: "Стирка / сушка белья")
         return button
     }()
     
-    lazy var bikeStorageButton: UIButton = {
+    private lazy var bikeStorageButton: UIButton = {
         let button = configureButton(imageName: "BikeStorageImage", title: "Хранение велосипеда")
         return button
     }()
     
-    lazy var massageButton: UIButton = {
+    private lazy var massageButton: UIButton = {
         let button = configureButton(imageName: "MassageImage", title: "Онлайн-запись на массаж")
         return button
     }()
     
-    lazy var nutritionButton: UIButton = {
+    private lazy var nutritionButton: UIButton = {
         let button = configureButton(imageName: "NutritionImage", title: "Нутрициолог")
         return button
     }()
     
-    lazy var bookingRecoveryButton: UIButton = {
+    private lazy var bookingRecoveryButton: UIButton = {
         let button = configureButton(imageName: "RecoveryImage", title: "Бронь восстановления")
         return button
     }()
     
-    lazy var bioimpedanceButton: UIButton = {
+    private lazy var bioimpedanceButton: UIButton = {
         let button = configureButton(imageName: "BioimpedanceImage", title: "Биоимпеданс")
         return button
     }()
     
-    lazy var bookingMachinesButton: UIButton = {
+    private lazy var bookingMachinesButton: UIButton = {
         let button = configureButton(imageName: "BookingMachinesImage", title: "Бронь станков")
         return button
     }()
     
-    lazy var personalTrainingButton: UIButton = {
+    private lazy var personalTrainingButton: UIButton = {
         let button = configureButton(imageName: "PesonalTrainigImage", title: "Персональные тренировки")
         return button
     }()
     
-    lazy var groupTrainigButton: UIButton = {
+    private lazy var groupTrainingButton: UIButton = {
         let button = configureButton(imageName: "GroupTrainigImage", title: "Групповые тренировки")
         return button
     }()
     
-    lazy var joinClubButton: UIButton = {
+    private lazy var joinClubButton: UIButton = {
         let button = configureButton(imageName: "JoinClubImage", title: "Вступить в клуб")
         return button
     }()
@@ -145,6 +164,142 @@ final class MainView: UIView {
         setUpLectionButton()
         setUpSectionButton()
         
+        setUpButtonTargets()
+        
+    }
+    
+    // swiftlint:disable function_body_length
+    private func setUpButtonTargets() {
+
+        // Sport
+        bookingMachinesButton.addTarget(
+            self,
+            action: #selector(bookingMachinesButtonDidTapped),
+            for: .touchUpInside)
+        personalTrainingButton.addTarget(
+            self,
+            action: #selector(personalTrainingButtonDidTapped),
+            for: .touchUpInside)
+        groupTrainingButton.addTarget(
+            self,
+            action: #selector(groupTrainingButtonDidTapped),
+            for: .touchUpInside)
+        joinClubButton.addTarget(
+            self,
+            action: #selector(joinButtonDidTapped),
+            for: .touchUpInside)
+        
+        // Beauty
+        massageButton.addTarget(
+            self,
+            action: #selector(massageButtonDidTapped),
+            for: .touchUpInside)
+        nutritionButton.addTarget(
+            self,
+            action: #selector(nutritionButtonDidTapped),
+            for: .touchUpInside)
+        bookingRecoveryButton.addTarget(
+            self,
+            action: #selector(bookingRecoveryButtonDidTapped),
+            for: .touchUpInside)
+        bioimpedanceButton.addTarget(
+            self,
+            action: #selector(bioimpedanceButtonDidTapped),
+            for: .touchUpInside)
+        
+        // Other
+        bikeStorageButton.addTarget(
+            self,
+            action: #selector(bikeStorageButtonDidTapped),
+            for: .touchUpInside)
+        laundryButton.addTarget(
+            self,
+            action: #selector(laundryButtonDidTapped),
+            for: .touchUpInside)
+        coffeeRideButton.addTarget(
+            self,
+            action: #selector(coffeeRideButtonDidTapped),
+            for: .touchUpInside)
+        lectionButton.addTarget(
+            self,
+            action: #selector(lectionButtonDidTapped),
+            for: .touchUpInside)
+        sectionButton.addTarget(
+            self,
+            action: #selector(sectionButtonDidTapped),
+            for: .touchUpInside)
+    }
+    // swiftlint:enable function_body_length
+    
+    // Sport
+    
+    @objc
+    private func bookingMachinesButtonDidTapped() {
+        delegate?.didTapBookingMachinesButton()
+    }
+    
+    @objc
+    private func personalTrainingButtonDidTapped() {
+        delegate?.didTapPersonalTrainingButton()
+    }
+    
+    @objc
+    private func groupTrainingButtonDidTapped() {
+        delegate?.didTapGroupTrainingButton()
+    }
+    
+    @objc
+    private func joinButtonDidTapped() {
+        delegate?.didTapJoinClubButton()
+    }
+    
+    // Beauty
+    
+    @objc
+    private func massageButtonDidTapped() {
+        delegate?.didTapMassageButton()
+    }
+    
+    @objc
+    private func nutritionButtonDidTapped() {
+        delegate?.didTapNutritionButton()
+    }
+    
+    @objc
+    private func bookingRecoveryButtonDidTapped() {
+        delegate?.didTapBookingRecoveryButton()
+    }
+    
+    @objc
+    private func bioimpedanceButtonDidTapped() {
+        delegate?.didTapBioimpedanceButton()
+    }
+    
+    // Other
+    
+    @objc
+    private func bikeStorageButtonDidTapped() {
+        delegate?.didTapBikeStorageButton()
+    }
+    
+    @objc
+    private func laundryButtonDidTapped() {
+        delegate?.didTapLaundryButton()
+    }
+    
+    @objc
+    private func coffeeRideButtonDidTapped() {
+        delegate?.didTapCoffeeRideButton()
+    }
+    
+    @objc
+    private func lectionButtonDidTapped() {
+        delegate?.didTapLectionButton()
+    }
+    
+    @objc
+    private func sectionButtonDidTapped() {
+        delegate?.didTapSectionButton()
     }
     
     private func configureButton(imageName: String?, title: String) -> UIButton {
@@ -197,6 +352,7 @@ final class MainView: UIView {
         return label
     }
 }
+// swiftlint:enable type_body_length
 
 // MARK: - Layouts
 private extension MainView {
@@ -263,12 +419,12 @@ private extension MainView {
     }
     
     func setUpGroupTrainingButton() {
-        contentView.addSubview(groupTrainigButton)
+        contentView.addSubview(groupTrainingButton)
         NSLayoutConstraint.activate([
-            groupTrainigButton.topAnchor.constraint(equalTo: bookingMachinesButton.bottomAnchor, constant: 6),
-            groupTrainigButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 23),
-            groupTrainigButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 170/393),
-            groupTrainigButton.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 110/759)
+            groupTrainingButton.topAnchor.constraint(equalTo: bookingMachinesButton.bottomAnchor, constant: 6),
+            groupTrainingButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 23),
+            groupTrainingButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 170/393),
+            groupTrainingButton.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 110/759)
         ])
     }
     
@@ -285,7 +441,7 @@ private extension MainView {
     func setUpBeautyTitleLabel() {
         contentView.addSubview(beautyTitleLabel)
         NSLayoutConstraint.activate([
-            beautyTitleLabel.topAnchor.constraint(equalTo: groupTrainigButton.bottomAnchor, constant: 55),
+            beautyTitleLabel.topAnchor.constraint(equalTo: groupTrainingButton.bottomAnchor, constant: 55),
             beautyTitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 23)
         ])
     }
@@ -389,3 +545,4 @@ private extension MainView {
         ])
     }
 }
+// swiftlint:enable file_length
