@@ -1,22 +1,37 @@
 //
-//  GroupTrainingViewController.swift
+//  SecondViewComtoller.swift
 //  ABSport
 //
-//  Created by Arseniy Apollonov on 03.03.2024.
+//  Created by Arseniy Apollonov on 09.03.2024.
 //
 
 import UIKit
 
-class GroupTrainingViewController: UIViewController {
-    
-    private var groupTrainigView = GroupTrainingView(frame: UIScreen.main.bounds)
+final class GroupTrainingViewController: UIViewController, GroupTrainingViewDelegate {
+        
+    private var groupTrainingView = GroupTrainingView(frame: UIScreen.main.bounds)
     
     override func loadView() {
         super.loadView()
-        self.view = groupTrainigView
+        self.view = groupTrainingView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupTrainingView.navBarTitleStackView.spacing = UIStackView.spacingUseDefault
+        self.navigationItem.titleView = groupTrainingView.navBarTitleStackView
+        groupTrainingView.delegate = self
+    }
+    
+    func didTapChooseTrainerButton() {
+        print("trainer")
+    }
+    
+    func didTapChooseTainingButton() {
+        print("training")
+    }
+    
+    func didTapChooseDateButton() {
+        print("date")
     }
 }

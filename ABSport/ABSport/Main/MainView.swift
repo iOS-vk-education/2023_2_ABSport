@@ -60,7 +60,7 @@ final class MainView: UIView {
     }()
     
     lazy var personalTrainingButton: UIButton = {
-        let button = configureButton(imageName: "PesonalTrainigImage", title: "Персональные тренировки")
+        let button = configureButton(imageName: "GroupTrainingImage", title: "Персональные тренировки")
         return button
     }()
     
