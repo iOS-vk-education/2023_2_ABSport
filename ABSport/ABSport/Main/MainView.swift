@@ -78,8 +78,13 @@ final class MainView: UIView {
         return button
     }()
     
+<<<<<<< HEAD
     private lazy var personalTrainingButton: UIButton = {
         let button = configureButton(imageName: "PesonalTrainigImage", title: "Персональные тренировки")
+=======
+    lazy var personalTrainingButton: UIButton = {
+        let button = configureButton(imageName: "GroupTrainingImage", title: "Персональные тренировки")
+>>>>>>> GroupTrainingView
         return button
     }()
     
