@@ -157,7 +157,16 @@ final class LoginView: UIView {
     }
     
     private func addSubAndTransOff() {
-        [title, numberField, textNumberField, smsButton, agreeWithPersonalDataText, agreeWithDataButton, enterStack, passwordField, passwordText, backButton].forEach({ element in
+        [title,
+         numberField,
+         textNumberField,
+         smsButton,
+         agreeWithPersonalDataText,
+         agreeWithDataButton,
+         enterStack,
+         passwordField,
+         passwordText,
+         backButton].forEach({ element in
             addSubview(element)
             element.translatesAutoresizingMaskIntoConstraints = false
         })
@@ -177,7 +186,9 @@ final class LoginView: UIView {
     
     @objc func agreeWithDataButtonTapped() {
         agreeOrDisagree.toggle()
-        agreeWithDataButton.backgroundColor = agreeOrDisagree ? UIColor(named: "BlueButtonColor") : UIColor(named: "DarkGreyColor")
+        agreeWithDataButton.backgroundColor = agreeOrDisagree
+        ? UIColor(named: "BlueButtonColor")
+        : UIColor(named: "DarkGreyColor")
     }
     
     @objc func enterButtonTapped() {
@@ -230,7 +241,8 @@ final class LoginView: UIView {
             agreeWithDataButton.widthAnchor.constraint(equalToConstant: 20),
             
             agreeWithPersonalDataText.centerYAnchor.constraint(equalTo: agreeWithDataButton.centerYAnchor),
-            agreeWithPersonalDataText.leadingAnchor.constraint(equalTo: agreeWithDataButton.trailingAnchor, constant: 12),
+            agreeWithPersonalDataText.leadingAnchor.constraint(
+                equalTo: agreeWithDataButton.trailingAnchor, constant: 12),
         
             enterStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             enterStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -251,4 +263,3 @@ extension LoginView: UITextFieldDelegate {
         return false
     }
 }
-

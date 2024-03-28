@@ -12,7 +12,6 @@ enum SmsViewResult {
     case data(text: String)
 }
 
-
 protocol SmsViewModel: AnyObject {
     
     func viewDidLoad()
@@ -22,10 +21,6 @@ protocol SmsViewModel: AnyObject {
 
 final class SmsViewModelModelImpl: SmsViewModel {
 
-    
-
-    
-    
     func didTapOnLoginButton() {
     }
     weak var coordinator: AuthCoordinator?

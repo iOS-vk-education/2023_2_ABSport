@@ -70,10 +70,10 @@
 		0496AF862BA1122D00058166 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		0496AF882BA1123F00058166 /* ReciepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciepView.swift; sourceTree = "<group>"; };
 		0496AF8A2BA1124F00058166 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		1A2F7DD92BB5D2C70032657B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		1A2F7DDB2BB5D2DB0032657B /* LoginModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelView.swift; sourceTree = SOURCE_ROOT; };
-		1A2F7DDD2BB5D2FF0032657B /* LoginFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFullView.swift; sourceTree = SOURCE_ROOT; };
-		1A2F7DDF2BB5D3900032657B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = SOURCE_ROOT; };
+		1A2F7DD92BB5D2C70032657B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ABSport/Auth/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		1A2F7DDB2BB5D2DB0032657B /* LoginModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginModelView.swift; path = ABSport/Auth/Login/LoginModelView.swift; sourceTree = SOURCE_ROOT; };
+		1A2F7DDD2BB5D2FF0032657B /* LoginFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginFullView.swift; path = ABSport/Auth/Login/LoginFullView.swift; sourceTree = SOURCE_ROOT; };
+		1A2F7DDF2BB5D3900032657B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ABSport/Auth/Login/LoginView.swift; sourceTree = SOURCE_ROOT; };
 		1A2F7DE22BB5D3BE0032657B /* SmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewController.swift; sourceTree = "<group>"; };
 		1A2F7DE42BB5D3CE0032657B /* SmsModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsModelView.swift; sourceTree = "<group>"; };
 		1A2F7DE62BB5D3DE0032657B /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		1A2F7DD82BB5D2B70032657B /* Login */ = {
+		1A21D9412BB5E2870013BE0A /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				1A2F7DD92BB5D2C70032657B /* LoginViewController.swift */,
@@ -181,8 +181,8 @@
 		1A907EDE2B908EC200FBF281 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				1A21D9412BB5E2870013BE0A /* Login */,
 				1A2F7DE12BB5D3AB0032657B /* SMS */,
-				1A2F7DD82BB5D2B70032657B /* Login */,
 				1A907EDF2B908ECB00FBF281 /* Registration */,
 				1A907EE42B9092EE00FBF281 /* AuthCoordinator.swift */,
 			);
