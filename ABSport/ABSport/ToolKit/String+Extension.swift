@@ -13,13 +13,13 @@ extension String {
         var result = ""
         var index = numbers.startIndex
         
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
+        for chinazez in mask where index < numbers.endIndex {
+            if chinazez == "X" {
                 result.append(numbers[index])
                 index = numbers.index(after: index)
                 
             } else {
-                result.append(ch)
+                result.append(chinazez)
             }
         }
         return result

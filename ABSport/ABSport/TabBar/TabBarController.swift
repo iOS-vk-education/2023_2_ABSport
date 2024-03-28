@@ -20,7 +20,6 @@ final class TabBarController {
     static func createTabBar() -> UITabBarController {
         let tabBarController = UITabBarController()
         
-        
         let mainListTabBarController = createTabBarController(controller: MainViewController(),
                                                               title: "Главная",
                                                               nameImage: "Home",

@@ -28,7 +28,7 @@ class MainViewController: UIViewController, MainViewDelegate {
     }
     
     func didTapLectionButton() {
-        //
+        print("lection")
     }
     
     func didTapCoffeeRideButton() {

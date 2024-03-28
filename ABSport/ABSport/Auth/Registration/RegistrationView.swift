@@ -143,7 +143,10 @@ final class RegistrationView: UIView {
     }
     
     private func addSubAndTransOff() {
-        [title, numberField, textNumberField, smsButton, agreeWithPersonalDataText, agreeWithDataButton, personalDataButton, enterStack].forEach({ element in
+        [title, numberField, textNumberField,
+         smsButton, agreeWithPersonalDataText,
+         agreeWithDataButton, personalDataButton,
+         enterStack].forEach({ element in
             addSubview(element)
             element.translatesAutoresizingMaskIntoConstraints = false
         })
@@ -163,7 +166,9 @@ final class RegistrationView: UIView {
     
     @objc func agreeWithDataButtonTapped() {
         agreeOrDisagree.toggle()
-        agreeWithDataButton.backgroundColor = agreeOrDisagree ? UIColor(named: "BlueButtonColor") : UIColor(named: "DarkGreyColor")
+        agreeWithDataButton.backgroundColor = agreeOrDisagree ?
+        UIColor(named: "BlueButtonColor") :
+        UIColor(named: "DarkGreyColor")
     }
     
     @objc func enterButtonTapped() {
@@ -197,7 +202,9 @@ final class RegistrationView: UIView {
             agreeWithDataButton.widthAnchor.constraint(equalToConstant: 20),
             
             agreeWithPersonalDataText.centerYAnchor.constraint(equalTo: agreeWithDataButton.centerYAnchor),
-            agreeWithPersonalDataText.leadingAnchor.constraint(equalTo: agreeWithDataButton.trailingAnchor, constant: 3),
+            agreeWithPersonalDataText.leadingAnchor.constraint(
+                equalTo: agreeWithDataButton.trailingAnchor,
+                constant: 3),
             
             personalDataButton.centerYAnchor.constraint(equalTo: agreeWithPersonalDataText.centerYAnchor, constant: 1),
             personalDataButton.leadingAnchor.constraint(equalTo: agreeWithPersonalDataText.trailingAnchor),
@@ -214,7 +221,8 @@ extension UILabel {
         if let labelText = self.text {
             let attributedString = NSMutableAttributedString(string: labelText)
             let range = (labelText as NSString).range(of: textToUnderline)
-            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+            attributedString.addAttribute(
+                NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
             attributedString.addAttribute(NSAttributedString.Key.baselineOffset, value: offset, range: range)
             self.attributedText = attributedString
         }
