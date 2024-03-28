@@ -17,10 +17,10 @@ func createTabBarController(controller: UIViewController,
     return tabBarElement
 }
 final class TabBarController {
-    static func createTabBar() -> UITabBarController {
+    static func createTabBar(mainViewModel: MainViewModel) -> UITabBarController {
         let tabBarController = UITabBarController()
-        
-        let mainListTabBarController = createTabBarController(controller: MainViewController(),
+    
+        let mainListTabBarController = createTabBarController(controller: MainViewController(viewModel: mainViewModel),
                                                               title: "Главная",
                                                               nameImage: "Home",
                                                               tag: 0)

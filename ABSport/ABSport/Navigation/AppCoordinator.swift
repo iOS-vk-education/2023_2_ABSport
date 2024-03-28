@@ -9,10 +9,9 @@ import UIKit
 
 // MARK: - app coordinator (главный координатор, который пускает в приложение, либо в экран регистрации)
 final class AppCoordinator: Coordinator {
-    
     var childCoodinator: [Coordinator] = []
     
-    var hardcode = false
+    var hardcode = true
     
     private let window: UIWindow
     
@@ -22,7 +21,13 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         if hardcode {
-            window.rootViewController = TabBarController.createTabBar()
+            let mainViewModel = MainViewModel()
+            print(mainViewModel)
+            let tabBarController = TabBarController.createTabBar(mainViewModel: mainViewModel)
+            window.rootViewController = tabBarController
+            let tabBarCoordinator = TabBarCoordinator(tabBarController: tabBarController)
+            tabBarCoordinator.start()
+            addDependency(tabBarCoordinator)
         } else {
             let navigationController = UINavigationController()
             window.rootViewController = navigationController

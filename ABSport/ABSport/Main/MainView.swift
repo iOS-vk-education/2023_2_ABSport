@@ -7,26 +7,23 @@
 
 import UIKit
 
-protocol MainViewDelegate: AnyObject {
-    func didTapSectionButton()
-    func didTapLectionButton()
-    func didTapCoffeeRideButton()
-    func didTapLaundryButton()
-    func didTapBikeStorageButton()
-    func didTapMassageButton()
-    func didTapNutritionButton()
-    func didTapBookingRecoveryButton()
-    func didTapBioimpedanceButton()
-    func didTapBookingMachinesButton()
-    func didTapPersonalTrainingButton()
-    func didTapGroupTrainingButton()
-    func didTapJoinClubButton()
-}
 // swiftlint:disable type_body_length
 // swiftlint: disable file_length
 final class MainView: UIView {
     
-    weak var delegate: MainViewDelegate?
+    var didTapSectionButton: (() -> Void)?
+    var didTapLectionButton: (() -> Void)?
+    var didTapCoffeeRideButton: (() -> Void)?
+    var didTapLaundryButton: (() -> Void)?
+    var didTapBikeStorageButton: (() -> Void)?
+    var didTapMassageButton: (() -> Void)?
+    var didTapNutritionButton: (() -> Void)?
+    var didTapBookingRecoveryButton: (() -> Void)?
+    var didTapBioimpedanceButton: (() -> Void)?
+    var didTapBookingMachinesButton: (() -> Void)?
+    var didTapPersonalTrainingButton: (() -> Void)?
+    var didTapGroupTrainingButton: (() -> Void)?
+    var didTapJoinClubButton: (() -> Void)?
     
     private lazy var sectionButton: UIButton = {
         let button = configureButton(imageName: "SectionImage", title: "Статьи")
@@ -235,71 +232,86 @@ final class MainView: UIView {
     
     @objc
     private func bookingMachinesButtonDidTapped() {
-        delegate?.didTapBookingMachinesButton()
+//        delegate?.didTapBookingMachinesButton()
+        didTapBookingMachinesButton?()
     }
     
     @objc
     private func personalTrainingButtonDidTapped() {
-        delegate?.didTapPersonalTrainingButton()
+//        delegate?.didTapPersonalTrainingButton()
+        didTapPersonalTrainingButton?()
     }
     
     @objc
     private func groupTrainingButtonDidTapped() {
-        delegate?.didTapGroupTrainingButton()
+//        delegate?.didTapGroupTrainingButton()
+        didTapGroupTrainingButton?()
+        print("group training in UIview")
     }
     
     @objc
     private func joinButtonDidTapped() {
-        delegate?.didTapJoinClubButton()
+//        delegate?.didTapJoinClubButton()
+        didTapJoinClubButton?()
     }
     
     // Beauty
     
     @objc
     private func massageButtonDidTapped() {
-        delegate?.didTapMassageButton()
+//        delegate?.didTapMassageButton()
+        didTapMassageButton?()
     }
     
     @objc
     private func nutritionButtonDidTapped() {
-        delegate?.didTapNutritionButton()
+//        delegate?.didTapNutritionButton()
+        didTapNutritionButton?()
     }
     
     @objc
     private func bookingRecoveryButtonDidTapped() {
-        delegate?.didTapBookingRecoveryButton()
+//        delegate?.didTapBookingRecoveryButton()
+        didTapBookingRecoveryButton?()
     }
     
     @objc
     private func bioimpedanceButtonDidTapped() {
-        delegate?.didTapBioimpedanceButton()
+//        delegate?.didTapBioimpedanceButton()
+        didTapBioimpedanceButton?()
     }
     
     // Other
     
     @objc
     private func bikeStorageButtonDidTapped() {
-        delegate?.didTapBikeStorageButton()
+//        delegate?.didTapBikeStorageButton()
+        didTapBikeStorageButton?()
     }
     
     @objc
     private func laundryButtonDidTapped() {
-        delegate?.didTapLaundryButton()
+//        delegate?.didTapLaundryButton()
+        didTapLaundryButton?()
     }
     
     @objc
     private func coffeeRideButtonDidTapped() {
-        delegate?.didTapCoffeeRideButton()
+//        delegate?.didTapCoffeeRideButton()
+        didTapCoffeeRideButton?()
     }
     
     @objc
     private func lectionButtonDidTapped() {
-        delegate?.didTapLectionButton()
+//        delegate?.didTapLectionButton()
+        didTapLectionButton?()
     }
     
     @objc
     private func sectionButtonDidTapped() {
-        delegate?.didTapSectionButton()
+//        delegate?.didTapSectionButton()
+        didTapSectionButton?()
+    
     }
     
     private func configureButton(imageName: String?, title: String) -> UIButton {

@@ -35,6 +35,7 @@
 		6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1322B931E24001FC95E /* MainViewModel.swift */; };
 		6662D1372B931EAC001FC95E /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662D1362B931EAC001FC95E /* MainModel.swift */; };
 		666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F52DB2B93B95E00B113CD /* MainCoordinator.swift */; };
+		6682A1DB2BB5827C003CEA61 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6682A1DA2BB5827C003CEA61 /* TabBarCoordinator.swift */; };
 		66A5997B2BB31A2D00E80EEF /* GroupTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997A2BB31A2D00E80EEF /* GroupTrainingView.swift */; };
 		66A5997D2BB31A5B00E80EEF /* GroupTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */; };
 		66A5997F2BB31AB000E80EEF /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997E2BB31AB000E80EEF /* UIButton+extension.swift */; };
@@ -94,6 +95,7 @@
 		6662D1322B931E24001FC95E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		6662D1362B931EAC001FC95E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		666F52DB2B93B95E00B113CD /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		6682A1DA2BB5827C003CEA61 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		66A5997A2BB31A2D00E80EEF /* GroupTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingView.swift; sourceTree = "<group>"; };
 		66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingViewController.swift; sourceTree = "<group>"; };
 		66A5997E2BB31AB000E80EEF /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				1A41C06A2B9EFB6A00BD5B8D /* TabBarController.swift */,
+				6682A1DA2BB5827C003CEA61 /* TabBarCoordinator.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				1A41C0642B9DC3CA00BD5B8D /* LoginViewController.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				1A41C0662B9DC3D500BD5B8D /* LoginModelView.swift in Sources */,
+				6682A1DB2BB5827C003CEA61 /* TabBarCoordinator.swift in Sources */,
 				1A41C0622B9DBC7300BD5B8D /* RegistrationViewModel.swift in Sources */,
 				6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */,
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
