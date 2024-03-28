@@ -154,7 +154,15 @@ final class SmsView: UIView {
     }
     
     private func addSubAndTransOff() {
-        [title, numberField, textNumberField, smsButton, agreeWithPersonalDataText, agreeWithDataButton, personalDataButton, enterStack, backButton].forEach({ element in
+        [title,
+         numberField,
+         textNumberField,
+         smsButton,
+         agreeWithPersonalDataText,
+         agreeWithDataButton,
+         personalDataButton,
+         enterStack,
+         backButton].forEach({ element in
             addSubview(element)
             element.translatesAutoresizingMaskIntoConstraints = false
         })
@@ -174,7 +182,8 @@ final class SmsView: UIView {
     
     @objc func agreeWithDataButtonTapped() {
         agreeOrDisagree.toggle()
-        agreeWithDataButton.backgroundColor = agreeOrDisagree ? UIColor(named: "BlueButtonColor") : UIColor(named: "DarkGreyColor")
+        agreeWithDataButton.backgroundColor =
+        agreeOrDisagree ? UIColor(named: "BlueButtonColor") : UIColor(named: "DarkGreyColor")
     }
     
     @objc func enterButtonTapped() {
@@ -218,7 +227,8 @@ final class SmsView: UIView {
             agreeWithDataButton.widthAnchor.constraint(equalToConstant: 20),
             
             agreeWithPersonalDataText.centerYAnchor.constraint(equalTo: agreeWithDataButton.centerYAnchor),
-            agreeWithPersonalDataText.leadingAnchor.constraint(equalTo: agreeWithDataButton.trailingAnchor, constant: 3),
+            agreeWithPersonalDataText.leadingAnchor.constraint(
+                equalTo: agreeWithDataButton.trailingAnchor, constant: 3),
             
             personalDataButton.centerYAnchor.constraint(equalTo: agreeWithPersonalDataText.centerYAnchor, constant: 1),
             personalDataButton.leadingAnchor.constraint(equalTo: agreeWithPersonalDataText.trailingAnchor),
@@ -230,4 +240,3 @@ final class SmsView: UIView {
         ])
     }
 }
-
