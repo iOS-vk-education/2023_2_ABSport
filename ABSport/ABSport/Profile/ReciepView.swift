@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Reciep View
 struct ReciepView: View {
     var body: some View {
         ReciepButtonView()
@@ -19,7 +20,7 @@ struct ReciepView: View {
 struct ReciepButtonView: View {
     var body: some View {
         VStack(alignment: .center) {
-            Button(action: {}) {
+            Button(action: goToHistoryOrder) {
                 Text("История аказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
@@ -27,7 +28,7 @@ struct ReciepButtonView: View {
                     })
             }
             .buttonStyle()
-            Button(action: {}) {
+            Button(action: goToHistoryOrder) {
                 Text("История зказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
@@ -35,7 +36,7 @@ struct ReciepButtonView: View {
                     })
             }
             .buttonStyle()
-            Button(action: {}) {
+            Button(action: goToSeasonTicket) {
                 Text("Сроки абонемента")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
@@ -48,6 +49,14 @@ struct ReciepButtonView: View {
     }
 }
 
+// MARK: - Button Function
+func goToHistoryOrder() {
+    
+}
+
+func goToSeasonTicket() {
+    
+}
 #Preview {
     ReciepView()
 }

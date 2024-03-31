@@ -21,6 +21,7 @@ struct Profile {
                        number: "+7 925 492 80 65")
     }
 }
+// MARK: - Profile View
 struct ProfileView: View {
     
     var body: some View {
@@ -59,20 +60,19 @@ struct ProfileHeaderView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.secondary)
             }
-            VStack(alignment: .center) {
+            VStack(alignment: .trailing) {
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                     Image("SettingsButton")
                         .resizable()
                         .frame(width: 26, height: 26)
                 })
             }
-            Spacer()
-            
-        }.offset(x: 32)
+        }.padding(.horizontal, 16)
     }
 }
 
 struct ProfileButtonContent {
+    
     let label: String
     let image: String
     let action: () -> Void
@@ -95,7 +95,7 @@ struct ProfileContentView: View {
                     ButtonView(image: buttonContent.image,
                                label: buttonContent.label)
                 }
-                .foregroundColor(.black) // поверить
+                .foregroundColor(.black)
                 .frame(height: 72)
                 .frame(maxWidth: .infinity)
                 .background(
@@ -108,23 +108,6 @@ struct ProfileContentView: View {
     }
 }
 
-struct ButtonModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .foregroundColor(.black) // поверить
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
-    }
-}
-
-extension View {
-    func buttonStyle() -> some View {
-        modifier(ButtonModifier())
-    }
-}
 struct ButtonView: View {
     
     let image: String
@@ -144,20 +127,7 @@ struct ButtonView: View {
             }
             Spacer()
         }
-        
     }
-}
-
-func goToMyForm() {
-    
-}
-
-func goToPlanner() {
-    
-}
-
-func goToReciep() {
-    
 }
 
 struct ProfileFooterView: View {
@@ -173,20 +143,48 @@ struct ProfileFooterView: View {
                     .background(
                                 RoundedRectangle(
                                     cornerRadius: 12,
-                                    style: .continuous
-                                )
-                                .stroke(.red, lineWidth: 1)
-
-                            )
+                                    style: .continuous)
+                                .stroke(.red, lineWidth: 1))
             }
             .padding(.horizontal, 15)
-            
         }
     }
 }
 
+// MARK: - Button Function
+func goToMyForm() {
+    
+}
+
+func goToPlanner() {
+    
+}
+
+func goToReciep() {
+    
+}
+
 func logOut() {
     
+}
+
+// MARK: - View Modifier
+struct ButtonModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.black)
+            .frame(height: 72)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(Color("LightGreyColor")))
+    }
+}
+
+extension View {
+    func buttonStyle() -> some View {
+        modifier(ButtonModifier())
+    }
 }
 
 #Preview {
