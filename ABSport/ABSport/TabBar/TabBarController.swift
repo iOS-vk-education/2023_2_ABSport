@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+
 func createTabBarController(controller: UIViewController,
                             title: String?,
                             nameImage: String,
@@ -16,17 +18,29 @@ func createTabBarController(controller: UIViewController,
                                             tag: tag)
     return tabBarElement
 }
+
 final class TabBarController {
     static func createTabBar() -> UITabBarController {
         let tabBarController = UITabBarController()
-        
         
         let mainListTabBarController = createTabBarController(controller: MainViewController(),
                                                               title: "Главная",
                                                               nameImage: "Home",
                                                               tag: 0)
-
-        tabBarController.setViewControllers([mainListTabBarController], animated: true)
+        let scheduleViewModel =  ScheduleViewModelImpl(dateFormatterManager: DateFormaterManagerImpl(),
+                                                       calendarManager: CalendarManagerImpl())
+        let scheduleViewController = ScheduleViewController(viewModel: scheduleViewModel)
+        let scheduleTabBarController = createTabBarController(controller: scheduleViewController,
+                                                              title: "Расписание",
+                                                              nameImage: "Calendar",
+                                                              tag: 1)
+//        
+//        let scheduleTabBarController = createTabBarController(controller: scheduleViewController,
+//                                                              title: " Расписание",
+//                                                              nameImage: "calendar",
+//                                                              tag: 1)
+    
+        tabBarController.setViewControllers([mainListTabBarController, scheduleTabBarController], animated: true)
         return tabBarController
     }
 }

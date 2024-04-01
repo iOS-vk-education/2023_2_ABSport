@@ -64,7 +64,8 @@ class MainViewController: UIViewController, MainViewDelegate {
     }
     
     func didTapPersonalTrainingButton() {
-        //
+        let viewController = ReservationViewController(viewModel: ReservationViewModelImpl(dateFormatterManager: DateFormaterManagerImpl(), calendarManager: CalendarManagerImpl()))
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func didTapGroupTrainingButton() {
