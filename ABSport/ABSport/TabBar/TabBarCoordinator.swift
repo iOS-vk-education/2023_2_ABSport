@@ -36,7 +36,7 @@ final class TabBarCoordinator: Coordinator {
         let profileViewController = profileCoordinator.rootViewController
         setup(vc: profileViewController,
               title: "Профиль",
-              imageName: "Profile",
+              imageName: "ProfileTab",
               tag: 1)
         
         self.rootViewController.viewControllers = [mainViewController, profileViewController]

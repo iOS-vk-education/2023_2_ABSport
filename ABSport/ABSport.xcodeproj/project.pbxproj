@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */; };
-		04847AC82BBF1D1800BA8542 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileCoordinator.swift */; };
+		04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */; };
 		0496AF872BA1122D00058166 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF862BA1122D00058166 /* ProfileView.swift */; };
 		0496AF892BA1123F00058166 /* ReciepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF882BA1123F00058166 /* ReciepView.swift */; };
 		0496AF8B2BA1124F00058166 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF8A2BA1124F00058166 /* SettingsView.swift */; };
@@ -70,7 +70,7 @@
 
 /* Begin PBXFileReference section */
 		04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		04847AC72BBF1D1800BA8542 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		0496AF862BA1122D00058166 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0496AF882BA1123F00058166 /* ReciepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciepView.swift; sourceTree = "<group>"; };
 		0496AF8A2BA1124F00058166 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				0496AF862BA1122D00058166 /* ProfileView.swift */,
 				0496AF882BA1123F00058166 /* ReciepView.swift */,
 				0496AF8A2BA1124F00058166 /* SettingsView.swift */,
-				04847AC72BBF1D1800BA8542 /* ProfileCoordinator.swift */,
+				04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -465,7 +465,7 @@
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
 				1A2F7DDA2BB5D2C70032657B /* LoginViewController.swift in Sources */,
 				1A2F7DE52BB5D3CE0032657B /* SmsModelView.swift in Sources */,
-				04847AC82BBF1D1800BA8542 /* ProfileCoordinator.swift in Sources */,
+				04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */,
 				66A599892BB31BD000E80EEF /* TrainerCell.swift in Sources */,
 				66A599822BB31B2D00E80EEF /* ChooseTrainingView.swift in Sources */,
 				1A907EE72B9096B300FBF281 /* AppCoordinator.swift in Sources */,
