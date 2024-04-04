@@ -58,6 +58,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                 if viewModel.state.areReservationsFetched {
                     tasksAndReservationList(forDate: viewModel.state.currentDate)
                 } else {
+                    Spacer()
                     ProgressView()
                     Spacer()
                 }
@@ -76,8 +77,6 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                                    toType: .dayMonthYear))
             .foregroundStyle(Color("BlueButtonColor"))
             .font(.system(size: 16, weight: .semibold))
-            .padding(.top, 32)
-            .padding(.bottom, 18)
             
             Button {
                 withAnimation {
@@ -85,13 +84,15 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                 }
             } label: {
                 Image(systemName: viewModel.state.isCalendarShowing ? "chevron.up" : "chevron.down")
-                    .font(.system(size: 14))
+                    .font(.system(size: 9, weight: .bold))
                     .foregroundStyle(Color("LightGrayColor"))
                     .background(Circle()
                         .fill(Color("BlueButtonColor"))
-                        .frame(width: 18, height: 18))
+                        .frame(width: 14, height: 14))
             }
         }
+        .padding(.top, 32)
+        .padding(.bottom, 18)
     }
     
     // MARK: ViewBuilder function to draw view for choosing current date
@@ -100,7 +101,9 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
         
         HStack {
             Button {
-                viewModel.handle(.openPreviousMonth)
+                withAnimation {
+                    viewModel.handle(.openPreviousMonth)
+                }
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.title2)
@@ -111,7 +114,9 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
             daysOfMonthView()
             
             Button {
-                viewModel.handle(.openNextMonth)
+                withAnimation {
+                    viewModel.handle(.openNextMonth)
+                }
             } label: {
                 Image(systemName: "chevron.right")
                     .font(.title2)
@@ -227,13 +232,13 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
     @ViewBuilder
     func reservationCell(reservation: Reservation) -> some View {
         
-        VStack(spacing: 10) {
-            VStack(alignment: .leading) {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(viewModel.formate(date: reservation.startDate, toType: .weekDayMonthYear))
                     .font(.system(size: 14))
                     .foregroundColor(Color("RedButtonColor"))
                 
-                HStack {
+                HStack(spacing: 0) {
                     Text(reservation.type.rawValue)
                         .font(.system(size: 24, weight: .bold))
                     Spacer()
@@ -243,17 +248,22 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(Color("GreenTextColor"))
                 }
+                .padding(.vertical, 14)
+                
                 Text("\(reservation.isIndividual ? "Групповая тренировка" : "Индивидуальная тренировка")")
                     .font(.system(size: 14))
+                    .frame(height: 24)
                 Text("Тренер: \(reservation.trainerName ?? "не указан")")
                     .font(.system(size: 14))
+                    .frame(height: 24)
                 Text("Осталось мест: \(reservation.numberOfFreeSlots)")
                     .font(.system(size: 14))
+                    .frame(height: 24)
+                    .padding(.bottom, 14)
             }
             .padding(.horizontal, 5)
-            
             Button {
-                
+                print("viewModel.cancelReservation")
             } label: {
                 Text("Отменить запись")
                     .foregroundColor(Color("RedButtonColor"))
@@ -266,7 +276,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                     )
             }
         }
-        .padding()
+        .padding(9)
         .frame(maxWidth: .infinity)
         .cornerRadius(12)
         .overlay(
