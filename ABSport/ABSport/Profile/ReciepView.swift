@@ -13,7 +13,6 @@ struct ReciepView: View {
     var body: some View {
         ReciepButtonView()
         Spacer()
-        
     }
 }
 

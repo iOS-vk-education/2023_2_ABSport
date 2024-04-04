@@ -7,27 +7,21 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainTabCoordinator: Coordinator {
     
-    var childCoodinator: [Coordinator] = []
+    var rootViewController = UINavigationController()
     
-    private let navigationController: UINavigationController
+    init() {
+        rootViewController = UINavigationController()
+    }
+    
+    lazy var mainViewController = {
+        let vc = MainViewController()
+        return vc
+    }()
     
     func start() {
-        //
-    }
-    
-    func addDependency(_ coordinator: Coordinator) {
-        childCoodinator.append(coordinator)
-    }
-    
-    func removeDependency(_ coordinator: Coordinator) {
-        guard let index = childCoodinator.firstIndex(where: { coordinator === $0}) else { return }
-        childCoodinator.remove(at: index)
-    }
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+        rootViewController.setViewControllers([mainViewController], animated: false)
     }
     
 }
