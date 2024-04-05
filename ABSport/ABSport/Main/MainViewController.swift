@@ -11,6 +11,9 @@ class MainViewController: UIViewController, MainViewDelegate {
     
 //    var viewModel: MainViewModel?
 //    var coordinator: MainCoordinator?
+    var groupTrainingRequested: () -> () = {}
+    var trainigRequested: () -> () = {}
+    
     private var mainView = MainView(frame: UIScreen.main.bounds)
     
     override func loadView() {
@@ -64,11 +67,12 @@ class MainViewController: UIViewController, MainViewDelegate {
     }
     
     func didTapPersonalTrainingButton() {
-        //
+        trainigRequested()
     }
     
     func didTapGroupTrainingButton() {
         //
+        groupTrainingRequested()
     }
     
     func didTapJoinClubButton() {

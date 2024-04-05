@@ -43,4 +43,3 @@ final class ProfileTabCoordinator: Coordinator {
     func logout() {
     }
 }
-

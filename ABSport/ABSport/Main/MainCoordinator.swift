@@ -9,14 +9,18 @@ import UIKit
 
 class MainTabCoordinator: Coordinator {
     
-    var rootViewController = UINavigationController()
+    var rootViewController: UINavigationController
+    
+    var childCoordinators = [Coordinator]()
     
     init() {
         rootViewController = UINavigationController()
     }
     
-    lazy var mainViewController = {
+    lazy var mainViewController: MainViewController = {
         let vc = MainViewController()
+        vc.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
+        vc.trainigRequested = {}
         return vc
     }()
     
@@ -24,4 +28,9 @@ class MainTabCoordinator: Coordinator {
         rootViewController.setViewControllers([mainViewController], animated: false)
     }
     
+    func goToGroupTraining() {
+        let groupTrainingCoordinator = GroupTrainingCoordinator(rootViewController: rootViewController)
+        self.childCoordinators.append(groupTrainingCoordinator)
+        groupTrainingCoordinator.start()
+    }
 }

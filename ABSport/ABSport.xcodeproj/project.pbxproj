@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043545422BC07E9400151ED5 /* GroupTrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */; };
 		04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */; };
 		04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */; };
 		0496AF872BA1122D00058166 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF862BA1122D00058166 /* ProfileView.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingCoordinator.swift; sourceTree = "<group>"; };
 		04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		0496AF862BA1122D00058166 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				66A5997A2BB31A2D00E80EEF /* GroupTrainingView.swift */,
 				66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */,
+				043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */,
 			);
 			path = GroupTraining;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				6662D12F2B931DAB001FC95E /* MainView.swift in Sources */,
 				666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */,
 				1A907EE52B9092EE00FBF281 /* AuthCoordinator.swift in Sources */,
+				043545422BC07E9400151ED5 /* GroupTrainingCoordinator.swift in Sources */,
 				1A41C06B2B9EFB6A00BD5B8D /* TabBarController.swift in Sources */,
 				1A2F7DE02BB5D3900032657B /* LoginView.swift in Sources */,
 				2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */,

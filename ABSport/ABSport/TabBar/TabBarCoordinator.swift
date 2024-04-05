@@ -17,7 +17,6 @@ final class TabBarCoordinator: Coordinator {
     init() {
         self.rootViewController = UITabBarController()
         rootViewController.tabBar.isTranslucent = true
-        rootViewController.tabBar.backgroundColor = .lightGray
     }
     func start() {
         
