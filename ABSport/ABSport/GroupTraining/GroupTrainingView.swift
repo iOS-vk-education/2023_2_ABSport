@@ -19,8 +19,8 @@ final class GroupTrainingView: UIView {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(named: "backIconColor")
-        titleLabel.text = "Персональные тренировки"
+        titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
+        titleLabel.text = "Групповые тренировки"
         let stackView = UIStackView(arrangedSubviews: [titleLabel])
         stackView.axis = .vertical
         return stackView
@@ -29,26 +29,26 @@ final class GroupTrainingView: UIView {
     weak var delegate: GroupTrainingViewDelegate?
     
     private lazy var chooseTrainerButton: UIButton = {
-        let button = configureChooseButton(imageName: "UserMale", title: "Выбрать тренера")
+        let button = configureChooseButton(imageName: "GroupTrainers/UserMale", title: "Выбрать тренера")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var chooseTrainingButton: UIButton = {
-        let button = configureChooseButton(imageName: "Shortlist", title: "Выбрать тренировку")
+        let button = configureChooseButton(imageName: "GroupTrainers/Shortlist", title: "Выбрать тренировку")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var chooseDateButton: UIButton = {
-        let button = configureChooseButton(imageName: "Schedule", title: "Выбрать дату и время")
+        let button = configureChooseButton(imageName: "GroupTrainers/Schedule", title: "Выбрать дату и время")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor(named: "BackgroundColor")
         configureButtons()
         setUpButtonTargets()
     }
@@ -91,12 +91,12 @@ final class GroupTrainingView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor(named: "TrainingButtonBackground")
+        button.backgroundColor = UIColor(named: "GroupTrainers/TrainingButtonBackground")
         
         let viewWidth = UIScreen.main.bounds.width
         let ratio = viewWidth / 393
         label.font = UIFont.systemFont(ofSize: CGFloat(16 * ratio), weight: .semibold)
-        label.textColor = UIColor(named: "TrainingText")
+        label.textColor = UIColor(named: "GroupTrainers/TrainingText")
         label.numberOfLines = 1
         label.text = title
         label.textAlignment = .left

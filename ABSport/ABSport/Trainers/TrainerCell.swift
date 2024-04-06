@@ -18,7 +18,7 @@ final class TrainerCell: UICollectionViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = true
-        button.backgroundColor = UIColor(named: "TrainerButtonBackgroud")
+        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackground")
         button.layer.cornerRadius = 12
         button.contentMode = .scaleAspectFill
         return button
@@ -29,7 +29,7 @@ final class TrainerCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = UIColor(named: "TrainerPhotoBackground")
+        imageView.backgroundColor = UIColor(named: "GroupTrainers/TrainerPhotoBackground")
         imageView.layer.cornerRadius = 12
         return imageView
     }()
@@ -38,7 +38,7 @@ final class TrainerCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: CGFloat(15), weight: .semibold)
-        label.textColor = UIColor(named: "TrainingText")
+        label.textColor = UIColor(named: "GroupTrainers/TrainingText")
         label.textAlignment = .left
         label.numberOfLines = 2
         return label
@@ -48,7 +48,7 @@ final class TrainerCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: CGFloat(13), weight: .light)
-        label.textColor = UIColor(named: "TrainerStatusColor")
+        label.textColor = UIColor(named: "GroupTrainers/TrainerStatusColor")
         label.textAlignment = .left
         label.numberOfLines = 2
         return label
@@ -64,7 +64,7 @@ final class TrainerCell: UICollectionViewCell {
     }
     
     func configureTrainerCell(trainerPhoto: UIImage?, trainerName: String?, trainerStatus: String?) {
-        trainerImage.image = trainerPhoto ?? UIImage(named: "Alex")
+        trainerImage.image = trainerPhoto ?? UIImage(named: "GroupTrainers/Alex")
         trainerNameLabel.text = trainerName
         trainerStatusLabel.text = trainerStatus
     }
