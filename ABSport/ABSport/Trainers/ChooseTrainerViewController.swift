@@ -54,7 +54,7 @@ final class ChooseTrainerViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "backIconColor")
-        titleLabel.text = "Персональные тренировки"
+        titleLabel.text = "Групповые тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "backIconColor")
