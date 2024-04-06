@@ -21,11 +21,11 @@ final class ChooseTrainingView: UIView {
         let subtitleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(named: "backIconColor")
+        titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
         titleLabel.text = "Персональные тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
-        subtitleLabel.textColor = UIColor(named: "backIconColor")
+        subtitleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
         subtitleLabel.text = "Выбор тренировки"
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.axis = .vertical
@@ -37,26 +37,26 @@ final class ChooseTrainingView: UIView {
     private let chooseButton = UIButton().configureChooseTrainingButton()
     
     private lazy var chooseCyclingButton: UIButton = {
-        let button = configureTypeButton(imageName: "Cycling", title: "Велотренировка")
+        let button = configureTypeButton(imageName: "GroupTrainers/Cycling", title: "Велотренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var chooseRunningButton: UIButton = {
-        let button = configureTypeButton(imageName: "Running", title: "Беговая тренировка")
+        let button = configureTypeButton(imageName: "GroupTrainers/Running", title: "Беговая тренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var choosePowerButton: UIButton = {
-        let button = configureTypeButton(imageName: "QuickModeOn", title: "Силовая тренировка")
+        let button = configureTypeButton(imageName: "GroupTrainers/QuickModeOn", title: "Силовая тренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor(named: "BackgroundColor")
         configureButtons()
         setUpButtonTargets()
     }
@@ -80,7 +80,7 @@ final class ChooseTrainingView: UIView {
     @objc
     private func didTapCyclingButton() {
         chooseCyclingButton.layer.borderWidth = 2
-        chooseCyclingButton.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
+        chooseCyclingButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseRunningButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
         delegate?.didTapChooseCyclingButton()
@@ -90,7 +90,7 @@ final class ChooseTrainingView: UIView {
     @objc
     private func didTapRunningButton() {
         chooseRunningButton.layer.borderWidth = 2
-        chooseRunningButton.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
+        chooseRunningButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
         delegate?.didTapChooseRunningButton()
@@ -99,7 +99,7 @@ final class ChooseTrainingView: UIView {
     @objc
     private func didTapPowerButton() {
         choosePowerButton.layer.borderWidth = 2
-        choosePowerButton.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
+        choosePowerButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         chooseRunningButton.layer.borderWidth = 0
         delegate?.didTapChoosePowerButton()
@@ -118,12 +118,12 @@ final class ChooseTrainingView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor(named: "TrainerButtonBackgroud")
+        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackgroud")
         
         let viewWidth = UIScreen.main.bounds.width
         let ratio = viewWidth / 393
         label.font = UIFont.systemFont(ofSize: CGFloat(16 * ratio), weight: .semibold)
-        label.textColor = UIColor(named: "TrainingText")
+        label.textColor = UIColor(named: "GroupTrainers/TrainingText")
         label.numberOfLines = 1
         label.text = title
         label.textAlignment = .left
@@ -191,7 +191,7 @@ final class ChooseTrainingView: UIView {
             chooseButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
             chooseButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16),
             chooseButton.heightAnchor.constraint(equalToConstant: 46),
-            chooseButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 17)
+            chooseButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }

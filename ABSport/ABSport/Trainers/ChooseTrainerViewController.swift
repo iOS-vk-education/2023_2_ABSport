@@ -20,7 +20,7 @@ final class ChooseTrainerViewController: UIViewController {
         setupCollectionView()
         setupCollectionViewLayouts()
         configureChooseButton()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         collectionView.dataSource = self
         collectionView.delegate = self
     
@@ -83,7 +83,7 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 2
-            cell.cellButton.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
+            cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         } else {
             cell.cellButton.layer.borderWidth = 0
         }
@@ -121,6 +121,7 @@ private extension ChooseTrainerViewController {
         collectionView.register(TrainerCell.self, forCellWithReuseIdentifier: TrainerCell.identifier)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.allowsSelection = true
+        collectionView.backgroundColor = UIColor(named: "BackgroundColor")
     }
     
     func setupCollectionViewLayouts() {
