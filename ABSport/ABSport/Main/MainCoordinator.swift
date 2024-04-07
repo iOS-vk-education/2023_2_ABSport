@@ -7,27 +7,30 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainTabCoordinator: Coordinator {
     
-    var childCoodinator: [Coordinator] = []
+    var rootViewController: UINavigationController
     
-    private let navigationController: UINavigationController
+    var childCoordinators = [Coordinator]()
+    
+    init() {
+        rootViewController = UINavigationController()
+    }
+    
+    lazy var mainViewController: MainViewController = {
+        let vc = MainViewController()
+        vc.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
+        vc.trainigRequested = {}
+        return vc
+    }()
     
     func start() {
-        //
+        rootViewController.setViewControllers([mainViewController], animated: false)
     }
     
-    func addDependency(_ coordinator: Coordinator) {
-        childCoodinator.append(coordinator)
+    func goToGroupTraining() {
+        let groupTrainingCoordinator = GroupTrainingCoordinator(rootViewController: rootViewController)
+        self.childCoordinators.append(groupTrainingCoordinator)
+        groupTrainingCoordinator.start()
     }
-    
-    func removeDependency(_ coordinator: Coordinator) {
-        guard let index = childCoodinator.firstIndex(where: { coordinator === $0}) else { return }
-        childCoodinator.remove(at: index)
-    }
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
 }

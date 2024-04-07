@@ -11,6 +11,10 @@ final class GroupTrainingViewController: UIViewController, GroupTrainingViewDele
         
     private var groupTrainingView = GroupTrainingView(frame: UIScreen.main.bounds)
     
+    var chooseTrainerRequested: () -> () = {}
+    var chooseTrainingRequested: () -> () = {}
+    var chooseDataRequested:() -> () = {}
+    
     override func loadView() {
         super.loadView()
         self.view = groupTrainingView
@@ -25,13 +29,16 @@ final class GroupTrainingViewController: UIViewController, GroupTrainingViewDele
     
     func didTapChooseTrainerButton() {
         print("trainer")
+        chooseTrainerRequested()
     }
     
     func didTapChooseTainingButton() {
         print("training")
+        chooseTrainingRequested()
     }
     
     func didTapChooseDateButton() {
         print("date")
+        chooseDataRequested()
     }
 }

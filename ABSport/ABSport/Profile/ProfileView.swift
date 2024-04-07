@@ -24,18 +24,26 @@ struct Profile {
 // MARK: - Profile View
 struct ProfileView: View {
     
+    var settingsAction: () -> ()
+    var myFormAction: () -> ()
+    var reciepAction: () -> ()
+    var plannerAction: () -> ()
+    var logoutAction: () -> ()
+    
     var body: some View {
         VStack {
-            ProfileHeaderView()
-            ProfileContentView()
+            ProfileHeaderView(settingRequested: settingsAction)
+            ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
             Spacer()
-            ProfileFooterView()
+            ProfileFooterView(logoutRequested: logoutAction)
         }
         Spacer()
     }
 }
 
 struct ProfileHeaderView: View {
+    
+    var settingRequested: () -> ()
     
     let profile = Profile.preview()
     
@@ -61,7 +69,7 @@ struct ProfileHeaderView: View {
                     .foregroundColor(.secondary)
             }
             VStack(alignment: .trailing) {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: settingRequested, label: {
                     Image("SettingsButton")
                         .resizable()
                         .frame(width: 26, height: 26)
@@ -71,37 +79,40 @@ struct ProfileHeaderView: View {
     }
 }
 
-struct ProfileButtonContent {
-    
-    let label: String
-    let image: String
-    let action: () -> Void
-    
-    static func preiew() -> [ProfileButtonContent] {
-        return [
-            ProfileButtonContent(label: "Моя Форма", image: "MusculeSymbol", action: goToMyForm),
-            ProfileButtonContent(label: "Списки заказов", image: "PlannerSymbol", action: goToReciep),
-            ProfileButtonContent(label: "Мое расписание", image: "ReciepSymbol", action: goToPlanner)]
-    }
-}
-
 struct ProfileContentView: View {
     
-    let buttonContentArray = ProfileButtonContent.preiew()
+    var contentRequested: (myForm: () -> (),
+                          reciep: () -> (),
+                          planner: () -> ())
     var body: some View {
         VStack(alignment: .center) {
-            ForEach(buttonContentArray, id: \.label) {buttonContent in
-                Button(action: buttonContent.action) {
-                    ButtonView(image: buttonContent.image,
-                               label: buttonContent.label)
-                }
-                .foregroundColor(.black)
-                .frame(height: 72)
-                .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: 12.0)
-                        .foregroundColor(Color("LightGreyColor")))
+            Button(action: contentRequested.myForm) {
+                ButtonView(image: "MusculeSymbol", label: "Моя Форма")
             }
+            .foregroundColor(.black)
+            .frame(height: 72)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(Color("LightGreyColor")))
+            Button(action: contentRequested.reciep) {
+                ButtonView(image: "PlannerSymbol", label: "Списки заказов")
+            }
+            .foregroundColor(.black)
+            .frame(height: 72)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(Color("LightGreyColor")))
+            Button(action: contentRequested.planner) {
+                ButtonView(image: "ReciepSymbol", label: "Мое расписание")
+            }
+            .foregroundColor(.black)
+            .frame(height: 72)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(Color("LightGreyColor")))
         }
         .padding(.top, 45)
         .padding(.horizontal, 15)
@@ -131,9 +142,12 @@ struct ButtonView: View {
 }
 
 struct ProfileFooterView: View {
+    
+    var logoutRequested: () -> ()
+    
     var body: some View {
         HStack {
-            Button(action: logOut) {
+            Button(action: logoutRequested) {
                 Text("Выйти из аккаунта")
                     .font(.system(size: 15))
                     .frame(height: 56)
@@ -149,23 +163,6 @@ struct ProfileFooterView: View {
             .padding(.horizontal, 15)
         }
     }
-}
-
-// MARK: - Button Function
-func goToMyForm() {
-    
-}
-
-func goToPlanner() {
-    
-}
-
-func goToReciep() {
-    
-}
-
-func logOut() {
-    
 }
 
 // MARK: - View Modifier
@@ -187,6 +184,6 @@ extension View {
     }
 }
 
-#Preview {
-    ProfileView()
-}
+// #Preview {
+//    ProfileView(actionRequested: {})
+// }
