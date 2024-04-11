@@ -17,13 +17,13 @@ final class ProfileTabCoordinator: Coordinator {
         rootViewController = UINavigationController()
     }
     lazy var profileViewController = {
-        let vc = UIHostingController(rootView: ProfileView(
+        let viewController = UIHostingController(rootView: ProfileView(
             settingsAction: { [weak self] in self?.goToSettings() },
             myFormAction: {},
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
             logoutAction: {}))
-        return vc
+        return viewController
     }()
     
     func start() {

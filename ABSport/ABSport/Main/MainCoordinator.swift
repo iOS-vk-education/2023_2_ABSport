@@ -18,10 +18,10 @@ class MainTabCoordinator: Coordinator {
     }
     
     lazy var mainViewController: MainViewController = {
-        let vc = MainViewController()
-        vc.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
-        vc.trainigRequested = {}
-        return vc
+        let viewController = MainViewController()
+        viewController.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
+        viewController.trainigRequested = {}
+        return viewController
     }()
     
     func start() {

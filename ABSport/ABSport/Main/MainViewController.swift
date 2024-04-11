@@ -11,8 +11,8 @@ class MainViewController: UIViewController, MainViewDelegate {
     
 //    var viewModel: MainViewModel?
 //    var coordinator: MainCoordinator?
-    var groupTrainingRequested: () -> () = {}
-    var trainigRequested: () -> () = {}
+    var groupTrainingRequested: () -> Void = {}
+    var trainigRequested: () -> Void = {}
     
     private var mainView = MainView(frame: UIScreen.main.bounds)
     

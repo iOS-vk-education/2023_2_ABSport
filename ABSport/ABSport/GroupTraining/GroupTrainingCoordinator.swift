@@ -16,11 +16,11 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     lazy var groupTrainingViewController = {
-        let vc = GroupTrainingViewController()
-        vc.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
-        vc.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
-        vc.chooseDataRequested = {}
-        return vc
+        let viewController = GroupTrainingViewController()
+        viewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
+        viewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
+        viewController.chooseDataRequested = {}
+        return viewController
     }()
     
     func start() {
