@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041A3F6D2BCC61B7002B87E8 /* PetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A3F6C2BCC61B7002B87E8 /* PetData.swift */; };
+		0426FC142BCC889A00F49B21 /* MyFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FC132BCC889A00F49B21 /* MyFormView.swift */; };
+		042960192BCC34950083F9CA /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042960182BCC34950083F9CA /* ChartsView.swift */; };
 		043545422BC07E9400151ED5 /* GroupTrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */; };
 		04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */; };
 		04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */; };
@@ -88,6 +91,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041A3F6C2BCC61B7002B87E8 /* PetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetData.swift; sourceTree = "<group>"; };
+		0426FC132BCC889A00F49B21 /* MyFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFormView.swift; sourceTree = "<group>"; };
+		042960182BCC34950083F9CA /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingCoordinator.swift; sourceTree = "<group>"; };
 		04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 				0496AF882BA1123F00058166 /* ReciepView.swift */,
 				0496AF8A2BA1124F00058166 /* SettingsView.swift */,
 				04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */,
+				042960182BCC34950083F9CA /* ChartsView.swift */,
+				041A3F6C2BCC61B7002B87E8 /* PetData.swift */,
+				0426FC132BCC889A00F49B21 /* MyFormView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -568,22 +577,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042960192BCC34950083F9CA /* ChartsView.swift in Sources */,
 				66A5997D2BB31A5B00E80EEF /* GroupTrainingViewController.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */,
-				1A41C0642B9DC3CA00BD5B8D /* LoginViewController.swift in Sources */,
 				20FEC6712BACCA610045C1FF /* ScheduleViewModel.swift in Sources */,
 				20397BC72BBB089F008455E4 /* ReservationView.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				20FEC6842BACD5E10045C1FF /* User.swift in Sources */,
 				20397BCD2BBB08CE008455E4 /* ReservationViewController.swift in Sources */,
 				20FEC6732BACCA6D0045C1FF /* ScheduleViewController.swift in Sources */,
-				1A41C0662B9DC3D500BD5B8D /* LoginModelView.swift in Sources */,
 				1A41C0622B9DBC7300BD5B8D /* RegistrationViewModel.swift in Sources */,
 				20FEC6802BACD5960045C1FF /* UserManager.swift in Sources */,
 				20FEC6822BACD5AF0045C1FF /* ReservationManager.swift in Sources */,
 				6662D1332B931E24001FC95E /* MainViewModel.swift in Sources */,
 				1A2F7DDC2BB5D2DB0032657B /* LoginModelView.swift in Sources */,
+				041A3F6D2BCC61B7002B87E8 /* PetData.swift in Sources */,
 				1A2F7DDE2BB5D2FF0032657B /* LoginFullView.swift in Sources */,
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
 				1A2F7DDA2BB5D2C70032657B /* LoginViewController.swift in Sources */,
@@ -626,7 +635,7 @@
 				043545422BC07E9400151ED5 /* GroupTrainingCoordinator.swift in Sources */,
 				1A41C06B2B9EFB6A00BD5B8D /* TabBarController.swift in Sources */,
 				1A2F7DE02BB5D3900032657B /* LoginView.swift in Sources */,
-				1A41C0682B9DD44300BD5B8D /* LoginView.swift in Sources */,
+				0426FC142BCC889A00F49B21 /* MyFormView.swift in Sources */,
 				20FEC67D2BACD5500045C1FF /* Reservation.swift in Sources */,
 				2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */,
 			);
@@ -801,7 +810,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -828,7 +837,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
