@@ -53,11 +53,36 @@ struct SettingsView: View {
                     }
                 }.padding()
             }
+            Spacer()
+            SettingsFooterView()
         }
         Spacer()
     }
 }
 
+struct SettingsFooterView: View {
+    
+    //var deleteRequested: () -> Void
+    
+    var body: some View {
+        HStack {
+            Button(action: {}) {
+                Text("Удалить аккаунт")
+                    .font(.system(size: 15))
+                    .frame(height: 56)
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(Color(.red))
+                    
+                    .background(
+                                RoundedRectangle(
+                                    cornerRadius: 12,
+                                    style: .continuous)
+                                .stroke(.red, lineWidth: 1))
+            }
+            .padding(.horizontal, 15)
+        }
+    }
+}
 #Preview {
     SettingsView()
 }

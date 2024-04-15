@@ -19,7 +19,7 @@ final class ProfileTabCoordinator: Coordinator {
     lazy var profileViewController = {
         let viewController = UIHostingController(rootView: ProfileView(
             settingsAction: { [weak self] in self?.goToSettings() },
-            myFormAction: {},
+            myFormAction: {[weak self] in self?.goToMyForm()},
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
             logoutAction: {}))
@@ -33,6 +33,11 @@ final class ProfileTabCoordinator: Coordinator {
     func goToSettings() {
         let settingsViewController = UIHostingController(rootView: SettingsView())
         rootViewController.pushViewController(settingsViewController, animated: true)
+    }
+    
+    func goToMyForm() {
+        let myFowmViewController = UIHostingController(rootView: MyFormView())
+        rootViewController.pushViewController(myFowmViewController, animated: true)
     }
     
     func goToReciep() {

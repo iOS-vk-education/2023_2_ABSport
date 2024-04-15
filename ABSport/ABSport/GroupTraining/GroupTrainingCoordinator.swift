@@ -19,7 +19,7 @@ class GroupTrainingCoordinator: Coordinator {
         let viewController = GroupTrainingViewController()
         viewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
         viewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
-        viewController.chooseDataRequested = {}
+        viewController.chooseDataRequested = { [weak self] in self?.goToReservation()}
         return viewController
     }()
     
@@ -35,5 +35,10 @@ class GroupTrainingCoordinator: Coordinator {
     func goToChooseTraining() {
         let chooseTrainingViewController = ChooseTrainingViewController()
         rootViewController.pushViewController(chooseTrainingViewController, animated: true)
+    }
+    
+    func goToReservation() {
+        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController)
+        reservationCoordinator.start()
     }
 }
