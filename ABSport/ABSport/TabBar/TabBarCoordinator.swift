@@ -20,31 +20,40 @@ final class TabBarCoordinator: Coordinator {
     }
     func start() {
         
+        let scheduleCoordinator = ScheduleCoordinator()
+        scheduleCoordinator.start()
+        self.childCoordinators.append(scheduleCoordinator)
+        let scheduleViewController = scheduleCoordinator.rootViewController
+        setup(viewController: scheduleViewController,
+              title: "Расписание",
+              imageName: "Calendar",
+              tag: 0)
+        
         let mainCoordinator = MainTabCoordinator()
         mainCoordinator.start()
         self.childCoordinators.append(mainCoordinator)
         let mainViewController = mainCoordinator.rootViewController
-        setup(vc: mainViewController,
+        setup(viewController: mainViewController,
               title: "Главная",
               imageName: "Home",
-              tag: 0)
+              tag: 1)
         
         let profileCoordinator = ProfileTabCoordinator()
         profileCoordinator.start()
         self.childCoordinators.append(profileCoordinator)
         let profileViewController = profileCoordinator.rootViewController
-        setup(vc: profileViewController,
+        setup(viewController: profileViewController,
               title: "Профиль",
               imageName: "ProfileTab",
-              tag: 1)
+              tag: 2)
         
-        self.rootViewController.viewControllers = [mainViewController, profileViewController]
+        self.rootViewController.viewControllers = [scheduleViewController, mainViewController, profileViewController]
     }
     
-    func setup(vc: UIViewController, title: String, imageName: String, tag: Int) {
+    func setup(viewController: UIViewController, title: String, imageName: String, tag: Int) {
         let defaultImage = UIImage(named: imageName)
         let tabBarItem = UITabBarItem(title: title, image: defaultImage, tag: tag)
-        vc.tabBarItem = tabBarItem
+        viewController.tabBarItem = tabBarItem
     }
     
 }

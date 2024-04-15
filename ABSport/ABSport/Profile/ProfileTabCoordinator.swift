@@ -22,15 +22,19 @@ final class ProfileTabCoordinator: Coordinator {
         rootViewController.navigationBar.backIndicatorTransitionMaskImage = backIcon
     }
     lazy var profileViewController = {
-        let vc = UIHostingController(rootView: ProfileView(
+        let viewController = UIHostingController(rootView: ProfileView(
             settingsAction: { [weak self] in self?.goToSettings() },
             myFormAction: {},
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
             logoutAction: {}))
+<<<<<<< HEAD
         vc.navigationItem.backButtonTitle = ""
         vc.view.backgroundColor = UIColor(named: "BackgroundColor")
         return vc
+=======
+        return viewController
+>>>>>>> f2bfe71f949b0ad29191336d18515b85e49550d1
     }()
     
     func start() {

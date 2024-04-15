@@ -24,11 +24,11 @@ struct Profile {
 // MARK: - Profile View
 struct ProfileView: View {
     
-    var settingsAction: () -> ()
-    var myFormAction: () -> ()
-    var reciepAction: () -> ()
-    var plannerAction: () -> ()
-    var logoutAction: () -> ()
+    var settingsAction: () -> Void
+    var myFormAction: () -> Void
+    var reciepAction: () -> Void
+    var plannerAction: () -> Void
+    var logoutAction: () -> Void
     
     var body: some View {
         ZStack {
@@ -46,7 +46,7 @@ struct ProfileView: View {
 
 struct ProfileHeaderView: View {
     
-    var settingRequested: () -> ()
+    var settingRequested: () -> Void
     
     let profile = Profile.preview()
     
@@ -84,9 +84,9 @@ struct ProfileHeaderView: View {
 
 struct ProfileContentView: View {
     
-    var contentRequested: (myForm: () -> (),
-                          reciep: () -> (),
-                          planner: () -> ())
+    var contentRequested: (myForm: () -> Void,
+                          reciep: () -> Void,
+                          planner: () -> Void)
     var body: some View {
         VStack(alignment: .center) {
             Button(action: contentRequested.myForm) {
@@ -146,7 +146,7 @@ struct ButtonView: View {
 
 struct ProfileFooterView: View {
     
-    var logoutRequested: () -> ()
+    var logoutRequested: () -> Void
     
     var body: some View {
         HStack {

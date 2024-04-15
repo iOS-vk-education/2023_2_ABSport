@@ -23,11 +23,18 @@ class MainTabCoordinator: Coordinator {
     }
     
     lazy var mainViewController: MainViewController = {
+<<<<<<< HEAD
         let vc = MainViewController()
         vc.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
         vc.trainingRequested = {}
         vc.navigationItem.backButtonTitle = ""
         return vc
+=======
+        let viewController = MainViewController()
+        viewController.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
+        viewController.trainigRequested = {}
+        return viewController
+>>>>>>> f2bfe71f949b0ad29191336d18515b85e49550d1
     }()
     
     func start() {

@@ -11,9 +11,9 @@ final class GroupTrainingViewController: UIViewController, GroupTrainingViewDele
         
     private var groupTrainingView = GroupTrainingView(frame: UIScreen.main.bounds)
     
-    var chooseTrainerRequested: () -> () = {}
-    var chooseTrainingRequested: () -> () = {}
-    var chooseDataRequested:() -> () = {}
+    var chooseTrainerRequested: () -> Void = {}
+    var chooseTrainingRequested: () -> Void = {}
+    var chooseDataRequested: () -> Void = {}
     
     override func loadView() {
         super.loadView()
