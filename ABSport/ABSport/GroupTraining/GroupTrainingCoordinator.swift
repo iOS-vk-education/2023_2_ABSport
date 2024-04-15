@@ -20,6 +20,7 @@ class GroupTrainingCoordinator: Coordinator {
         vc.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
         vc.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
         vc.chooseDataRequested = {}
+        vc.navigationItem.backButtonTitle = ""
         return vc
     }()
     

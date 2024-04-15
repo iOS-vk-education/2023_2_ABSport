@@ -14,7 +14,12 @@ final class ProfileTabCoordinator: Coordinator {
     var rootViewController = UINavigationController()
     
     init() {
+        let backIcon = UIImage(systemName: "chevron.backward")?.withTintColor(
+            UIColor(named: "backIconColor") ?? .black,
+            renderingMode: .alwaysOriginal)
         rootViewController = UINavigationController()
+        rootViewController.navigationBar.backIndicatorImage = backIcon
+        rootViewController.navigationBar.backIndicatorTransitionMaskImage = backIcon
     }
     lazy var profileViewController = {
         let vc = UIHostingController(rootView: ProfileView(
@@ -23,6 +28,8 @@ final class ProfileTabCoordinator: Coordinator {
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
             logoutAction: {}))
+        vc.navigationItem.backButtonTitle = ""
+        vc.view.backgroundColor = UIColor(named: "BackgroundColor")
         return vc
     }()
     
@@ -32,11 +39,13 @@ final class ProfileTabCoordinator: Coordinator {
     
     func goToSettings() {
         let settingsViewController = UIHostingController(rootView: SettingsView())
+        settingsViewController.view.backgroundColor = UIColor(named: "BackgroundColor")
         rootViewController.pushViewController(settingsViewController, animated: true)
     }
     
     func goToReciep() {
         let reciepViewController = UIHostingController(rootView: ReciepView())
+        reciepViewController.view.backgroundColor = UIColor(named: "BackgroundColor")
         rootViewController.pushViewController(reciepViewController, animated: true)
     }
     

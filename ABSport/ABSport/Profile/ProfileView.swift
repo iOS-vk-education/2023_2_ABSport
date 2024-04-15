@@ -31,13 +31,16 @@ struct ProfileView: View {
     var logoutAction: () -> ()
     
     var body: some View {
-        VStack {
-            ProfileHeaderView(settingRequested: settingsAction)
-            ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
+        ZStack {
+            Color("BackgroundColor")
+            VStack {
+                ProfileHeaderView(settingRequested: settingsAction)
+                ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
+                Spacer()
+                ProfileFooterView(logoutRequested: logoutAction)
+            }
             Spacer()
-            ProfileFooterView(logoutRequested: logoutAction)
         }
-        Spacer()
     }
 }
 
@@ -59,7 +62,7 @@ struct ProfileHeaderView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(profile.name)
                     .font(.system(size: 20))
-                    .foregroundColor(Color("TextColor"))
+                    .foregroundColor(Color("NameColor"))
                     .padding(.top, 2)
                 Text(profile.date)
                     .font(.system(size: 14))

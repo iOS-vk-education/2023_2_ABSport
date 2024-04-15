@@ -11,8 +11,13 @@ import SwiftUI
 // MARK: - Reciep View
 struct ReciepView: View {
     var body: some View {
-        ReciepButtonView()
-        Spacer()
+        ZStack {
+            Color("BackgroundColor")
+            VStack {
+                ReciepButtonView()
+                Spacer()
+            }
+        }
     }
 }
 
@@ -20,7 +25,7 @@ struct ReciepButtonView: View {
     var body: some View {
         VStack(alignment: .center) {
             Button(action: goToHistoryOrder) {
-                Text("История аказов")
+                Text("История заказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
                     .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142
@@ -28,7 +33,7 @@ struct ReciepButtonView: View {
             }
             .buttonStyle()
             Button(action: goToHistoryOrder) {
-                Text("История зказов")
+                Text("История заказов")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
                     .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142

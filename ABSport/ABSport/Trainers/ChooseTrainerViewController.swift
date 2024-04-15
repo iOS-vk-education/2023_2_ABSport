@@ -82,7 +82,7 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
         cell.configureTrainerCell(trainerPhoto: nil, trainerName: "Алексей Жуков", trainerStatus: "Персональный тренер")
 
         if indexPath == selectedCellButtonIndexPath {
-            cell.cellButton.layer.borderWidth = 2
+            cell.cellButton.layer.borderWidth = 4
             cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         } else {
             cell.cellButton.layer.borderWidth = 0

@@ -14,13 +14,19 @@ class MainTabCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     
     init() {
+        let backIcon = UIImage(systemName: "chevron.backward")?.withTintColor(
+            UIColor(named: "backIconColor") ?? .black,
+            renderingMode: .alwaysOriginal)
         rootViewController = UINavigationController()
+        rootViewController.navigationBar.backIndicatorImage = backIcon
+        rootViewController.navigationBar.backIndicatorTransitionMaskImage = backIcon
     }
     
     lazy var mainViewController: MainViewController = {
         let vc = MainViewController()
         vc.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
-        vc.trainigRequested = {}
+        vc.trainingRequested = {}
+        vc.navigationItem.backButtonTitle = ""
         return vc
     }()
     
