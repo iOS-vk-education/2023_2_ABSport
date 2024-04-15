@@ -37,26 +37,31 @@ struct SettingsView: View {
     @State var settingsLists = SettingsList.preview()
     
     var body: some View {
-        VStack {
-            ForEach($settingsLists) { $list in
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        Text(list.title)
-                            .font(.headline)
-                        Text(list.subtitle)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }.layoutPriority(1)
-                    VStack {
-                        Toggle(isOn: $list.isOn) {
-                        }
+        ZStack {
+            Color("BackgroundColor")
+            VStack {
+                VStack {
+                    ForEach($settingsLists) { $list in
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                Text(list.title)
+                                    .font(.headline)
+                                Text(list.subtitle)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }.layoutPriority(1)
+                            VStack {
+                                Toggle(isOn: $list.isOn) {
+                                }
+                            }
+                        }.padding()
                     }
-                }.padding()
+                }
+                Spacer()
+                SettingsFooterView()
             }
-            Spacer()
-            SettingsFooterView()
+            
         }
-        Spacer()
     }
 }
 
@@ -80,6 +85,7 @@ struct SettingsFooterView: View {
                                 .stroke(.red, lineWidth: 1))
             }
             .padding(.horizontal, 15)
+            .padding(.vertical, 10)
         }
     }
 }

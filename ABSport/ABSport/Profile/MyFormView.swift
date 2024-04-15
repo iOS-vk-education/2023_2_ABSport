@@ -19,7 +19,7 @@ struct MyFormView: View {
                         self.isShowingFirstChart = true
                     }) {
                         Text("Вес")
-                            .foregroundColor(isShowingFirstChart ? .blue : .black)
+                            .foregroundColor(isShowingFirstChart ? Color("BlueButtonColor") : .black)
                             .underline(isShowingFirstChart)
                     }
                     .padding()
@@ -27,16 +27,18 @@ struct MyFormView: View {
                         self.isShowingFirstChart = false
                     }) {
                         Text("ИМТ")
-                            .foregroundColor(isShowingFirstChart ? .black : .blue)
+                            .foregroundColor(isShowingFirstChart ? .black : Color("BlueButtonColor"))
                             .underline(!isShowingFirstChart)
                     }
                     .padding()
                 }
                 HStack(alignment: .center) {
                     Text("Время фиксации:")
-                        .font(.subheadline)
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
                     Text("15:42")
-                        .foregroundStyle(Color(.blue))
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color("BlueButtonColor"))
                 }
             }
             if isShowingFirstChart {
@@ -47,14 +49,22 @@ struct MyFormView: View {
             HStack {
                 Text("Дата:")
                 Text("04.03.2023")
-                Text("Рост")
+                    .foregroundColor(.secondary)
+                Text("Рост:")
                 Text("182 см")
-                Text("Вес")
+                    .foregroundColor(.secondary)
+                Text("Вес:")
                 Text("76 кг")
+                    .foregroundColor(.secondary)
             }
+            .font(.system(size: 14))
+            
             Button(action: {}) {
                 Text("Изменить данные")
+                    .foregroundStyle(Color("BlueButtonColor"))
+                    .underline()
             }
+            .padding()
             Spacer()
             Button(action: {}) {
                 Text("Внести данные")
@@ -68,6 +78,7 @@ struct MyFormView: View {
                                 .foregroundColor(.blue))
             }
             .padding(.horizontal, 15)
+            .padding(.vertical, 10)
         }
     }
 }

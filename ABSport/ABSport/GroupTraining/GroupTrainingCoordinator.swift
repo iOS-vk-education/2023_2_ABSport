@@ -16,10 +16,13 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     lazy var groupTrainingViewController = {
+
         let viewController = GroupTrainingViewController()
         viewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
         viewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
         viewController.chooseDataRequested = { [weak self] in self?.goToReservation()}
+
+        viewController.navigationItem.backButtonTitle = ""
         return viewController
     }()
     

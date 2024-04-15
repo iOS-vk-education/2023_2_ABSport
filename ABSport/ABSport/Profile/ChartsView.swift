@@ -25,9 +25,10 @@ struct ChartsViewWeight: View {
                     BarMark(x: .value("Type", data.type),
                             y: .value("Mass", data.count))
                 }
+                .cornerRadius(6.0)
             }
             
-            .foregroundColor(.lightGray)
+            .foregroundColor(Color("BarMarkBackColor"))
             .chartYAxis(.hidden)
             .chartXAxis {
                 AxisMarks { _ in
@@ -38,7 +39,10 @@ struct ChartsViewWeight: View {
                     BarMark(x: .value("Type", data.type),
                             y: .value("Mass", data.count))
                 }
+                .cornerRadius(6.0)
             }
+            
+            .foregroundStyle(Color("BarMarkWeightColor"))
             .chartYAxis(.hidden)
             .chartXAxis {
                 AxisMarks { _ in
@@ -71,6 +75,7 @@ struct ChartsViewIMT: View {
                     BarMark(x: .value("Type", data.type),
                             y: .value("Index", data.count))
                 }
+                .cornerRadius(6.0)
                 .foregroundStyle(getColor(for: dataSeries.type))
             }
             .chartYAxis(.hidden)
@@ -80,6 +85,27 @@ struct ChartsViewIMT: View {
                 }
             }
             .chartYScale(domain: 0...100)
+            
+            HStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 6.0)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(Color("BarMarkWeightColor"))
+                Text("Мышцы")
+                    .font(.system(size: 14))
+                    .foregroundColor(.secondary)
+                RoundedRectangle(cornerRadius: 6.0)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(Color("BarMarkFatColor"))
+                Text("Жир")
+                    .font(.system(size: 14))
+                    .foregroundColor(.secondary)
+                RoundedRectangle(cornerRadius: 6.0)
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(Color("BarMarkWaterColor"))
+                Text("Вода")
+                    .font(.system(size: 14))
+                    .foregroundColor(.secondary)
+            }
         }
         .aspectRatio(1, contentMode: .fit)
         .padding()
@@ -88,11 +114,11 @@ struct ChartsViewIMT: View {
     private func getColor(for type: String) -> Color {
         switch type {
             case "Мышцы":
-                return .blue
+                return Color("BarMarkWeightColor")
             case "Жир":
-                return Color(red: 0.3, green: 0.7, blue: 0.2) // Рыжий цвет
+                return Color("BarMarkFatColor")
             case "Вода":
-                return .red // Голубой цвет
+                return Color("BarMarkWaterColor")
             default:
                 return .black
             }

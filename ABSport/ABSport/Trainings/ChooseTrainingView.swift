@@ -79,7 +79,7 @@ final class ChooseTrainingView: UIView {
     
     @objc
     private func didTapCyclingButton() {
-        chooseCyclingButton.layer.borderWidth = 2
+        chooseCyclingButton.layer.borderWidth = 4
         chooseCyclingButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseRunningButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
@@ -89,7 +89,7 @@ final class ChooseTrainingView: UIView {
     
     @objc
     private func didTapRunningButton() {
-        chooseRunningButton.layer.borderWidth = 2
+        chooseRunningButton.layer.borderWidth = 4
         chooseRunningButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
@@ -98,7 +98,7 @@ final class ChooseTrainingView: UIView {
     
     @objc
     private func didTapPowerButton() {
-        choosePowerButton.layer.borderWidth = 2
+        choosePowerButton.layer.borderWidth = 4
         choosePowerButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         chooseRunningButton.layer.borderWidth = 0
@@ -118,7 +118,7 @@ final class ChooseTrainingView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackgroud")
+        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackground")
         
         let viewWidth = UIScreen.main.bounds.width
         let ratio = viewWidth / 393
