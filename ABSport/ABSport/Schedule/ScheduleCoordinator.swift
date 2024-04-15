@@ -10,25 +10,22 @@ import UIKit
 
 final class ScheduleCoordinator: Coordinator {
     
-    var childCoodinator: [Coordinator] = []
+    var rootViewController: UINavigationController
     
-    private let navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init() {
+        rootViewController = UINavigationController()
     }
+    
+    lazy var scheduleViewController: ScheduleViewController = {
+        let dateFormatterManager = DateFormaterManagerImpl()
+        let calendarManager = CalendarManagerImpl()
+        let viewModel = ScheduleViewModelImpl(dateFormatterManager: dateFormatterManager,
+                                              calendarManager: calendarManager)
+        let viewController = ScheduleViewController(viewModel: viewModel)
+        return viewController
+    }()
     
     func start() {
-        //
+        rootViewController.setViewControllers([scheduleViewController], animated: false)
     }
-    
-    func addDependency(_ coordinator: Coordinator) {
-        childCoodinator.append(coordinator)
-    }
-    
-    func removeDependency(_ coordinator: Coordinator) {
-        guard let index = childCoodinator.firstIndex(where: { coordinator === $0}) else { return }
-        childCoodinator.remove(at: index)
-    }
-    
 }
