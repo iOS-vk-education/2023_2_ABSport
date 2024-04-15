@@ -58,7 +58,7 @@ final class ChooseTrainerViewController: UIViewController {
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "backIconColor")
-        subtitleLabel.text = "Выбор тренировки"
+        subtitleLabel.text = "Выбор тренера"
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.axis = .vertical
         return stackView

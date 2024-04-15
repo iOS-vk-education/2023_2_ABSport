@@ -83,10 +83,11 @@ struct ProfileHeaderView: View {
 }
 
 struct ProfileContentView: View {
-    
+    // swiftlint:disable large_tuple
     var contentRequested: (myForm: () -> Void,
                           reciep: () -> Void,
                           planner: () -> Void)
+    // swiftlint:enable large_tuple
     var body: some View {
         VStack(alignment: .center) {
             Button(action: contentRequested.myForm) {

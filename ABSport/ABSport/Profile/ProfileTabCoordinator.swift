@@ -28,13 +28,9 @@ final class ProfileTabCoordinator: Coordinator {
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
             logoutAction: {}))
-<<<<<<< HEAD
-        vc.navigationItem.backButtonTitle = ""
-        vc.view.backgroundColor = UIColor(named: "BackgroundColor")
-        return vc
-=======
+        viewController.navigationItem.backButtonTitle = ""
+        viewController.view.backgroundColor = UIColor(named: "BackgroundColor")
         return viewController
->>>>>>> f2bfe71f949b0ad29191336d18515b85e49550d1
     }()
     
     func start() {

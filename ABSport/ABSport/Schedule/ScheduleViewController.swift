@@ -31,6 +31,8 @@ class ScheduleViewController<ViewModel: ScheduleViewModel>: UIViewController {
         view.addSubview(hostingController.view)
         hostingController.view.frame = view.bounds
         hostingController.didMove(toParent: self)
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        hostingController.view.backgroundColor = UIColor(named: "BackgroundColor")
         
         title = "Расписание"
     }
