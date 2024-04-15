@@ -21,7 +21,6 @@ class ChooseTrainingViewController: UIViewController, ChooseTrainingViewDelegate
         
         chooseTrainingView.navBarTitleStackView.spacing = UIStackView.spacingUseDefault
         self.navigationItem.titleView = chooseTrainingView.navBarTitleStackView
-        
         chooseTrainingView.delegate = self
     }
     

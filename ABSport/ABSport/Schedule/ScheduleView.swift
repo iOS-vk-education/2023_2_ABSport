@@ -21,14 +21,17 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
     
     // MARK: body
     var body: some View {
+        ZStack {
+            Color("BackgroundColor")
+            mainScreenView()
+                .onAppear {
+                    viewModel.handle(.openCurrentMonth)
+                }
+                .onChange(of: viewModel.state.currentMonthDates) { _ in
+                    viewModel.handle(.openCurrentMonth)
+                }
+        }
         
-        mainScreenView()
-            .onAppear {
-                viewModel.handle(.openCurrentMonth)
-            }
-            .onChange(of: viewModel.state.currentMonthDates) { _ in
-                viewModel.handle(.openCurrentMonth)
-            }
     }
     
     // MARK: ViewBuilder function to draw month and year picker

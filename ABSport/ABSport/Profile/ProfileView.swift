@@ -31,13 +31,16 @@ struct ProfileView: View {
     var logoutAction: () -> Void
     
     var body: some View {
-        VStack {
-            ProfileHeaderView(settingRequested: settingsAction)
-            ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
+        ZStack {
+            Color("BackgroundColor")
+            VStack {
+                ProfileHeaderView(settingRequested: settingsAction)
+                ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
+                Spacer()
+                ProfileFooterView(logoutRequested: logoutAction)
+            }
             Spacer()
-            ProfileFooterView(logoutRequested: logoutAction)
         }
-        Spacer()
     }
 }
 
@@ -59,7 +62,7 @@ struct ProfileHeaderView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(profile.name)
                     .font(.system(size: 20))
-                    .foregroundColor(Color("TextColor"))
+                    .foregroundColor(Color("NameColor"))
                     .padding(.top, 2)
                 Text(profile.date)
                     .font(.system(size: 14))
@@ -80,10 +83,11 @@ struct ProfileHeaderView: View {
 }
 
 struct ProfileContentView: View {
-    
+    // swiftlint:disable large_tuple
     var contentRequested: (myForm: () -> Void,
                           reciep: () -> Void,
                           planner: () -> Void)
+    // swiftlint:enable large_tuple
     var body: some View {
         VStack(alignment: .center) {
             Button(action: contentRequested.myForm) {

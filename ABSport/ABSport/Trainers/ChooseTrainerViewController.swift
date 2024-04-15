@@ -58,7 +58,7 @@ final class ChooseTrainerViewController: UIViewController {
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "backIconColor")
-        subtitleLabel.text = "Выбор тренировки"
+        subtitleLabel.text = "Выбор тренера"
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.axis = .vertical
         return stackView
@@ -82,7 +82,7 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
         cell.configureTrainerCell(trainerPhoto: nil, trainerName: "Алексей Жуков", trainerStatus: "Персональный тренер")
 
         if indexPath == selectedCellButtonIndexPath {
-            cell.cellButton.layer.borderWidth = 2
+            cell.cellButton.layer.borderWidth = 4
             cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         } else {
             cell.cellButton.layer.borderWidth = 0
