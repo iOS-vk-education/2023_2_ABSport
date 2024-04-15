@@ -118,7 +118,7 @@ final class ChooseTrainingView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackgroud")
+        button.backgroundColor = UIColor(named: "GroupTrainers/TrainerButtonBackground")
         
         let viewWidth = UIScreen.main.bounds.width
         let ratio = viewWidth / 393
