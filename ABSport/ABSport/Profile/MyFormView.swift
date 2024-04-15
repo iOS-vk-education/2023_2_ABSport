@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct MyFormView: View {
+    
+    @State private var isShowingFirstChart = true
+    
     var body: some View {
         VStack {
             VStack {
                 HStack(alignment: .center){
-                    Text("Вес")
-                    Text("ИМТ")
+                    Button(action: {
+                        self.isShowingFirstChart = true
+                    }) {
+                        Text("Вес")
+                            .foregroundColor(isShowingFirstChart ? .blue : .black)
+                            .underline(isShowingFirstChart)
+                    }
+                    .padding()
+                    Button(action: {
+                        self.isShowingFirstChart = false
+                    }) {
+                        Text("ИМТ")
+                            .foregroundColor(isShowingFirstChart ? .black : .blue)
+                            .underline(!isShowingFirstChart)
+                    }
+                    .padding()
                 }
                 HStack(alignment: .center) {
                     Text("Время фиксации:")
@@ -22,7 +39,11 @@ struct MyFormView: View {
                         .foregroundStyle(Color(.blue))
                 }
             }
-            ChartsView()
+            if isShowingFirstChart {
+                ChartsViewWeight()
+            } else {
+                ChartsViewIMT()
+            }
             HStack {
                 Text("Дата:")
                 Text("04.03.2023")
