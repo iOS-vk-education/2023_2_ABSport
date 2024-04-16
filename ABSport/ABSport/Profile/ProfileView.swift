@@ -100,7 +100,7 @@ struct ProfileContentView: View {
                 RoundedRectangle(cornerRadius: 12.0)
                     .foregroundColor(Color("LightGreyColor")))
             Button(action: contentRequested.reciep) {
-                ButtonView(image: "PlannerSymbol", label: "Списки заказов")
+                ButtonView(image: "ReciepSymbol", label: "Списки заказов")
             }
             .foregroundColor(.black)
             .frame(height: 72)
@@ -109,7 +109,7 @@ struct ProfileContentView: View {
                 RoundedRectangle(cornerRadius: 12.0)
                     .foregroundColor(Color("LightGreyColor")))
             Button(action: contentRequested.planner) {
-                ButtonView(image: "ReciepSymbol", label: "Мое расписание")
+                ButtonView(image: "PlannerSymbol", label: "Мое расписание")
             }
             .foregroundColor(.black)
             .frame(height: 72)
@@ -165,6 +165,7 @@ struct ProfileFooterView: View {
                                 .stroke(.red, lineWidth: 1))
             }
             .padding(.horizontal, 15)
+            .padding(.vertical, 10)
         }
     }
 }

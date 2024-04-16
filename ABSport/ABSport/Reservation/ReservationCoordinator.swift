@@ -8,27 +8,26 @@
 import Foundation
 import UIKit
 
-final class ReservationCoordinator: Coordinator {
+class ReservationCoordinator: Coordinator {
     
-    var childCoodinator: [Coordinator] = []
+    var rootViewController: UINavigationController
     
-    private let navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(rootViewController: UINavigationController) {
+        self.rootViewController = rootViewController
     }
+    
+    lazy var reservationViewController: ReservationViewController = {
+        let dateFormatterManager = DateFormaterManagerImpl()
+        let calendarManager = CalendarManagerImpl()
+        let viewModel = ReservationViewModelImpl(dateFormatterManager:dateFormatterManager, calendarManager: calendarManager)
+        let viewController = ReservationViewController(viewModel: viewModel)
+        return viewController
+    }()
     
     func start() {
-        //
+        rootViewController.pushViewController(reservationViewController, animated: false)
     }
     
-    func addDependency(_ coordinator: Coordinator) {
-        childCoodinator.append(coordinator)
-    }
     
-    func removeDependency(_ coordinator: Coordinator) {
-        guard let index = childCoodinator.firstIndex(where: { coordinator === $0}) else { return }
-        childCoodinator.remove(at: index)
-    }
     
 }
