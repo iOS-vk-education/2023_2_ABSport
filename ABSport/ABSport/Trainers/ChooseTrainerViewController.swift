@@ -9,7 +9,7 @@ import UIKit
 
 final class ChooseTrainerViewController: UIViewController {
     
-    private let chooseButton = UIButton().configureChooseTrainingButton()
+    private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private var collectionView: UICollectionView!
     
@@ -38,6 +38,7 @@ final class ChooseTrainerViewController: UIViewController {
     @objc
     private func didTapChooseButton() {
         //
+        print("choose")
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
@@ -79,7 +80,10 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureTrainerCell(trainerPhoto: nil, trainerName: "Алексей Жуков", trainerStatus: "Персональный тренер")
+        cell.configureTrainerCell(
+            trainerPhoto: nil,
+            trainerName: "Алексей Жуков",
+            trainerStatus: "Персональный тренер")
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
@@ -94,6 +98,11 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
 // MARK: - CollectionView Delegate
 extension ChooseTrainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? TrainerCell else { return }
+        if selectedCell.isSelected {
+            chooseButton.isEnabled = true
+            chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
+        }
         selectedCellButtonIndexPath = indexPath
         collectionView.reloadData()
     }
