@@ -225,7 +225,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
         
         if let reservations = viewModel.state.allReservations[viewModel.formate(date: date,
                                                                                 toType: .dayMonthYear)] {
-            LazyVStack {
+            VStack {
                 ForEach(reservations) { reservation in
                     reservationCell(reservation: reservation)
                 }

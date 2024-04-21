@@ -19,7 +19,8 @@ class ReservationCoordinator: Coordinator {
     lazy var reservationViewController: ReservationViewController = {
         let dateFormatterManager = DateFormaterManagerImpl()
         let calendarManager = CalendarManagerImpl()
-        let viewModel = ReservationViewModelImpl(dateFormatterManager:dateFormatterManager, calendarManager: calendarManager)
+        let viewModel = ReservationViewModelImpl(dateFormatterManager: dateFormatterManager,
+                                                 calendarManager: calendarManager)
         let viewController = ReservationViewController(viewModel: viewModel)
         return viewController
     }()
@@ -27,7 +28,5 @@ class ReservationCoordinator: Coordinator {
     func start() {
         rootViewController.pushViewController(reservationViewController, animated: false)
     }
-    
-    
     
 }
