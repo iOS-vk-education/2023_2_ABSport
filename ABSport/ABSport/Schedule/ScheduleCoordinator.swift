@@ -13,7 +13,11 @@ final class ScheduleCoordinator: Coordinator {
     var rootViewController: UINavigationController
     
     init() {
-        rootViewController = UINavigationController()
+        var navigationViewController = UINavigationController()
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        rootViewController = navigationViewController
     }
     
     lazy var scheduleViewController: ScheduleViewController = {
