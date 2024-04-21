@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class GroupTrainingCoordinator: Coordinator {
 
     var rootViewController: UINavigationController
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
@@ -18,20 +21,36 @@ class GroupTrainingCoordinator: Coordinator {
     lazy var groupTrainingViewController = {
 
         let viewController = GroupTrainingViewController()
-        viewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
-        viewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
-        viewController.chooseDataRequested = { [weak self] in self?.goToReservation()}
 
         viewController.navigationItem.backButtonTitle = ""
         return viewController
     }()
     
     func start() {
+        let groupTrainingViewModel = GroupTrainingViewModel()
+        groupTrainingViewController.viewModel = groupTrainingViewModel
+        groupTrainingViewModel.coordinator = self
+        
+        groupTrainingViewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer(with: groupTrainingViewModel)}
+        groupTrainingViewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
+        groupTrainingViewController.chooseDataRequested = { [weak self] in self?.goToReservation()}
+        
         rootViewController.pushViewController(groupTrainingViewController, animated: false)
     }
     
-    func goToChooseTrainer() {
+    func goToChooseTrainer(with viewModel: GroupTrainingViewModel) {
         let chooseTrainerViewController = ChooseTrainerViewController()
+        let chooseTrainerViewModel = GroupTrainersViewModel()
+        chooseTrainerViewController.viewModel = chooseTrainerViewModel
+        chooseTrainerViewModel.coordinator = self
+        
+        // Подписка на обновления из GroupTrainingViewModel
+        chooseTrainerViewModel.isTrainerChoosePublisher
+            .sink { [weak self] data in
+                viewModel.isTrainerChoosePublisher.send(data)
+            }
+            .store(in: &cancellables)
+        
         rootViewController.pushViewController(chooseTrainerViewController, animated: true)
     }
     

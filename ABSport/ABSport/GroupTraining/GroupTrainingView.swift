@@ -14,7 +14,7 @@ protocol GroupTrainingViewDelegate: AnyObject {
 }
 
 final class GroupTrainingView: UIView {
-
+    
     let navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -27,6 +27,13 @@ final class GroupTrainingView: UIView {
     }()
     
     weak var delegate: GroupTrainingViewDelegate?
+    
+    private let checkMark: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "GroupTrainers/CheckMark")
+        return imageView
+    }()
     
     private lazy var chooseTrainerButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/UserMale", title: "Выбрать тренера")
@@ -55,6 +62,16 @@ final class GroupTrainingView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addCheckMark() {
+        chooseTrainerButton.addSubview(checkMark)
+        NSLayoutConstraint.activate([
+            checkMark.topAnchor.constraint(equalTo: chooseTrainerButton.topAnchor, constant: 20),
+            checkMark.rightAnchor.constraint(equalTo: chooseTrainerButton.rightAnchor, constant: -20),
+            checkMark.widthAnchor.constraint(equalToConstant: 32),
+            checkMark.heightAnchor.constraint(equalToConstant: 32)
+        ])
     }
     
     private func setUpButtonTargets() {
