@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol ChooseTrainingViewDelegate: AnyObject {
+protocol ChooseGroupTrainingViewDelegate: AnyObject {
     func didTapChooseCyclingButton()
     func didTapChooseRunningButton()
     func didTapChoosePowerButton()
     func didTapChooseButton()
 }
 
-final class ChooseTrainingView: UIView {
+final class ChooseGroupTrainingView: UIView {
     
     let navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()
@@ -32,7 +32,7 @@ final class ChooseTrainingView: UIView {
         return stackView
     }()
     
-    weak var delegate: ChooseTrainingViewDelegate?
+    weak var delegate: ChooseGroupTrainingViewDelegate?
     
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
@@ -160,7 +160,7 @@ final class ChooseTrainingView: UIView {
         label.text = title
         return label
     }
-    // MARK: - Layouts
+// MARK: - Layouts
     
     private func configureButtons() {
         

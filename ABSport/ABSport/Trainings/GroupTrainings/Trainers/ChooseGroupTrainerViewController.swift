@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChooseTrainerViewController: UIViewController {
+final class ChooseGroupTrainerViewController: UIViewController {
     
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
@@ -67,7 +67,7 @@ final class ChooseTrainerViewController: UIViewController {
 }
 
 // MARK: - CollectionView Data Source
-extension ChooseTrainerViewController: UICollectionViewDataSource {
+extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
         20
@@ -96,7 +96,7 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
 }
 
 // MARK: - CollectionView Delegate
-extension ChooseTrainerViewController: UICollectionViewDelegate {
+extension ChooseGroupTrainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCell = collectionView.cellForItem(at: indexPath) as? TrainerCell else { return }
         if selectedCell.isSelected {
@@ -109,7 +109,7 @@ extension ChooseTrainerViewController: UICollectionViewDelegate {
 }
 
 // MARK: - CollectionView FlowLayout Delegate
-extension ChooseTrainerViewController: UICollectionViewDelegateFlowLayout {
+extension ChooseGroupTrainerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let widthRatio = UIScreen.main.bounds.width / 393
@@ -124,7 +124,7 @@ extension ChooseTrainerViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Setup CollectionView
-private extension ChooseTrainerViewController {
+private extension ChooseGroupTrainerViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.register(TrainerCell.self, forCellWithReuseIdentifier: TrainerCell.identifier)

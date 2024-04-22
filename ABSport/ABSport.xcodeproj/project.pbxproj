@@ -67,9 +67,9 @@
 		66A5997B2BB31A2D00E80EEF /* GroupTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997A2BB31A2D00E80EEF /* GroupTrainingView.swift */; };
 		66A5997D2BB31A5B00E80EEF /* GroupTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */; };
 		66A5997F2BB31AB000E80EEF /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5997E2BB31AB000E80EEF /* UIButton+extension.swift */; };
-		66A599822BB31B2D00E80EEF /* ChooseTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599812BB31B2D00E80EEF /* ChooseTrainingView.swift */; };
-		66A599842BB31B5B00E80EEF /* ChooseTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599832BB31B5B00E80EEF /* ChooseTrainingViewController.swift */; };
-		66A599872BB31BB200E80EEF /* ChooseTrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599862BB31BB200E80EEF /* ChooseTrainerViewController.swift */; };
+		66A599822BB31B2D00E80EEF /* ChooseGroupTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599812BB31B2D00E80EEF /* ChooseGroupTrainingView.swift */; };
+		66A599842BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599832BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift */; };
+		66A599872BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599862BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift */; };
 		66A599892BB31BD000E80EEF /* TrainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A599882BB31BD000E80EEF /* TrainerCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -155,9 +155,9 @@
 		66A5997A2BB31A2D00E80EEF /* GroupTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingView.swift; sourceTree = "<group>"; };
 		66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingViewController.swift; sourceTree = "<group>"; };
 		66A5997E2BB31AB000E80EEF /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
-		66A599812BB31B2D00E80EEF /* ChooseTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrainingView.swift; sourceTree = "<group>"; };
-		66A599832BB31B5B00E80EEF /* ChooseTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrainingViewController.swift; sourceTree = "<group>"; };
-		66A599862BB31BB200E80EEF /* ChooseTrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrainerViewController.swift; sourceTree = "<group>"; };
+		66A599812BB31B2D00E80EEF /* ChooseGroupTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupTrainingView.swift; sourceTree = "<group>"; };
+		66A599832BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupTrainingViewController.swift; sourceTree = "<group>"; };
+		66A599862BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGroupTrainerViewController.swift; sourceTree = "<group>"; };
 		66A599882BB31BD000E80EEF /* TrainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,9 +333,7 @@
 		2079D5822B85330E0057EA4C /* ABSport */ = {
 			isa = PBXGroup;
 			children = (
-				66A599852BB31B7800E80EEF /* Trainers */,
-				66A599802BB31B0D00E80EEF /* Trainings */,
-				66A599792BB31A0700E80EEF /* GroupTraining */,
+				664E864B2BD6ACF7001A768D /* Trainings */,
 				0496AF852BA111A100058166 /* Profile */,
 				20397BBA2BB6CC53008455E4 /* Helpers */,
 				20FEC67E2BACD57F0045C1FF /* NetworkLayer */,
@@ -404,6 +402,33 @@
 			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
+		664E86492BD6ABB7001A768D /* GroupTrainings */ = {
+			isa = PBXGroup;
+			children = (
+				66A599792BB31A0700E80EEF /* GroupTraining */,
+				66A599802BB31B0D00E80EEF /* Trainings */,
+				66A599852BB31B7800E80EEF /* Trainers */,
+			);
+			path = GroupTrainings;
+			sourceTree = "<group>";
+		};
+		664E864A2BD6ABC5001A768D /* IndividualTrainings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IndividualTrainings;
+			sourceTree = "<group>";
+		};
+		664E864B2BD6ACF7001A768D /* Trainings */ = {
+			isa = PBXGroup;
+			children = (
+				66A599882BB31BD000E80EEF /* TrainerCell.swift */,
+				664E86492BD6ABB7001A768D /* GroupTrainings */,
+				664E864A2BD6ABC5001A768D /* IndividualTrainings */,
+			);
+			path = Trainings;
+			sourceTree = "<group>";
+		};
 		6662D12D2B931D57001FC95E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,8 +454,8 @@
 		66A599802BB31B0D00E80EEF /* Trainings */ = {
 			isa = PBXGroup;
 			children = (
-				66A599812BB31B2D00E80EEF /* ChooseTrainingView.swift */,
-				66A599832BB31B5B00E80EEF /* ChooseTrainingViewController.swift */,
+				66A599812BB31B2D00E80EEF /* ChooseGroupTrainingView.swift */,
+				66A599832BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift */,
 			);
 			path = Trainings;
 			sourceTree = "<group>";
@@ -438,8 +463,7 @@
 		66A599852BB31B7800E80EEF /* Trainers */ = {
 			isa = PBXGroup;
 			children = (
-				66A599862BB31BB200E80EEF /* ChooseTrainerViewController.swift */,
-				66A599882BB31BD000E80EEF /* TrainerCell.swift */,
+				66A599862BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift */,
 			);
 			path = Trainers;
 			sourceTree = "<group>";
@@ -599,7 +623,7 @@
 				1A2F7DE52BB5D3CE0032657B /* SmsModelView.swift in Sources */,
 				04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */,
 				66A599892BB31BD000E80EEF /* TrainerCell.swift in Sources */,
-				66A599822BB31B2D00E80EEF /* ChooseTrainingView.swift in Sources */,
+				66A599822BB31B2D00E80EEF /* ChooseGroupTrainingView.swift in Sources */,
 				20FEC6782BACCE0A0045C1FF /* DateFormatterManager.swift in Sources */,
 				20397BBE2BB6CDA1008455E4 /* DateFormatterManagerImpl.swift in Sources */,
 				1A907EE72B9096B300FBF281 /* AppCoordinator.swift in Sources */,
@@ -608,7 +632,7 @@
 				66A5997B2BB31A2D00E80EEF /* GroupTrainingView.swift in Sources */,
 				0496AF8B2BA1124F00058166 /* SettingsView.swift in Sources */,
 				1A2F7DE72BB5D3DE0032657B /* SmsView.swift in Sources */,
-				66A599872BB31BB200E80EEF /* ChooseTrainerViewController.swift in Sources */,
+				66A599872BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift in Sources */,
 				1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */,
 				20FEC6752BACCB470045C1FF /* ScheduleCoordinator.swift in Sources */,
 				1A907EE92B90A49500FBF281 /* RegistrationViewController.swift in Sources */,
@@ -620,7 +644,7 @@
 				2079D5862B85330F0057EA4C /* SceneDelegate.swift in Sources */,
 				1A77F3492B9724A400C0D1F7 /* RegistrationFullView.swift in Sources */,
 				1A2F7DE32BB5D3BE0032657B /* SmsViewController.swift in Sources */,
-				66A599842BB31B5B00E80EEF /* ChooseTrainingViewController.swift in Sources */,
+				66A599842BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift in Sources */,
 				20397BC22BB6DC95008455E4 /* CalendarManager.swift in Sources */,
 				6662D1372B931EAC001FC95E /* MainModel.swift in Sources */,
 				0496AF872BA1122D00058166 /* ProfileView.swift in Sources */,

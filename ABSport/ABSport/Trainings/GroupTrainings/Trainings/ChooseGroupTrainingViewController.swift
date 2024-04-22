@@ -7,21 +7,21 @@
 
 import UIKit
 
-class ChooseTrainingViewController: UIViewController, ChooseTrainingViewDelegate {
+class ChooseGroupTrainingViewController: UIViewController, ChooseGroupTrainingViewDelegate {
     
-    private var chooseTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
+    private var chooseGroupTrainingView = ChooseGroupTrainingView(frame: UIScreen.main.bounds)
     
     override func loadView() {
         super.loadView()
-        self.view = chooseTrainingView
+        self.view = chooseGroupTrainingView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chooseTrainingView.navBarTitleStackView.spacing = UIStackView.spacingUseDefault
-        self.navigationItem.titleView = chooseTrainingView.navBarTitleStackView
-        chooseTrainingView.delegate = self
+        chooseGroupTrainingView.navBarTitleStackView.spacing = UIStackView.spacingUseDefault
+        self.navigationItem.titleView = chooseGroupTrainingView.navBarTitleStackView
+        chooseGroupTrainingView.delegate = self
     }
     
     func didTapChooseCyclingButton() {

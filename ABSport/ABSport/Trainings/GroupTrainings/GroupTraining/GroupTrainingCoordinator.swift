@@ -31,12 +31,12 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     func goToChooseTrainer() {
-        let chooseTrainerViewController = ChooseTrainerViewController()
+        let chooseTrainerViewController = ChooseGroupTrainerViewController()
         rootViewController.pushViewController(chooseTrainerViewController, animated: true)
     }
     
     func goToChooseTraining() {
-        let chooseTrainingViewController = ChooseTrainingViewController()
+        let chooseTrainingViewController = ChooseGroupTrainingViewController()
         rootViewController.pushViewController(chooseTrainingViewController, animated: true)
     }
     
