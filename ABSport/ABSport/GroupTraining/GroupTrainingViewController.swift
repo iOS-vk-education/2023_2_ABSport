@@ -6,13 +6,9 @@
 //
 
 import UIKit
-import Combine
 
 final class GroupTrainingViewController: UIViewController, GroupTrainingViewDelegate {
         
-    var viewModel: GroupTrainingViewModel!
-    var cancellables: Set<AnyCancellable> = []
-    
     private var groupTrainingView = GroupTrainingView(frame: UIScreen.main.bounds)
     
     var chooseTrainerRequested: () -> Void = {}
@@ -29,21 +25,6 @@ final class GroupTrainingViewController: UIViewController, GroupTrainingViewDele
         groupTrainingView.navBarTitleStackView.spacing = UIStackView.spacingUseDefault
         self.navigationItem.titleView = groupTrainingView.navBarTitleStackView
         groupTrainingView.delegate = self
-        
-        // Combine
-        viewModel.isTrainerChoosePublisher
-            .sink { [weak self] data in
-                self?.updateTrainerButton(with: data)
-            }
-            .store(in: &cancellables)
-    }
-    
-    func updateTrainerButton(with data: Bool) {
-        // update UI
-        print("[DEBUG] trainer is choose == \(data)")
-        if data {
-            groupTrainingView.addCheckMark()
-        }
     }
     
     func didTapChooseTrainerButton() {

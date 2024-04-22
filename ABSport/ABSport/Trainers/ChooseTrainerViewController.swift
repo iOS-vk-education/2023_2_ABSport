@@ -9,8 +9,6 @@ import UIKit
 
 final class ChooseTrainerViewController: UIViewController {
     
-    var viewModel: GroupTrainersViewModel!
-    
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private var collectionView: UICollectionView!
@@ -39,8 +37,8 @@ final class ChooseTrainerViewController: UIViewController {
     
     @objc
     private func didTapChooseButton() {
-        print("[DEBUG] choose button")
-        viewModel.didTapChooseButton()
+        //
+        print("choose")
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
