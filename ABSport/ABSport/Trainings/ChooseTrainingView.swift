@@ -34,7 +34,7 @@ final class ChooseTrainingView: UIView {
     
     weak var delegate: ChooseTrainingViewDelegate?
     
-    private let chooseButton = UIButton().configureChooseTrainingButton()
+    private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private lazy var chooseCyclingButton: UIButton = {
         let button = configureTypeButton(imageName: "GroupTrainers/Cycling", title: "Велотренировка")
@@ -83,8 +83,9 @@ final class ChooseTrainingView: UIView {
         chooseCyclingButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseRunningButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChooseCyclingButton()
-        
     }
     
     @objc
@@ -93,6 +94,8 @@ final class ChooseTrainingView: UIView {
         chooseRunningButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChooseRunningButton()
     }
     
@@ -102,6 +105,8 @@ final class ChooseTrainingView: UIView {
         choosePowerButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         chooseRunningButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChoosePowerButton()
     }
     
