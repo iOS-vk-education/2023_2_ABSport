@@ -28,17 +28,14 @@ final class GroupTrainingViewController: UIViewController, GroupTrainingViewDele
     }
     
     func didTapChooseTrainerButton() {
-        print("trainer")
         chooseTrainerRequested()
     }
     
     func didTapChooseTainingButton() {
-        print("training")
         chooseTrainingRequested()
     }
     
     func didTapChooseDateButton() {
-        print("date")
         chooseDataRequested()
     }
 }
