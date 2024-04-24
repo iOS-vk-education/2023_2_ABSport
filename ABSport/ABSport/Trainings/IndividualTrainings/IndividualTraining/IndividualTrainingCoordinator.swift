@@ -1,13 +1,13 @@
 //
-//  GroupTrainingCoordinator.swift
+//  IndividualTrainingCoordinator.swift
 //  ABSport
 //
-//  Created by mac on 05.04.2024.
+//  Created by Arseniy Apollonov on 24.04.2024.
 //
 
 import UIKit
 
-class GroupTrainingCoordinator: Coordinator {
+class IndividualTrainingCoordinator: Coordinator {
 
     var rootViewController: UINavigationController
     
@@ -15,26 +15,26 @@ class GroupTrainingCoordinator: Coordinator {
         self.rootViewController = rootViewController
     }
     
-    lazy var groupTrainingViewController = {
-        let viewModel = GroupTrainingViewModel()
+    lazy var individualTrainingViewController = {
+        let viewModel = IndividualTrainingViewModel()
         viewModel.coordinator = self
-        let viewController = GroupTrainingViewController(viewModel: viewModel)
+        let viewController = IndividualTrainingViewController(viewModel: viewModel)
         
         viewController.navigationItem.backButtonTitle = ""
         return viewController
     }()
     
     func start() {
-        rootViewController.pushViewController(groupTrainingViewController, animated: true)
+        rootViewController.pushViewController(individualTrainingViewController, animated: false)
     }
     
     func goToChooseTrainer() {
-        let chooseTrainerViewController = ChooseGroupTrainerViewController()
+        let chooseTrainerViewController = ChooseIndividualTrainerViewController()
         rootViewController.pushViewController(chooseTrainerViewController, animated: true)
     }
     
     func goToChooseTraining() {
-        let chooseTrainingViewController = ChooseGroupTrainingViewController()
+        let chooseTrainingViewController = ChooseIndividualTrainingViewController()
         rootViewController.pushViewController(chooseTrainingViewController, animated: true)
     }
     

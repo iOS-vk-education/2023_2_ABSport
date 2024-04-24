@@ -1,13 +1,13 @@
 //
-//  ChooseTrainerViewController.swift
+//  ChooseIndividualTrainerViewController.swift
 //  ABSport
 //
-//  Created by Arseniy Apollonov on 10.03.2024.
+//  Created by Arseniy Apollonov on 24.04.2024.
 //
 
 import UIKit
 
-final class ChooseGroupTrainerViewController: UIViewController {
+final class ChooseIndividualTrainerViewController: UIViewController {
     
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
@@ -37,7 +37,6 @@ final class ChooseGroupTrainerViewController: UIViewController {
     
     @objc
     private func didTapChooseButton() {
-        //
         print("choose")
     }
     
@@ -55,7 +54,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "backIconColor")
-        titleLabel.text = "Групповые тренировки"
+        titleLabel.text = "Персональные тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "backIconColor")
@@ -67,7 +66,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
 }
 
 // MARK: - CollectionView Data Source
-extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
+extension ChooseIndividualTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
         20
@@ -83,7 +82,7 @@ extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
         cell.configureTrainerCell(
             trainerPhoto: nil,
             trainerName: "Алексей Жуков",
-            trainerStatus: "Групповой тренер")
+            trainerStatus: "Персональный тренер")
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
@@ -96,7 +95,7 @@ extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
 }
 
 // MARK: - CollectionView Delegate
-extension ChooseGroupTrainerViewController: UICollectionViewDelegate {
+extension ChooseIndividualTrainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCell = collectionView.cellForItem(at: indexPath) as? TrainerCell else { return }
         if selectedCell.isSelected {
@@ -109,7 +108,7 @@ extension ChooseGroupTrainerViewController: UICollectionViewDelegate {
 }
 
 // MARK: - CollectionView FlowLayout Delegate
-extension ChooseGroupTrainerViewController: UICollectionViewDelegateFlowLayout {
+extension ChooseIndividualTrainerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let widthRatio = UIScreen.main.bounds.width / 393
@@ -124,7 +123,7 @@ extension ChooseGroupTrainerViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Setup CollectionView
-private extension ChooseGroupTrainerViewController {
+private extension ChooseIndividualTrainerViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.register(TrainerCell.self, forCellWithReuseIdentifier: TrainerCell.identifier)
@@ -144,7 +143,7 @@ private extension ChooseGroupTrainerViewController {
         ])
     }
     
-    private func configureChooseButton() {
+    func configureChooseButton() {
         collectionView.addSubview(chooseButton)
         NSLayoutConstraint.activate([
             chooseButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),

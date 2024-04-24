@@ -24,8 +24,12 @@ class MainTabCoordinator: Coordinator {
     
     lazy var mainViewController: MainViewController = {
         let viewController = MainViewController()
-        viewController.groupTrainingRequested = { [weak self] in self?.goToGroupTraining()}
-        viewController.trainingRequested = {}
+        
+        viewController.groupTrainingRequested = { [weak self] in
+            self?.goToGroupTraining()}
+        viewController.individualTrainingRequested = { [weak self] in
+            self?.goToIndividualTraining()}
+        
         viewController.navigationItem.backButtonTitle = ""
         return viewController
     }()
@@ -38,5 +42,11 @@ class MainTabCoordinator: Coordinator {
         let groupTrainingCoordinator = GroupTrainingCoordinator(rootViewController: rootViewController)
         self.childCoordinators.append(groupTrainingCoordinator)
         groupTrainingCoordinator.start()
+    }
+    
+    func goToIndividualTraining() {
+        let individualTrainingCoordinator = IndividualTrainingCoordinator(rootViewController: rootViewController)
+        self.childCoordinators.append(individualTrainingCoordinator)
+        individualTrainingCoordinator.start()
     }
 }

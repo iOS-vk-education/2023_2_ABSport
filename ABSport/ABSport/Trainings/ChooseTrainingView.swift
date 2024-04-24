@@ -7,32 +7,16 @@
 
 import UIKit
 
-protocol ChooseGroupTrainingViewDelegate: AnyObject {
+protocol ChooseTrainingViewDelegate: AnyObject {
     func didTapChooseCyclingButton()
     func didTapChooseRunningButton()
     func didTapChoosePowerButton()
     func didTapChooseButton()
 }
 
-final class ChooseGroupTrainingView: UIView {
+final class ChooseTrainingView: UIView {
     
-    let navBarTitleStackView: UIStackView = {
-        let titleLabel = UILabel()
-        let subtitleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
-        subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        subtitleLabel.textAlignment = .left
-        subtitleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        subtitleLabel.text = "Выбор тренировки"
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        stackView.axis = .vertical
-        return stackView
-    }()
-    
-    weak var delegate: ChooseGroupTrainingViewDelegate?
+    weak var delegate: ChooseTrainingViewDelegate?
     
     private var chooseButton = UIButton().configureChooseTrainingButton()
     

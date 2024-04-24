@@ -13,7 +13,7 @@ class MainViewController: UIViewController, MainViewDelegate {
 //    var coordinator: MainCoordinator?
 
     var groupTrainingRequested: () -> Void = {}
-    var trainingRequested: () -> Void = {}
+    var individualTrainingRequested: () -> Void = {}
     
     private var mainView = MainView(frame: UIScreen.main.bounds)
     
@@ -68,7 +68,7 @@ class MainViewController: UIViewController, MainViewDelegate {
     }
     
     func didTapPersonalTrainingButton() {
-        trainingRequested()
+        individualTrainingRequested()
     }
     
     func didTapGroupTrainingButton() {

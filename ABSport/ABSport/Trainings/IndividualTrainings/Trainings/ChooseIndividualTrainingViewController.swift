@@ -1,15 +1,15 @@
 //
-//  ChooseTrainingViewController.swift
+//  ChooseIndividualTrainingViewController.swift
 //  ABSport
 //
-//  Created by Arseniy Apollonov on 09.03.2024.
+//  Created by Arseniy Apollonov on 24.04.2024.
 //
 
 import UIKit
 
-class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDelegate {
+class ChooseIndividualTrainingViewController: UIViewController, ChooseTrainingViewDelegate {
     
-    private let chooseGroupTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
+    private let chooseIndividualTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
     
     private let navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()
@@ -17,7 +17,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
+        titleLabel.text = "Персональные тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
@@ -29,7 +29,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     
     override func loadView() {
         super.loadView()
-        self.view = chooseGroupTrainingView
+        self.view = chooseIndividualTrainingView
     }
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
         
         navBarTitleStackView.spacing = UIStackView.spacingUseDefault
         self.navigationItem.titleView = navBarTitleStackView
-        chooseGroupTrainingView.delegate = self
+        chooseIndividualTrainingView.delegate = self
     }
     
     func didTapChooseCyclingButton() {
