@@ -16,25 +16,9 @@ protocol ChooseTrainingViewDelegate: AnyObject {
 
 final class ChooseTrainingView: UIView {
     
-    let navBarTitleStackView: UIStackView = {
-        let titleLabel = UILabel()
-        let subtitleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
-        subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        subtitleLabel.textAlignment = .left
-        subtitleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        subtitleLabel.text = "Выбор тренировки"
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        stackView.axis = .vertical
-        return stackView
-    }()
-    
     weak var delegate: ChooseTrainingViewDelegate?
     
-    private let chooseButton = UIButton().configureChooseTrainingButton()
+    private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private lazy var chooseCyclingButton: UIButton = {
         let button = configureTypeButton(imageName: "GroupTrainers/Cycling", title: "Велотренировка")
@@ -83,8 +67,9 @@ final class ChooseTrainingView: UIView {
         chooseCyclingButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseRunningButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChooseCyclingButton()
-        
     }
     
     @objc
@@ -93,6 +78,8 @@ final class ChooseTrainingView: UIView {
         chooseRunningButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         choosePowerButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChooseRunningButton()
     }
     
@@ -102,6 +89,8 @@ final class ChooseTrainingView: UIView {
         choosePowerButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
         chooseCyclingButton.layer.borderWidth = 0
         chooseRunningButton.layer.borderWidth = 0
+        chooseButton.isEnabled = true
+        chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
         delegate?.didTapChoosePowerButton()
     }
     
@@ -155,7 +144,7 @@ final class ChooseTrainingView: UIView {
         label.text = title
         return label
     }
-    // MARK: - Layouts
+// MARK: - Layouts
     
     private func configureButtons() {
         

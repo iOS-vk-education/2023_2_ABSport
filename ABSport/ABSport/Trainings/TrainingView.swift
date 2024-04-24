@@ -7,26 +7,11 @@
 
 import UIKit
 
-protocol GroupTrainingViewDelegate: AnyObject {
-    func didTapChooseTrainerButton()
-    func didTapChooseTainingButton()
-    func didTapChooseDateButton()
-}
-
-final class GroupTrainingView: UIView {
-
-    let navBarTitleStackView: UIStackView = {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
-        let stackView = UIStackView(arrangedSubviews: [titleLabel])
-        stackView.axis = .vertical
-        return stackView
-    }()
+final class TrainingView: UIView {
     
-    weak var delegate: GroupTrainingViewDelegate?
+    var didTapChooseTrainerButton: (() -> Void)?
+    var didTapChooseTrainingButton: (() -> Void)?
+    var didTapChooseDateButton: (() -> Void)?
     
     private lazy var chooseTrainerButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/UserMale", title: "Выбрать тренера")
@@ -65,17 +50,17 @@ final class GroupTrainingView: UIView {
     
     @objc
     private func didTapTrainerButton() {
-        delegate?.didTapChooseTrainerButton()
+        didTapChooseTrainerButton?()
     }
     
     @objc
     private func didTapTrainingsButton() {
-        delegate?.didTapChooseTainingButton()
+        didTapChooseTrainingButton?()
     }
     
     @objc
     private func didTapDateButton() {
-        delegate?.didTapChooseDateButton()
+        didTapChooseDateButton?()
     }
     
     private func configureChooseButton(imageName: String?, title: String) -> UIButton {
@@ -130,7 +115,7 @@ final class GroupTrainingView: UIView {
     }
 }
 // MARK: - Layouts
-private extension GroupTrainingView {
+private extension TrainingView {
     
     func configureButtons() {
         

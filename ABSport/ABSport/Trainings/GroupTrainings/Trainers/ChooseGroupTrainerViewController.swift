@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class ChooseTrainerViewController: UIViewController {
+final class ChooseGroupTrainerViewController: UIViewController {
     
-    private let chooseButton = UIButton().configureChooseTrainingButton()
+    private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private var collectionView: UICollectionView!
     
@@ -38,6 +38,7 @@ final class ChooseTrainerViewController: UIViewController {
     @objc
     private func didTapChooseButton() {
         //
+        print("choose")
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
@@ -66,7 +67,7 @@ final class ChooseTrainerViewController: UIViewController {
 }
 
 // MARK: - CollectionView Data Source
-extension ChooseTrainerViewController: UICollectionViewDataSource {
+extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
         20
@@ -79,7 +80,10 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureTrainerCell(trainerPhoto: nil, trainerName: "Алексей Жуков", trainerStatus: "Персональный тренер")
+        cell.configureTrainerCell(
+            trainerPhoto: nil,
+            trainerName: "Алексей Жуков",
+            trainerStatus: "Групповой тренер")
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
@@ -92,15 +96,20 @@ extension ChooseTrainerViewController: UICollectionViewDataSource {
 }
 
 // MARK: - CollectionView Delegate
-extension ChooseTrainerViewController: UICollectionViewDelegate {
+extension ChooseGroupTrainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? TrainerCell else { return }
+        if selectedCell.isSelected {
+            chooseButton.isEnabled = true
+            chooseButton.backgroundColor = UIColor(named: "GroupTrainers/ButtonColor")
+        }
         selectedCellButtonIndexPath = indexPath
         collectionView.reloadData()
     }
 }
 
 // MARK: - CollectionView FlowLayout Delegate
-extension ChooseTrainerViewController: UICollectionViewDelegateFlowLayout {
+extension ChooseGroupTrainerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let widthRatio = UIScreen.main.bounds.width / 393
@@ -115,7 +124,7 @@ extension ChooseTrainerViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Setup CollectionView
-private extension ChooseTrainerViewController {
+private extension ChooseGroupTrainerViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
         collectionView.register(TrainerCell.self, forCellWithReuseIdentifier: TrainerCell.identifier)

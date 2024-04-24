@@ -16,27 +16,25 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     lazy var groupTrainingViewController = {
-
-        let viewController = GroupTrainingViewController()
-        viewController.chooseTrainerRequested = { [weak self] in self?.goToChooseTrainer()}
-        viewController.chooseTrainingRequested = { [weak self] in self?.goToChooseTraining()}
-        viewController.chooseDataRequested = { [weak self] in self?.goToReservation()}
-
+        let viewModel = GroupTrainingViewModel()
+        viewModel.coordinator = self
+        let viewController = GroupTrainingViewController(viewModel: viewModel)
+        
         viewController.navigationItem.backButtonTitle = ""
         return viewController
     }()
     
     func start() {
-        rootViewController.pushViewController(groupTrainingViewController, animated: false)
+        rootViewController.pushViewController(groupTrainingViewController, animated: true)
     }
     
     func goToChooseTrainer() {
-        let chooseTrainerViewController = ChooseTrainerViewController()
+        let chooseTrainerViewController = ChooseGroupTrainerViewController()
         rootViewController.pushViewController(chooseTrainerViewController, animated: true)
     }
     
     func goToChooseTraining() {
-        let chooseTrainingViewController = ChooseTrainingViewController()
+        let chooseTrainingViewController = ChooseGroupTrainingViewController()
         rootViewController.pushViewController(chooseTrainingViewController, animated: true)
     }
     
