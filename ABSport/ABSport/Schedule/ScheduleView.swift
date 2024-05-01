@@ -197,18 +197,23 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
         HStack(spacing: 3) {
             if let reservations = viewModel.state.allReservations[viewModel.formate(date: date,
                                                                                     toType: .dayMonthYear)] {
-                ForEach(reservations) { reservation in
-                    if reservation.type == .equipmentReservation {
-                        
-                    } else {
-                        Circle()
-                            .fill(reservation.type == .runningTraining
-                                  ? Color("RunningTrainingColor")
-                                  : reservation.type == .poolTraining
-                                    ? Color("PoolTrainingColor")
-                                    : Color("BikeTrainingColor"))
-                            .frame(width: 3, height: 3)
-                    }
+                
+                if reservations.contains(where: { $0.type == .runningTraining }) {
+                    Circle()
+                        .fill(Color("RunningTrainingColor"))
+                        .frame(width: 3, height: 3)
+                }
+                
+                if reservations.contains(where: { $0.type == .poolTraining }) {
+                    Circle()
+                        .fill(Color("PoolTrainingColor"))
+                        .frame(width: 3, height: 3)
+                }
+                
+                if reservations.contains(where: { $0.type == .bicycleTraining }) {
+                    Circle()
+                        .fill(Color("BikeTrainingColor"))
+                        .frame(width: 3, height: 3)
                 }
             }
         }
@@ -220,7 +225,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
         
         if let reservations = viewModel.state.allReservations[viewModel.formate(date: date,
                                                                                 toType: .dayMonthYear)] {
-            LazyVStack {
+            VStack {
                 ForEach(reservations) { reservation in
                     reservationCell(reservation: reservation)
                 }
