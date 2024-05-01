@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 final class ReservationViewModelImpl: ReservationViewModel {
     
@@ -34,7 +35,7 @@ final class ReservationViewModelImpl: ReservationViewModel {
         case .openNextWeek:
             openNextWeek()
         case .tapOnChooseButton(withDate: let date):
-            print("was choosed: \(date)")
+            tryToReserve(date: date)
         }
     }
     
@@ -109,6 +110,14 @@ final class ReservationViewModelImpl: ReservationViewModel {
         }
     }
     
+    /// function of reserving timeslot for current week
+    func tryToReserve(date: String) {
+        addNotification(time: 0.1,
+                        title: "Уведомление о записи",
+                        subtitle: "",
+                        body: "Вы записаны на время: \(date)")
+    }
+    
     func allTimeSlots(forCurrentDate date: Date, complition: @escaping ([Reservation]) -> Void) {
         
         var allTimeSlots: [Reservation] = []
@@ -132,6 +141,37 @@ final class ReservationViewModelImpl: ReservationViewModel {
             }
             
             complition(allTimeSlots)
+        }
+    }
+    
+    func addNotification(time: Double, title: String, subtitle: String, body: String) {
+        let center = UNUserNotificationCenter.current()
+        
+        let addRequest = {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.sound = UNNotificationSound.default
+    
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+    
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+            print("add")
+        }
+    
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            } else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
+                    if success {
+                        addRequest()
+                    } else {
+                        print("Authorization declined")
+                    }
+                }
+            }
         }
     }
 }

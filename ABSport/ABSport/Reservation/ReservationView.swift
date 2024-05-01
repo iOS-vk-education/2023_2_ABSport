@@ -11,8 +11,7 @@ import SwiftUI
 struct ReservationView<ViewModel: ReservationViewModel>: View {
     
     // MARK: - properties
-    
-    // @Environment(\.dismiss) var dismiss
+
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
