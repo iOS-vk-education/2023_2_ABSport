@@ -100,6 +100,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         // Show a banner
         completionHandler(.banner)
-
     }
 }

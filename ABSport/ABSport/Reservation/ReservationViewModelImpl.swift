@@ -10,16 +10,17 @@ import UserNotifications
 
 final class ReservationViewModelImpl: ReservationViewModel {
     
-    @Published var state: ReservationViewModelState = ReservationViewModelState()
+    @Published var state: ReservationViewModelState
     
     weak var coordinator: ScheduleCoordinator?
     
     private let calendarManager: CalendarManager
     private let dateFormatterManager: DateFormatterManager
     
-    init(dateFormatterManager: DateFormatterManager, calendarManager: CalendarManager) {
+    init(dateFormatterManager: DateFormatterManager, calendarManager: CalendarManager, type: ReservationModuleType) {
         self.dateFormatterManager = dateFormatterManager
         self.calendarManager = calendarManager
+        state = ReservationViewModelState(type: type)
     }
     
     func handle(_ event: ReservationViewModelEvent) {

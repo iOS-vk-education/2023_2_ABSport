@@ -39,7 +39,7 @@ class IndividualTrainingCoordinator: Coordinator {
     }
     
     func goToReservation() {
-        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController)
+        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, type: .soloTraining)
         reservationCoordinator.start()
     }
 }

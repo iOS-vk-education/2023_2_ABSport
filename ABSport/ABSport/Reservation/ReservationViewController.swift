@@ -16,6 +16,8 @@ class ReservationViewController<ViewModel: ReservationViewModel>: UIViewControll
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        title = viewModel.state.type.rawValue
     }
     
     required init?(coder: NSCoder) {
@@ -31,7 +33,5 @@ class ReservationViewController<ViewModel: ReservationViewModel>: UIViewControll
         view.addSubview(hostingController.view)
         hostingController.view.frame = view.bounds
         hostingController.didMove(toParent: self)
-        
-        title = "Бронирование"
     }
 }
