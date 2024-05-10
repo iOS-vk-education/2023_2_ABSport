@@ -17,6 +17,7 @@ enum ReservationViewModelEvent {
 }
 
 struct ReservationViewModelState {
+    var type: ReservationModuleType
     var currentDate = Date()
     var availableTimeSlots: [Reservation] = []
     var currentWeek: [Date] = []
