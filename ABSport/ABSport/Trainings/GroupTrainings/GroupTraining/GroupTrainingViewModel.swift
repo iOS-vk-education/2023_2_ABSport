@@ -17,6 +17,9 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
     
     weak var coordinator: GroupTrainingCoordinator?
     
+    var notificationCenter = NotificationCenter.default
+    var trainerName: String?
+
     func didTapChooseTrainerButton() {
         coordinator?.goToChooseTrainer()
     }
@@ -27,5 +30,9 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
     
     func didTapChooseDateButton() {
         coordinator?.goToReservation()
+    }
+    
+    func didTapChooseButton() {
+//        coordinator?.start()
     }
 }
