@@ -22,6 +22,7 @@ final class TrainingView: UIView {
     lazy var chooseTrainingButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/Shortlist", title: "Выбрать тренировку")
         button.isEnabled = false
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -29,6 +30,7 @@ final class TrainingView: UIView {
     lazy var chooseDateButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/Schedule", title: "Выбрать дату и время")
         button.isEnabled = false
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

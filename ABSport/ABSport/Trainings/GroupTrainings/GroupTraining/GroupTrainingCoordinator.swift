@@ -41,18 +41,36 @@ class GroupTrainingCoordinator: Coordinator {
     
     func goToReservation() {
         let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, type: .groupTraining)
+        reservationCoordinator.reservationViewController.viewModel.groupViewModel = viewModel
         reservationCoordinator.start()
     }
     
     func updateTrainer() {
         groupTrainingViewController.groupTrainingView.chooseTrainingButton.isEnabled = true
+        groupTrainingViewController.groupTrainingView.chooseTrainingButton.isHidden = false
         groupTrainingViewController.groupTrainingView.addOKImage(
             to: groupTrainingViewController.groupTrainingView.chooseTrainerButton)
+        rootViewController.popViewController(animated: true)
     }
     
     func updateTraining() {
         groupTrainingViewController.groupTrainingView.chooseDateButton.isEnabled = true
+        groupTrainingViewController.groupTrainingView.chooseDateButton.isHidden = false
         groupTrainingViewController.groupTrainingView.addOKImage(
             to: groupTrainingViewController.groupTrainingView.chooseTrainingButton)
+        rootViewController.popViewController(animated: true)
+    }
+    
+    func updateDate() {
+        groupTrainingViewController.chooseButton.isEnabled = true
+        groupTrainingViewController.groupTrainingView.addOKImage(
+            to: groupTrainingViewController.groupTrainingView.chooseDateButton)
+        groupTrainingViewController.chooseButton.backgroundColor = UIColor(
+            named: "GroupTrainers/ButtonColor")
+        rootViewController.popViewController(animated: true)
+    }
+    
+    func gotoMain() {
+        rootViewController.popViewController(animated: true)
     }
 }

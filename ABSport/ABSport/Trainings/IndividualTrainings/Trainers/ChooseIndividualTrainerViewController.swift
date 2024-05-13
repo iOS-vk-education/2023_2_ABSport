@@ -69,7 +69,7 @@ final class ChooseIndividualTrainerViewController: UIViewController {
 extension ChooseIndividualTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
-        20
+        TrainingRegistation.shared.individualTrainerList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,10 +78,10 @@ extension ChooseIndividualTrainerViewController: UICollectionViewDataSource {
             for: indexPath) as? TrainerCell else {
             return UICollectionViewCell()
         }
-        
+        let trainer = TrainingRegistation.shared.individualTrainerList[indexPath.row]
         cell.configureTrainerCell(
             trainerPhoto: nil,
-            trainerName: "Алексей Жуков",
+            trainerName: trainer,
             trainerStatus: "Персональный тренер")
 
         if indexPath == selectedCellButtonIndexPath {

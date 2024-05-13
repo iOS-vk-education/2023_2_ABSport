@@ -13,6 +13,7 @@ final class ReservationViewModelImpl: ReservationViewModel {
     @Published var state: ReservationViewModelState
     
     weak var coordinator: ScheduleCoordinator?
+    weak var groupViewModel: GroupTrainingViewModel?
     
     private let calendarManager: CalendarManager
     private let dateFormatterManager: DateFormatterManager
@@ -113,10 +114,11 @@ final class ReservationViewModelImpl: ReservationViewModel {
     
     /// function of reserving timeslot for current week
     func tryToReserve(date: String) {
-        addNotification(time: 0.1,
-                        title: "Уведомление о записи",
-                        subtitle: "",
-                        body: "Вы записаны на время: \(date)")
+        
+        // singleton
+        TrainingRegistation.shared.trainingRegistation.trainingDate = date
+        groupViewModel?.coordinator?.updateDate()
+        print(TrainingRegistation.shared.trainingRegistation)
     }
     
     func allTimeSlots(forCurrentDate date: Date, complition: @escaping ([Reservation]) -> Void) {
@@ -124,11 +126,12 @@ final class ReservationViewModelImpl: ReservationViewModel {
         var allTimeSlots: [Reservation] = []
         
         // MARK: just mock
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
             
             guard let self else {
                 return
             }
+            // singleton
             
             for index in 0...10 {
                 let startDate = self.state.currentDate.addingTimeInterval(TimeInterval(index * 100))
@@ -158,7 +161,7 @@ final class ReservationViewModelImpl: ReservationViewModel {
     
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             center.add(request)
-            print("add")
+            print("add notification")
         }
     
         center.getNotificationSettings { settings in

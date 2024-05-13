@@ -84,7 +84,8 @@
 		66E791AD2BF0D540003F223D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 66E791AC2BF0D540003F223D /* FirebaseFirestore */; };
 		66E791AF2BF0D540003F223D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 66E791AE2BF0D540003F223D /* FirebaseStorage */; };
 		66E791B12BF0D907003F223D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E791B02BF0D907003F223D /* APIManager.swift */; };
-		66E791B32BF0DA8B003F223D /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E791B22BF0DA8B003F223D /* TrainingModel.swift */; };
+		66E791B52BF2670D003F223D /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E791B42BF2670D003F223D /* TrainingModel.swift */; };
+		66E791B72BF27006003F223D /* TrainingRegistation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E791B62BF27006003F223D /* TrainingRegistation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,7 +183,8 @@
 		66A599882BB31BD000E80EEF /* TrainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCell.swift; sourceTree = "<group>"; };
 		66E791A62BF0D424003F223D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66E791B02BF0D907003F223D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		66E791B22BF0DA8B003F223D /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
+		66E791B42BF2670D003F223D /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
+		66E791B62BF27006003F223D /* TrainingRegistation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingRegistation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,7 +384,6 @@
 				2079D5942B8533140057EA4C /* Info.plist */,
 				2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */,
 				66E791B02BF0D907003F223D /* APIManager.swift */,
-				66E791B22BF0DA8B003F223D /* TrainingModel.swift */,
 			);
 			path = ABSport;
 			sourceTree = "<group>";
@@ -510,6 +511,8 @@
 				66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */,
 				043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */,
 				664E864F2BD6B813001A768D /* GroupTrainingViewModel.swift */,
+				66E791B42BF2670D003F223D /* TrainingModel.swift */,
+				66E791B62BF27006003F223D /* TrainingRegistation.swift */,
 			);
 			path = GroupTraining;
 			sourceTree = "<group>";
@@ -673,9 +676,11 @@
 			files = (
 				042960192BCC34950083F9CA /* ChartsView.swift in Sources */,
 				66A5997D2BB31A5B00E80EEF /* GroupTrainingViewController.swift in Sources */,
+				66E791B72BF27006003F223D /* TrainingRegistation.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */,
 				20FEC6712BACCA610045C1FF /* ScheduleViewModel.swift in Sources */,
+				66E791B52BF2670D003F223D /* TrainingModel.swift in Sources */,
 				20397BC72BBB089F008455E4 /* ReservationView.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				20FEC6842BACD5E10045C1FF /* User.swift in Sources */,
@@ -714,7 +719,6 @@
 				20397BCF2BBB08DE008455E4 /* ReservationCoordinator.swift in Sources */,
 				2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */,
 				664E86552BD9194A001A768D /* IndividualTrainingViewModel.swift in Sources */,
-				66E791B32BF0DA8B003F223D /* TrainingModel.swift in Sources */,
 				20397BCB2BBB08C1008455E4 /* ReservationViewModelImpl.swift in Sources */,
 				1A907EE32B9091C800FBF281 /* CoordinatorProtocol .swift in Sources */,
 				2079D5862B85330F0057EA4C /* SceneDelegate.swift in Sources */,

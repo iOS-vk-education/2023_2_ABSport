@@ -13,7 +13,7 @@ final class GroupTrainingViewController: UIViewController {
     
     let groupTrainingView = TrainingView(frame: UIScreen.main.bounds)
     
-    let chooseButton = UIButton().configureChooseTrainingButton()
+    var chooseButton = UIButton().configureChooseTrainingButton()
     
     private let navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()

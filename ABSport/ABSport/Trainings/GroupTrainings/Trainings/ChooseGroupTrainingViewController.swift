@@ -11,7 +11,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     
     let viewModel: GroupTrainingViewModel?
     
-    var trainingType: TrainingType?
+    var trainingType: TrainingType = .unknown
     
     private let chooseGroupTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
     
@@ -71,5 +71,8 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     func didTapChooseButton() {
         print("choose")
         viewModel?.coordinator?.updateTraining()
+        
+        // singleton
+        TrainingRegistation.shared.trainingRegistation.trainingType = trainingType
     }
 }

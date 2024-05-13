@@ -7,8 +7,4 @@
 
 import Foundation
 
-enum ReservationModuleType: String {
-    case equipmentReservation = "Бронь станков"
-    case soloTraining = "Персональная тренировка"
-    case groupTraining = "Групповая тренировка"
-}
+

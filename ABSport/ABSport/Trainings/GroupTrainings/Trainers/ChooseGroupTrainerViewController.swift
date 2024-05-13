@@ -11,7 +11,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
     
     let viewModel: GroupTrainingViewModel?
     
-    var trainerName: String?
+    var trainerName: String = ""
     
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
@@ -57,6 +57,8 @@ final class ChooseGroupTrainerViewController: UIViewController {
             object: nil,
             userInfo: ["trainerName": trainerName])
         
+        //singleton
+        TrainingRegistation.shared.trainingRegistation.trainerName = trainerName
         viewModel?.coordinator?.updateTrainer()
         
     }
@@ -90,7 +92,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
 extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
-        20
+        TrainingRegistation.shared.groupTrainerList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,16 +102,18 @@ extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        let trainer = TrainingRegistation.shared.groupTrainerList[indexPath.row]
+        
         cell.configureTrainerCell(
             trainerPhoto: nil,
-            trainerName: "Алексей Жуков",
+            trainerName: trainer,
             trainerStatus: "Групповой тренер")
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
             cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
             
-            trainerName = "Алексей Жуков"
+            trainerName = trainer
         } else {
             cell.cellButton.layer.borderWidth = 0
         }
