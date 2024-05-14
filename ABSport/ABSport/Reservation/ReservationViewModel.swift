@@ -13,7 +13,7 @@ enum ReservationViewModelEvent {
     case openCurrentWeek
     case openPreviousWeek
     case openNextWeek
-    case tapOnChooseButton(withDate: String)
+    case tapOnChooseButton(withDate: Date)
 }
 
 struct ReservationViewModelState {
@@ -21,7 +21,7 @@ struct ReservationViewModelState {
     var currentDate = Date()
     var availableTimeSlots: [Reservation] = []
     var currentWeek: [Date] = []
-    var choosenTime = "0"
+    var choosenTime = Calendar.current.date(bySettingHour: 0, minute: 00, second: 0, of: Date())!
     var chooseButtonDisabled = true
     var timeSlotsLoaded = false
 }

@@ -213,6 +213,7 @@ struct ReservationView<ViewModel: ReservationViewModel>: View {
     func timeView(timeSlot: Reservation) -> some View {
     
         let time = viewModel.formate(date: timeSlot.startDate, toType: .time)
+        let stateTime = viewModel.formate(date: viewModel.state.choosenTime, toType: .time)
         
         Button(action: {
             viewModel.handle(.tapOnTimeSlot(withReservation: timeSlot))
@@ -220,14 +221,14 @@ struct ReservationView<ViewModel: ReservationViewModel>: View {
             Text(time)
                 .fontWeight(.light)
                 .frame(width: 67, height: 26)
-                .foregroundColor(time == viewModel.state.choosenTime
+                .foregroundColor(time == stateTime
                                  ? Color("BlueButtonColor")
                                  : timeSlot.numberOfFreeSlots <= 0
                                     ? Color("DarkGrayColor")
                                     : Color("TextColor") )
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(time == viewModel.state.choosenTime
+                        .stroke(time == stateTime
                                 ? Color("BlueButtonColor")
                                 : Color("LightGrayColor"), lineWidth: 1)
                 )

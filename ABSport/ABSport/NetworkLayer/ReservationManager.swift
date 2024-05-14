@@ -10,6 +10,9 @@ import Foundation
 // TEMP (JUST MOCK)
 final class ReservationManager {
     
+    var allTimeSlots: [String: [Reservation]] = [:]
+    var activeReservations:  [String: [Reservation]] = [:]
+    
     static let shared = ReservationManager()
     
     private let dateFormatter = DateFormaterManagerImpl()
