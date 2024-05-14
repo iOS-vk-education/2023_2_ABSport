@@ -58,20 +58,21 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                SettingsFooterView()
+                // SettingsFooterView()
             }
             
         }
+        .navigationBarTitle("Настройки")
     }
 }
 
 struct SettingsFooterView: View {
     
-    //var deleteRequested: () -> Void
+    // var deleteRequested: () -> Void
     
     var body: some View {
         HStack {
-            Button(action: {}) {
+            Button(action: {}){
                 Text("Удалить аккаунт")
                     .font(.system(size: 15))
                     .frame(height: 56)

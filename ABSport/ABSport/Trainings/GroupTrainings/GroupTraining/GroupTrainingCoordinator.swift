@@ -39,7 +39,8 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     func goToReservation() {
-        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, type: .groupTraining)
+        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, 
+                                                            type: .groupTraining)
         reservationCoordinator.start()
     }
 }

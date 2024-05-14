@@ -25,7 +25,7 @@ struct ReciepButtonView: View {
     var body: some View {
         VStack(alignment: .center) {
             Button(action: goToHistoryOrder) {
-                Text("История заказов")
+                Text("История записи")
                     .font(.system(size: 20))
                     .foregroundColor(Color("TextColor"))
                     .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 142
@@ -49,6 +49,7 @@ struct ReciepButtonView: View {
             }
             .buttonStyle()
         }
+        .navigationBarTitle("Списки заказов")
         .padding(15)
     }
 }
