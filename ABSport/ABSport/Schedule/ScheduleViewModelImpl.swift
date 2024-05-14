@@ -85,49 +85,50 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
         getCurrentMonthDaysReservations()
     }
     
-    /// function to get all reservations for current month
     func getCurrentMonthDaysReservations() {
-        
-        state.reservationsFetched = false
-        // MARK: - delete just mock
-        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
-                                                       type: .bicycleTraining,
-                                                       isIndividual: true,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate)])
-        UserManager.shared.addReservation(Reservation(id: UUID().uuidString,
-                                                      type: .runningTraining,
-                                                      isIndividual: false,
-                                                      numberOfFreeSlots: 0,
-                                                      trainerName: "obbrnu",
-                                                      startDate: state.currentDate,
-                                                      endDate: state.currentDate))
-        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
-                                                       type: .equipmentReservation,
-                                                       isIndividual: true,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate),
-                                           Reservation(id: UUID().uuidString,
-                                                       type: .poolTraining,
-                                                       isIndividual: false,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate)])
-        
-        ReservationManager.shared.allReservations { [weak self] dictionary in
             
-            guard let self else {
-                return
+            state.reservationsFetched = false
+            // MARK: - delete just mock
+    //        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
+    //                                                       type: .bicycleTraining,
+    //                                                       isIndividual: true,
+    //                                                       numberOfFreeSlots: 0,
+    //                                                       trainerName: "obbrnu",
+    //                                                       startDate: state.currentDate,
+    //                                                       endDate: state.currentDate)])
+    //        UserManager.shared.addReservation(Reservation(id: UUID().uuidString,
+    //                                                      type: .runningTraining,
+    //                                                      isIndividual: false,
+    //                                                      numberOfFreeSlots: 0,
+    //                                                      trainerName: "obbrnu",
+    //                                                      startDate: state.currentDate,
+    //                                                      endDate: state.currentDate))
+    //        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
+    //                                                       type: .equipmentReservation,
+    //                                                       isIndividual: true,
+    //                                                       numberOfFreeSlots: 0,
+    //                                                       trainerName: "obbrnu",
+    //                                                       startDate: state.currentDate,
+    //                                                       endDate: state.currentDate),
+    //                                           Reservation(id: UUID().uuidString,
+    //                                                       type: .poolTraining,
+    //                                                       isIndividual: false,
+    //                                                       numberOfFreeSlots: 0,
+    //                                                       trainerName: "obbrnu",
+    //                                                       startDate: state.currentDate,
+    //                                                       endDate: state.currentDate)])
+            
+    //        ReservationManager.shared.allReservations { [weak self] dictionary in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                guard let self else {
+                    return
+                }
+                
+    //            self.state.allReservations = dictionary
+                self.state.allReservations = ReservationManager.shared.activeReservations
+                print(ReservationManager.shared.activeReservations)
+                self.state.reservationsFetched = true
             }
-            
-            self.state.allReservations = dictionary
-            self.state.reservationsFetched = true
         }
-    }
     
 }

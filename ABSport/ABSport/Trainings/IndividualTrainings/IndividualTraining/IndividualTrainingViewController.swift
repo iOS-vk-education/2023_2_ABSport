@@ -11,7 +11,9 @@ final class IndividualTrainingViewController: UIViewController {
     
     let viewModel: IndividualTrainingViewModel?
     
-    private let individualTrainingView = TrainingView(frame: UIScreen.main.bounds)
+    let individualTrainingView = TrainingView(frame: UIScreen.main.bounds)
+    
+    var chooseButton = UIButton().configureChooseTrainingButton()
     
     private let navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()
@@ -42,7 +44,7 @@ final class IndividualTrainingViewController: UIViewController {
         super.viewDidLoad()
         navBarTitleStackView.spacing = UIStackView.spacingUseDefault
         self.navigationItem.titleView = navBarTitleStackView
-        
+        setupChooseButton()
         individualTrainingView.didTapChooseDateButton = { [weak self] in
             self?.viewModel?.didTapChooseDateButton()}
         
@@ -52,5 +54,22 @@ final class IndividualTrainingViewController: UIViewController {
         individualTrainingView.didTapChooseTrainerButton = { [weak self] in
             self?.viewModel?.didTapChooseTrainerButton()}
         
+        chooseButton.addTarget(self, action: #selector(didTapChooseButton), for: .touchUpInside)
+        
+    }
+    
+    @objc
+    private func didTapChooseButton() {
+        self.viewModel?.didTapChooseButton()
+    }
+    
+    private func setupChooseButton() {
+        view.addSubview(chooseButton)
+        NSLayoutConstraint.activate([
+            chooseButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
+            chooseButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16),
+            chooseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            chooseButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }

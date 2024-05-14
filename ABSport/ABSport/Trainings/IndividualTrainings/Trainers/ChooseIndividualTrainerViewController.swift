@@ -9,11 +9,24 @@ import UIKit
 
 final class ChooseIndividualTrainerViewController: UIViewController {
     
+    let viewModel: IndividualTrainingViewModel?
+    
+    var trainerName: String = ""
+    
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private var collectionView: UICollectionView!
     
     private var selectedCellButtonIndexPath: IndexPath?
+    
+    init(viewModel: IndividualTrainingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +51,10 @@ final class ChooseIndividualTrainerViewController: UIViewController {
     @objc
     private func didTapChooseButton() {
         print("choose")
+        // singleton
+        TrainingRegistation.shared.trainingRegistation.trainerName = trainerName
+        viewModel?.coordinator?.updateTrainer()
+        print(TrainingRegistation.shared.trainingRegistation.trainerName)
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
@@ -87,6 +104,7 @@ extension ChooseIndividualTrainerViewController: UICollectionViewDataSource {
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
             cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
+            trainerName = trainer
         } else {
             cell.cellButton.layer.borderWidth = 0
         }

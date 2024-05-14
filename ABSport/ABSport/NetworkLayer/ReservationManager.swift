@@ -12,6 +12,9 @@ final class ReservationManager {
     
     static let shared = ReservationManager()
     
+    var allTimeSlots: [String: [Reservation]] = [:]
+    var activeReservations:  [String: [Reservation]] = [:]
+    
     private let dateFormatter = DateFormaterManagerImpl()
     
     private init() {
