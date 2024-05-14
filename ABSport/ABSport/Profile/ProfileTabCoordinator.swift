@@ -44,7 +44,8 @@ final class ProfileTabCoordinator: Coordinator {
     }
     
     func goToMyForm() {
-        let myFowmViewController = UIHostingController(rootView: MyFormView())
+        let myFowmViewController = UIHostingController(rootView:
+                                                        MyFormView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext))
         rootViewController.pushViewController(myFowmViewController, animated: true)
     }
     

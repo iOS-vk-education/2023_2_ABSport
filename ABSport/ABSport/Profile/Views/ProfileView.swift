@@ -37,10 +37,11 @@ struct ProfileView: View {
                 ProfileHeaderView(settingRequested: settingsAction)
                 ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
                 Spacer()
-                ProfileFooterView(logoutRequested: logoutAction)
+                // ProfileFooterView(logoutRequested: logoutAction)
             }
             Spacer()
         }
+        .navigationTitle("Профиль")
     }
 }
 
@@ -78,7 +79,9 @@ struct ProfileHeaderView: View {
                         .frame(width: 26, height: 26)
                 })
             }
-        }.padding(.horizontal, 16)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 5)
     }
 }
 

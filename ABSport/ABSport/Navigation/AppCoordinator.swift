@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - app coordinator (главный координатор, который пускает в приложение, либо в экран регистрации)
 final class AppCoordinator: Coordinator {
