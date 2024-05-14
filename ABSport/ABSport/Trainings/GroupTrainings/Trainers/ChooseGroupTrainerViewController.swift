@@ -57,7 +57,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
             object: nil,
             userInfo: ["trainerName": trainerName])
         
-        //singleton
+        // singleton
         TrainingRegistation.shared.trainingRegistation.trainerName = trainerName
         viewModel?.coordinator?.updateTrainer()
         

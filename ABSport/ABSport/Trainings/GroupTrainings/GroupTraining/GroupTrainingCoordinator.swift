@@ -10,7 +10,9 @@ import UIKit
 class GroupTrainingCoordinator: Coordinator {
 
     var rootViewController: UINavigationController
-    var viewModel = GroupTrainingViewModel(dateFormatterManager: DateFormaterManagerImpl(), calendarManager: CalendarManagerImpl())
+    var viewModel = GroupTrainingViewModel(
+        dateFormatterManager: DateFormaterManagerImpl(),
+        calendarManager: CalendarManagerImpl())
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController

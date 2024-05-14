@@ -47,10 +47,6 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
         if TrainingRegistation.shared.trainingRegistation.trainingType != .unknown {
             var trainerDate = TrainingRegistation.shared.trainingRegistation.trainingDate!
             TrainingRegistation.shared.addTraining()
-            addNotification(time: 0.1,
-                            title: "Уведомление о записи",
-                            subtitle: "",
-                            body: "Вы записаны на время:")
             var newReservation = ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: trainerDate, toType: .dayMonthYear)]?.first(where: {
                 dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: trainerDate, toType: .time)})
             newReservation?.trainerName = TrainingRegistation.shared.trainingRegistation.trainerName
@@ -59,6 +55,10 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
             print(ReservationManager.shared.activeReservations)
             ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: trainerDate, toType: .dayMonthYear)]?.removeAll(where: {
                 dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: trainerDate, toType: .time)})
+            addNotification(time: 0.1,
+                            title: "Уведомление о записи",
+                            subtitle: "",
+                            body: "Вы записаны на время: \(dateFormatterManager.formate(date: trainerDate, toType: .time))")
         }
         TrainingRegistation.shared.clearRegistation()
         coordinator?.gotoMain()

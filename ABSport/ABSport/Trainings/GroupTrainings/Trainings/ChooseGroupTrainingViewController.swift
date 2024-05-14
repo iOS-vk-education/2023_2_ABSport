@@ -11,7 +11,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     
     let viewModel: GroupTrainingViewModel?
     
-    var trainingType: TrainingType = .unknown
+    var trainingType: ReservationType = .unknown
     
     private let chooseGroupTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
     
@@ -55,17 +55,17 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     
     func didTapChooseCyclingButton() {
         print("cycling")
-        trainingType = .bike
+        trainingType = .bicycleTraining
     }
     
     func didTapChooseRunningButton() {
         print("running")
-        trainingType = .running
+        trainingType = .runningTraining
     }
     
     func didTapChoosePowerButton() {
         print("power")
-        trainingType = .power
+        trainingType = .poolTraining
     }
     
     func didTapChooseButton() {

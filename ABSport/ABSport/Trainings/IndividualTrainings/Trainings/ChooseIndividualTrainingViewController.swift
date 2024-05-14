@@ -9,7 +9,7 @@ import UIKit
 
 class ChooseIndividualTrainingViewController: UIViewController, ChooseTrainingViewDelegate {
     
-    var trainingType: TrainingType = .unknown
+    var trainingType: ReservationType = .unknown
     
     let viewModel: IndividualTrainingViewModel?
     private let chooseIndividualTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
@@ -54,17 +54,17 @@ class ChooseIndividualTrainingViewController: UIViewController, ChooseTrainingVi
     
     func didTapChooseCyclingButton() {
         print("cycling")
-        trainingType = .bike
+        trainingType = .bicycleTraining
     }
     
     func didTapChooseRunningButton() {
         print("running")
-        trainingType = .running
+        trainingType = .runningTraining
     }
     
     func didTapChoosePowerButton() {
         print("power")
-        trainingType = .power
+        trainingType = .poolTraining
     }
     
     func didTapChooseButton() {

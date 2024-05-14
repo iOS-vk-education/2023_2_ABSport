@@ -8,7 +8,7 @@
 import Foundation
 
 enum ReservationType: String {
-    case poolTraining = "Бассейн"
+    case poolTraining = "Силовая"
     case runningTraining = "Бег"
     case bicycleTraining = "Велосипед"
     case equipmentReservation = "Бронь станка"

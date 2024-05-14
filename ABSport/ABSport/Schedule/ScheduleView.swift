@@ -263,7 +263,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                 Text("Тренер: \(reservation.trainerName ?? "не указан")")
                     .font(.system(size: 14))
                     .frame(height: 24)
-                Text("Осталось мест: \(reservation.numberOfFreeSlots)")
+                Text("Осталось мест: 0")
                     .font(.system(size: 14))
                     .frame(height: 24)
                     .padding(.bottom, 14)
