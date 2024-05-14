@@ -23,7 +23,6 @@ enum ReservationModuleType: String {
 
 struct Training {
     var trainerName: String?
-    var trainingType: TrainingType
+    var trainingType: ReservationType
     var trainingDate: Date?
-    var training: ReservationModuleType
 }

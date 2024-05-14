@@ -117,7 +117,7 @@ final class ReservationViewModelImpl: ReservationViewModel {
     func tryToReserve(date: Date) {
         
         // singleton
-        TrainingRegistation.shared.trainingRegistation.trainingDate = dateFormatterManager.formate(date: date, toType: .dayMonthYear)
+        TrainingRegistation.shared.trainingRegistation.trainingDate = date
         groupViewModel?.coordinator?.updateDate()
         print(TrainingRegistation.shared.trainingRegistation)
     }

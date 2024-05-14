@@ -11,7 +11,7 @@ class TrainingRegistation {
     
     static let shared = TrainingRegistation()
     
-    var trainingRegistation: Training = Training(trainingType: .unknown, trainingDate: Date(), training: .groupTraining)
+    var trainingRegistation: Training = Training(trainingType: .unknown, trainingDate: Date())
     var trainingArray: [Training] = []
     
     // Список тренеров
@@ -31,7 +31,7 @@ class TrainingRegistation {
     var dates1: [Date] = [
     ]
     
-    func getTraining(name: String, type: TrainingType, date: Date) {
+    func getTraining(name: String, type: ReservationType, date: Date) {
         trainingRegistation.trainerName = name
         trainingRegistation.trainingType = type
         trainingRegistation.trainingDate = date

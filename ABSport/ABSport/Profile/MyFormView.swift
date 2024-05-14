@@ -14,7 +14,7 @@ struct MyFormView: View {
     var body: some View {
         VStack {
             VStack {
-                HStack(alignment: .center){
+                HStack(alignment: .center) {
                     Button(action: {
                         self.isShowingFirstChart = true
                     }) {

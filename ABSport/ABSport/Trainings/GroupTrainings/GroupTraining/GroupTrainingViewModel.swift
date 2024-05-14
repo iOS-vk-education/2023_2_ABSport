@@ -45,24 +45,23 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
     func didTapChooseButton() {
         print("reg training")
         if TrainingRegistation.shared.trainingRegistation.trainingType != .unknown {
+            var trainerDate = TrainingRegistation.shared.trainingRegistation.trainingDate!
             TrainingRegistation.shared.addTraining()
             addNotification(time: 0.1,
                             title: "Уведомление о записи",
                             subtitle: "",
-                            body: "Вы записаны \(dateFormatterManager.formate(
-date: TrainingRegistation.shared., toType: .dayMonth)) на время: \(dateFormatterManager.formate(date: date, toType: .time))")
-            var newReservation = ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: state.currentDate, toType: .dayMonthYear)]?.first(where: {
-                dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: date, toType: .time)})
-            newReservation?.trainerName = "Some name"
-            ReservationManager.shared.activeReservations[dateFormatterManager.formate(date: state.currentDate, toType: .dayMonthYear), default: []].append(newReservation!)
+                            body: "Вы записаны на время:")
+            var newReservation = ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: trainerDate, toType: .dayMonthYear)]?.first(where: {
+                dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: trainerDate, toType: .time)})
+            newReservation?.trainerName = TrainingRegistation.shared.trainingRegistation.trainerName
+            newReservation?.type = TrainingRegistation.shared.trainingRegistation.trainingType
+            ReservationManager.shared.activeReservations[dateFormatterManager.formate(date: trainerDate, toType: .dayMonthYear), default: []].append(newReservation!)
             print(ReservationManager.shared.activeReservations)
-            ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: state.currentDate, toType: .dayMonthYear)]?.removeAll(where: {
-                dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: date, toType: .time)})
+            ReservationManager.shared.allTimeSlots[dateFormatterManager.formate(date: trainerDate, toType: .dayMonthYear)]?.removeAll(where: {
+                dateFormatterManager.formate(date: $0.startDate, toType: .time) == dateFormatterManager.formate(date: trainerDate, toType: .time)})
         }
         TrainingRegistation.shared.clearRegistation()
         coordinator?.gotoMain()
-        
-        
     }
     
     func addNotification(time: Double, title: String, subtitle: String, body: String) {

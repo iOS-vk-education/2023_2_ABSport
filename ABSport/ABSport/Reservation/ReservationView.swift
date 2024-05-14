@@ -221,14 +221,14 @@ struct ReservationView<ViewModel: ReservationViewModel>: View {
             Text(time)
                 .fontWeight(.light)
                 .frame(width: 67, height: 26)
-                .foregroundColor(time == viewModel.state.stateTime
+                .foregroundColor(time == stateTime
                                  ? Color("BlueButtonColor")
                                  : timeSlot.numberOfFreeSlots <= 0
                                     ? Color("DarkGrayColor")
                                     : Color("TextColor") )
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(time == viewModel.state.stateTime
+                        .stroke(time == stateTime
                                 ? Color("BlueButtonColor")
                                 : Color("LightGrayColor"), lineWidth: 1)
                 )

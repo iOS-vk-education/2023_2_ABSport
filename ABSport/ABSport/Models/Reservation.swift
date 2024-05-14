@@ -12,6 +12,7 @@ enum ReservationType: String {
     case runningTraining = "Бег"
     case bicycleTraining = "Велосипед"
     case equipmentReservation = "Бронь станка"
+    case unknown = ""
 }
 
 struct Reservation: Identifiable, Hashable {
