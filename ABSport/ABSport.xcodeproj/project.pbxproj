@@ -9,13 +9,19 @@
 /* Begin PBXBuildFile section */
 		041A3F6D2BCC61B7002B87E8 /* PetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A3F6C2BCC61B7002B87E8 /* PetData.swift */; };
 		0426FC142BCC889A00F49B21 /* MyFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426FC132BCC889A00F49B21 /* MyFormView.swift */; };
-		042960192BCC34950083F9CA /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042960182BCC34950083F9CA /* ChartsView.swift */; };
+		042960192BCC34950083F9CA /* WeightChartBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042960182BCC34950083F9CA /* WeightChartBar.swift */; };
 		043545422BC07E9400151ED5 /* GroupTrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */; };
+		047D7EEA2BF371A700E98C55 /* WeightChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D7EE92BF371A700E98C55 /* WeightChart.swift */; };
+		047D7EEC2BF3723A00E98C55 /* IMTChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D7EEB2BF3723A00E98C55 /* IMTChart.swift */; };
 		04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */; };
 		04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */; };
 		0496AF872BA1122D00058166 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF862BA1122D00058166 /* ProfileView.swift */; };
 		0496AF892BA1123F00058166 /* ReciepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF882BA1123F00058166 /* ReciepView.swift */; };
 		0496AF8B2BA1124F00058166 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496AF8A2BA1124F00058166 /* SettingsView.swift */; };
+		04B2A2CE2BF2B1EC000B017D /* ABSport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04B2A2CC2BF2B1EC000B017D /* ABSport.xcdatamodeld */; };
+		04B2A2D12BF2B4C4000B017D /* WeightChart+help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2A2D02BF2B4C4000B017D /* WeightChart+help.swift */; };
+		04B2A2D32BF2BACF000B017D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2A2D22BF2BACF000B017D /* PersistenceController.swift */; };
+		04B2A2D52BF2C338000B017D /* NSPrediacte+help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2A2D42BF2C338000B017D /* NSPrediacte+help.swift */; };
 		1A2F7DDA2BB5D2C70032657B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2F7DD92BB5D2C70032657B /* LoginViewController.swift */; };
 		1A2F7DDC2BB5D2DB0032657B /* LoginModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2F7DDB2BB5D2DB0032657B /* LoginModelView.swift */; };
 		1A2F7DDE2BB5D2FF0032657B /* LoginFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2F7DDD2BB5D2FF0032657B /* LoginFullView.swift */; };
@@ -45,7 +51,6 @@
 		2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5832B85330F0057EA4C /* AppDelegate.swift */; };
 		2079D5862B85330F0057EA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5852B85330F0057EA4C /* SceneDelegate.swift */; };
 		2079D5882B85330F0057EA4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5872B85330F0057EA4C /* ViewController.swift */; };
-		2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */; };
 		2079D5902B8533140057EA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2079D58F2B8533140057EA4C /* Assets.xcassets */; };
 		2079D59E2B8533150057EA4C /* ABSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D59D2B8533150057EA4C /* ABSportTests.swift */; };
 		2079D5A82B8533150057EA4C /* ABSportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5A72B8533150057EA4C /* ABSportUITests.swift */; };
@@ -108,13 +113,19 @@
 /* Begin PBXFileReference section */
 		041A3F6C2BCC61B7002B87E8 /* PetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetData.swift; sourceTree = "<group>"; };
 		0426FC132BCC889A00F49B21 /* MyFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFormView.swift; sourceTree = "<group>"; };
-		042960182BCC34950083F9CA /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		042960182BCC34950083F9CA /* WeightChartBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChartBar.swift; sourceTree = "<group>"; };
 		043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTrainingCoordinator.swift; sourceTree = "<group>"; };
+		047D7EE92BF371A700E98C55 /* WeightChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChart.swift; sourceTree = "<group>"; };
+		047D7EEB2BF3723A00E98C55 /* IMTChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMTChart.swift; sourceTree = "<group>"; };
 		04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		0496AF862BA1122D00058166 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0496AF882BA1123F00058166 /* ReciepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciepView.swift; sourceTree = "<group>"; };
 		0496AF8A2BA1124F00058166 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		04B2A2CD2BF2B1EC000B017D /* ABSport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABSport.xcdatamodel; sourceTree = "<group>"; };
+		04B2A2D02BF2B4C4000B017D /* WeightChart+help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeightChart+help.swift"; sourceTree = "<group>"; };
+		04B2A2D22BF2BACF000B017D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		04B2A2D42BF2C338000B017D /* NSPrediacte+help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPrediacte+help.swift"; sourceTree = "<group>"; };
 		1A2F7DD92BB5D2C70032657B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ABSport/Auth/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		1A2F7DDB2BB5D2DB0032657B /* LoginModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginModelView.swift; path = ABSport/Auth/Login/LoginModelView.swift; sourceTree = SOURCE_ROOT; };
 		1A2F7DDD2BB5D2FF0032657B /* LoginFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginFullView.swift; path = ABSport/Auth/Login/LoginFullView.swift; sourceTree = SOURCE_ROOT; };
@@ -145,7 +156,6 @@
 		2079D5832B85330F0057EA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2079D5852B85330F0057EA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2079D5872B85330F0057EA4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2079D58D2B85330F0057EA4C /* ABSport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ABSport.xcdatamodel; sourceTree = "<group>"; };
 		2079D58F2B8533140057EA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2079D5942B8533140057EA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2079D5992B8533150057EA4C /* ABSportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABSportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,18 +226,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0410031D2BF293BB005CE8D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				047D7EE82BF3717A00E98C55 /* Charts */,
+				0496AF882BA1123F00058166 /* ReciepView.swift */,
+				0496AF862BA1122D00058166 /* ProfileView.swift */,
+				0426FC132BCC889A00F49B21 /* MyFormView.swift */,
+				0496AF8A2BA1124F00058166 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		047D7EE82BF3717A00E98C55 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				042960182BCC34950083F9CA /* WeightChartBar.swift */,
+				047D7EE92BF371A700E98C55 /* WeightChart.swift */,
+				047D7EEB2BF3723A00E98C55 /* IMTChart.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		0496AF852BA111A100058166 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				0496AF862BA1122D00058166 /* ProfileView.swift */,
-				0496AF882BA1123F00058166 /* ReciepView.swift */,
-				0496AF8A2BA1124F00058166 /* SettingsView.swift */,
+				04B2A2CF2BF2B49B000B017D /* CoreData */,
+				0410031D2BF293BB005CE8D6 /* Views */,
 				04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */,
-				042960182BCC34950083F9CA /* ChartsView.swift */,
 				041A3F6C2BCC61B7002B87E8 /* PetData.swift */,
-				0426FC132BCC889A00F49B21 /* MyFormView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		04B2A2CF2BF2B49B000B017D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				04B2A2D02BF2B4C4000B017D /* WeightChart+help.swift */,
+				04B2A2D22BF2BACF000B017D /* PersistenceController.swift */,
+				04B2A2D42BF2C338000B017D /* NSPrediacte+help.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1A21D9412BB5E2870013BE0A /* Login */ = {
@@ -382,8 +421,12 @@
 				2079D58F2B8533140057EA4C /* Assets.xcassets */,
 				66E791A62BF0D424003F223D /* GoogleService-Info.plist */,
 				2079D5942B8533140057EA4C /* Info.plist */,
+<<<<<<< HEAD
 				2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */,
 				66E791B02BF0D907003F223D /* APIManager.swift */,
+=======
+				04B2A2CC2BF2B1EC000B017D /* ABSport.xcdatamodeld */,
+>>>>>>> 027c6e7561a10442fcd58facdbcc8fb8b92c04ab
 			);
 			path = ABSport;
 			sourceTree = "<group>";
@@ -674,7 +717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				042960192BCC34950083F9CA /* ChartsView.swift in Sources */,
+				042960192BCC34950083F9CA /* WeightChartBar.swift in Sources */,
 				66A5997D2BB31A5B00E80EEF /* GroupTrainingViewController.swift in Sources */,
 				66E791B72BF27006003F223D /* TrainingRegistation.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
@@ -684,6 +727,7 @@
 				20397BC72BBB089F008455E4 /* ReservationView.swift in Sources */,
 				1AF1EA942B98ED4100F9A3CE /* String+Extension.swift in Sources */,
 				20FEC6842BACD5E10045C1FF /* User.swift in Sources */,
+				04B2A2D32BF2BACF000B017D /* PersistenceController.swift in Sources */,
 				664E86572BD9198F001A768D /* IndividualTrainingCoordinator.swift in Sources */,
 				20397BCD2BBB08CE008455E4 /* ReservationViewController.swift in Sources */,
 				20FEC6732BACCA6D0045C1FF /* ScheduleViewController.swift in Sources */,
@@ -698,6 +742,7 @@
 				2079D5882B85330F0057EA4C /* ViewController.swift in Sources */,
 				1A2F7DDA2BB5D2C70032657B /* LoginViewController.swift in Sources */,
 				1A2F7DE52BB5D3CE0032657B /* SmsModelView.swift in Sources */,
+				04B2A2CE2BF2B1EC000B017D /* ABSport.xcdatamodeld in Sources */,
 				04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */,
 				66A599892BB31BD000E80EEF /* TrainerCell.swift in Sources */,
 				66A599822BB31B2D00E80EEF /* ChooseTrainingView.swift in Sources */,
@@ -711,11 +756,13 @@
 				209754082BE5161400287935 /* ReservationModuleType.swift in Sources */,
 				1A2F7DE72BB5D3DE0032657B /* SmsView.swift in Sources */,
 				66A599872BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift in Sources */,
+				047D7EEC2BF3723A00E98C55 /* IMTChart.swift in Sources */,
 				1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */,
 				20FEC6752BACCB470045C1FF /* ScheduleCoordinator.swift in Sources */,
 				664E865B2BD91BBF001A768D /* ChooseIndividualTrainingViewController.swift in Sources */,
 				1A907EE92B90A49500FBF281 /* RegistrationViewController.swift in Sources */,
 				20FEC66F2BACCA570045C1FF /* ScheduleView.swift in Sources */,
+				04B2A2D12BF2B4C4000B017D /* WeightChart+help.swift in Sources */,
 				20397BCF2BBB08DE008455E4 /* ReservationCoordinator.swift in Sources */,
 				2079D5842B85330F0057EA4C /* AppDelegate.swift in Sources */,
 				664E86552BD9194A001A768D /* IndividualTrainingViewModel.swift in Sources */,
@@ -727,6 +774,7 @@
 				66A599842BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift in Sources */,
 				20397BC22BB6DC95008455E4 /* CalendarManager.swift in Sources */,
 				664E86532BD918F1001A768D /* IndividualTrainingViewController.swift in Sources */,
+				04B2A2D52BF2C338000B017D /* NSPrediacte+help.swift in Sources */,
 				6662D1372B931EAC001FC95E /* MainModel.swift in Sources */,
 				0496AF872BA1122D00058166 /* ProfileView.swift in Sources */,
 				6662D1312B931DCB001FC95E /* MainViewController.swift in Sources */,
@@ -734,6 +782,7 @@
 				6662D12F2B931DAB001FC95E /* MainView.swift in Sources */,
 				20397BC92BBB08AE008455E4 /* ReservationViewModel.swift in Sources */,
 				20397BC42BB81CE5008455E4 /* ScheduleViewModelImpl.swift in Sources */,
+				047D7EEA2BF371A700E98C55 /* WeightChart.swift in Sources */,
 				666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */,
 				20397BC02BB6DC6F008455E4 /* CalendarManagerImpl.swift in Sources */,
 				1A907EE52B9092EE00FBF281 /* AuthCoordinator.swift in Sources */,
@@ -744,7 +793,6 @@
 				20FEC67D2BACD5500045C1FF /* Reservation.swift in Sources */,
 				66E791B12BF0D907003F223D /* APIManager.swift in Sources */,
 				664E865D2BD91CA2001A768D /* ChooseIndividualTrainerViewController.swift in Sources */,
-				2079D58E2B85330F0057EA4C /* ABSport.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,7 +973,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ABSportTech.ABSport;
+				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -955,7 +1003,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ABSportTech.ABSport;
+				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1125,13 +1173,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		2079D58C2B85330F0057EA4C /* ABSport.xcdatamodeld */ = {
+		04B2A2CC2BF2B1EC000B017D /* ABSport.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2079D58D2B85330F0057EA4C /* ABSport.xcdatamodel */,
+				04B2A2CD2BF2B1EC000B017D /* ABSport.xcdatamodel */,
 			);
-			currentVersion = 2079D58D2B85330F0057EA4C /* ABSport.xcdatamodel */;
-			path = ABSport.xcdatamodeld;
+			currentVersion = 04B2A2CD2BF2B1EC000B017D /* ABSport.xcdatamodel */;
+			name = ABSport.xcdatamodeld;
+			path = /Users/mac/Documents/2023_2_ABSport/ABSport/ABSport/ABSport.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

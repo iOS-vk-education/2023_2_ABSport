@@ -42,8 +42,13 @@ class GroupTrainingCoordinator: Coordinator {
     }
     
     func goToReservation() {
+<<<<<<< HEAD
     let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, type: .groupTraining)
         reservationCoordinator.reservationViewController.viewModel.groupViewModel = viewModel
+=======
+        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, 
+                                                            type: .groupTraining)
+>>>>>>> 027c6e7561a10442fcd58facdbcc8fb8b92c04ab
         reservationCoordinator.start()
     }
     
