@@ -1116,8 +1116,7 @@
 				04B2A2CD2BF2B1EC000B017D /* ABSport.xcdatamodel */,
 			);
 			currentVersion = 04B2A2CD2BF2B1EC000B017D /* ABSport.xcdatamodel */;
-			name = ABSport.xcdatamodeld;
-			path = /Users/mac/Documents/2023_2_ABSport/ABSport/ABSport/ABSport.xcdatamodeld;
+			path = ABSport.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
