@@ -68,6 +68,11 @@ extension WeightChart {
         }
     }
     
+    static func delete(task: WeightChart) {
+        guard let context = task.managedObjectContext else { return }
+        context.delete(task)
+    }
+    
     static var example: WeightChart {
         let context = PersistenceController.preview.container.viewContext
         let mark = WeightChart(weight: 78.00, date: Date(), context: context)
@@ -75,4 +80,3 @@ extension WeightChart {
         return mark
     }
 }
-

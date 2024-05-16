@@ -31,9 +31,9 @@ final class AppCoordinator: Coordinator {
         } else {
             let navigationController = UINavigationController()
             window.rootViewController = navigationController
-            let authCoordinator = AuthCoordinator(navigationController: navigationController)
-            authCoordinator.start()
         }
         window.makeKeyAndVisible()
     }
 }
+// let authCoordinator = AuthCoordinator(navigationController: navigationController)
+// authCoordinator.start()

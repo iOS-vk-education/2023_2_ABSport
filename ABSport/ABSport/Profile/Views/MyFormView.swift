@@ -20,7 +20,7 @@ struct MyFormView: View {
                 HStack(alignment: .center) {
                     Button(action: {
                         self.isShowingFirstChart = true
-                    }){
+                    }) {
                         Text("Вес")
                             .foregroundColor(isShowingFirstChart ? Color("BlueButtonColor") : .black)
                             .underline(isShowingFirstChart)

@@ -33,13 +33,12 @@ struct ProfileView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor")
-            VStack {
-                ProfileHeaderView(settingRequested: settingsAction)
-                ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
+            VStack(spacing: 0) {
+                ProfileHeaderView()
+                ProfileContentView(contentRequested: (myFormAction, settingsAction))
                 Spacer()
-                // ProfileFooterView(logoutRequested: logoutAction)
+                ProfileFooterView(logoutRequested: logoutAction)
             }
-            Spacer()
         }
         .navigationTitle("Профиль")
     }
@@ -47,19 +46,14 @@ struct ProfileView: View {
 
 struct ProfileHeaderView: View {
     
-    var settingRequested: () -> Void
-    
     let profile = Profile.preview()
     
     var body: some View {
-        HStack(alignment: .top, spacing: 29) {
-            VStack {
-                Image(profile.image)
-                    .resizable()
-                    .frame(width: 93, height: 93)
-                    .clipShape(Circle())
-                    
-            }
+        HStack(alignment: .center, spacing: 29) {
+            Image(profile.image)
+                .resizable()
+                .frame(width: 93, height: 93)
+                .clipShape(Circle())
             VStack(alignment: .leading, spacing: 10) {
                 Text(profile.name)
                     .font(.system(size: 20))
@@ -72,24 +66,18 @@ struct ProfileHeaderView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.secondary)
             }
-            VStack(alignment: .trailing) {
-                Button(action: settingRequested, label: {
-                    Image("SettingsButton")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                })
-            }
+            Spacer()
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
-        .padding(.vertical, 5)
+        .padding(.vertical, 10)
     }
 }
 
 struct ProfileContentView: View {
     // swiftlint:disable large_tuple
     var contentRequested: (myForm: () -> Void,
-                          reciep: () -> Void,
-                          planner: () -> Void)
+                          settings: () -> Void)
     // swiftlint:enable large_tuple
     var body: some View {
         VStack(alignment: .center) {
@@ -102,17 +90,9 @@ struct ProfileContentView: View {
             .background(
                 RoundedRectangle(cornerRadius: 12.0)
                     .foregroundColor(Color("LightGreyColor")))
-            Button(action: contentRequested.reciep) {
-                ButtonView(image: "ReciepSymbol", label: "Списки заказов")
-            }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
-            Button(action: contentRequested.planner) {
-                ButtonView(image: "PlannerSymbol", label: "Мое расписание")
+            
+            Button(action: contentRequested.settings) {
+                ButtonView(image: "SettingsButton", label: "Настройки")
             }
             .foregroundColor(.black)
             .frame(height: 72)
@@ -121,7 +101,6 @@ struct ProfileContentView: View {
                 RoundedRectangle(cornerRadius: 12.0)
                     .foregroundColor(Color("LightGreyColor")))
         }
-        .padding(.top, 45)
         .padding(.horizontal, 15)
     }
 }

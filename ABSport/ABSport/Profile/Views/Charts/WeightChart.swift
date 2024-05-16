@@ -44,7 +44,7 @@ struct Weight: View {
             }
             .font(.system(size: 14))
             
-            Button(action: { showingSheetChange.toggle()}){
+            Button(action: { showingSheetChange.toggle()}) {
                 Text("Изменить данные")
                     .foregroundStyle(Color("BlueButtonColor"))
                     .underline()

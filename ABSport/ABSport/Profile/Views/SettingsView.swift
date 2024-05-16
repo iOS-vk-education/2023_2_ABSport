@@ -58,7 +58,7 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                // SettingsFooterView()
+                SettingsFooterView()
             }
             
         }
@@ -72,7 +72,7 @@ struct SettingsFooterView: View {
     
     var body: some View {
         HStack {
-            Button(action: {}){
+            Button(action: {}) {
                 Text("Удалить аккаунт")
                     .font(.system(size: 15))
                     .frame(height: 56)
