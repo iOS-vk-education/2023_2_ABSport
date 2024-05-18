@@ -84,22 +84,11 @@ struct ProfileContentView: View {
             Button(action: contentRequested.myForm) {
                 ButtonView(image: "MusculeSymbol", label: "Моя Форма")
             }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
-            
+            .buttonStyle()
             Button(action: contentRequested.settings) {
                 ButtonView(image: "SettingsButton", label: "Настройки")
             }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
+            .buttonStyle()
         }
         .padding(.horizontal, 15)
     }

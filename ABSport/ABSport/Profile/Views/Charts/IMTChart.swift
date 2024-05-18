@@ -89,11 +89,11 @@ struct ChartsViewIMT: View {
                     .foregroundColor(.secondary)
                 .font(.system(size: 14))
             }
-            Button(action: {}) {
+            Button(action: {}, label: {
                 Text("Биоимпедансный анализ")
                     .foregroundStyle(Color("GreenTextColor"))
                     .font(.system(size: 14))
-            }
+            })
             Spacer()
 //            Button(action: { }) {
 //                Text("Внести данные")
@@ -121,4 +121,3 @@ struct ChartsViewIMT: View {
             }
         }
 }
-

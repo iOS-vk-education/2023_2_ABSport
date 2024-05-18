@@ -60,14 +60,14 @@ struct SheetLoginView: View {
                 .padding(.horizontal, 34)
             }
             HStack(alignment: .bottom) {
-                Button(action: {}) {
+                Button(action: {}, label: {
                     RoundedRectangle(cornerRadius: 6.0)
                         .frame(width: 20, height: 20)
                         .background(RoundedRectangle(cornerRadius: 10.0)
                             .stroke(Color("DarkGrayColor"))
                             .foregroundStyle(Color("LightGreyColor"))
                             .frame(width: 28, height: 28))
-                }
+                })
                 Text("Запомнить меня")
                 Spacer()
             }
@@ -76,9 +76,9 @@ struct SheetLoginView: View {
             
             Spacer()
             
-            Button(action: {}) {
+            Button(action: {}, label: {
                 Text("Войти")
-            }
+            })
             .foregroundStyle(Color(.white))
             .frame(height: 40)
             .frame(maxWidth: .infinity)
@@ -89,11 +89,11 @@ struct SheetLoginView: View {
             
             Spacer()
             
-            Button(action: {}) {
+            Button(action: {}, label: {
                 Text("Забыли пароль?")
                     .foregroundStyle(Color("RunningTrainingColor"))
                     .underline()
-            }
+            })
         }
     }
 }

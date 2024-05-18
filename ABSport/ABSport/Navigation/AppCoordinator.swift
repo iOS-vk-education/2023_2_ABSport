@@ -29,11 +29,15 @@ final class AppCoordinator: Coordinator {
             
             window.rootViewController = tabBarCoordinator.rootViewController
         } else {
-            let navigationController = UINavigationController()
-            window.rootViewController = navigationController
+            let loginCoordinator = LoginCoordinator()
+            loginCoordinator.start()
+            self.childCoordinators = [loginCoordinator]
+            
+            window.rootViewController = loginCoordinator.rootViewController
         }
         window.makeKeyAndVisible()
     }
 }
-// let authCoordinator = AuthCoordinator(navigationController: navigationController)
-// authCoordinator.start()
+
+// let loginCoordinator = LoginCoordinator(rootViewController: window.rootViewController!)
+//        loginCoordinator.start()

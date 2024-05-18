@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreData
+import SwiftUI
+
 extension WeightChart {
     
     var uuid: UUID {
@@ -71,6 +73,23 @@ extension WeightChart {
     static func delete(task: WeightChart) {
         guard let context = task.managedObjectContext else { return }
         context.delete(task)
+    }
+    
+    static func dateWrapper(data: FetchedResults<WeightChart>) -> String {
+        guard let lastElement = data.last else {
+            return "Array is empty"
+        }
+        let lastDate = lastElement.date
+        let formateDate = dateCustomFormatter(date: lastDate)
+        return formateDate
+    }
+    
+    static func weightWrapper(data: FetchedResults<WeightChart>) -> String {
+        guard let lastElement = data.last else {
+            return "Array is empty"
+        }
+        let lastWeight = String(describing: lastElement.weight)
+        return lastWeight
     }
     
     static var example: WeightChart {
