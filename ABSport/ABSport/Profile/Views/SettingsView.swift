@@ -84,7 +84,7 @@ struct SettingsFooterView: View {
                             cornerRadius: 12,
                             style: .continuous)
                         .stroke(.red, lineWidth: 1))
-            }) 
+            })
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
         }
