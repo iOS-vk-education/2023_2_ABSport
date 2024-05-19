@@ -11,5 +11,5 @@ struct Trainer {
     var id: String
     var name: String
     var imageURL: String
-    var reservationTypes: [ReservationType] = []
+    var reservationTypes: [String]
 }
