@@ -130,16 +130,17 @@ final class ReservationViewModelImpl: ReservationViewModel {
                 return
             }
             
-            for index in 0...10 {
-                let startDate = self.state.currentDate.addingTimeInterval(TimeInterval(index * 100))
-                allTimeSlots.append(Reservation(id: UUID().uuidString,
-                                                type: .bicycleTraining,
-                                                isIndividual: true,
-                                                numberOfFreeSlots: 1,
-                                                trainerName: "obbrnu",
-                                                startDate: startDate,
-                                                endDate: self.state.currentDate))
-            }
+            for index in 0...11 {
+                            let startDate = Calendar.current.date(bySettingHour: 10, minute: 00, second: 0, of: Date())!.addingTimeInterval(TimeInterval(index * 3600))
+                            let endDate = startDate.addingTimeInterval(TimeInterval(3600))
+                            allTimeSlots.append(Reservation(id: UUID().uuidString,
+                                                            type: .bicycleTraining,
+                                                            isIndividual: true,
+                                                            numberOfFreeSlots: 1,
+                                                            trainerName: "obbrnu",
+                                                            startDate: startDate,
+                                                            endDate: endDate))
+                        }
             
             complition(allTimeSlots)
         }

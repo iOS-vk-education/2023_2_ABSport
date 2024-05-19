@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseDay {
+struct FirebaseDay: Identifiable, Codable  {
     var id: String
     var date: Date // or String
     var users: [FirebaseUser] // or [String] with ids

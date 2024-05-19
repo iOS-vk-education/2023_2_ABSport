@@ -56,7 +56,6 @@
 		2079D5A82B8533150057EA4C /* ABSportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5A72B8533150057EA4C /* ABSportUITests.swift */; };
 		2079D5AA2B8533150057EA4C /* ABSportUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079D5A92B8533150057EA4C /* ABSportUITestsLaunchTests.swift */; };
 		209754082BE5161400287935 /* ReservationModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754072BE5161400287935 /* ReservationModuleType.swift */; };
-		209754492BF6B0CB00287935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 209754482BF6B0CB00287935 /* GoogleService-Info.plist */; };
 		2097544C2BF6B14500287935 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2097544B2BF6B14500287935 /* FirebaseAuth */; };
 		2097544E2BF6B14500287935 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 2097544D2BF6B14500287935 /* FirebaseAuthCombine-Community */; };
 		209754502BF6B14500287935 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2097544F2BF6B14500287935 /* FirebaseDatabase */; };
@@ -72,6 +71,8 @@
 		209754662BF6B41E00287935 /* FirebaseTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754652BF6B41E00287935 /* FirebaseTrainer.swift */; };
 		209754682BF6B43800287935 /* FirebaseReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754672BF6B43800287935 /* FirebaseReservation.swift */; };
 		2097546A2BF6B49800287935 /* FirebaseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754692BF6B49800287935 /* FirebaseDay.swift */; };
+		2097546E2BF93D1400287935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2097546D2BF93D1400287935 /* GoogleService-Info.plist */; };
+		209754702BF9586B00287935 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2097546F2BF9586B00287935 /* Trainer.swift */; };
 		20FEC66F2BACCA570045C1FF /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC66E2BACCA570045C1FF /* ScheduleView.swift */; };
 		20FEC6712BACCA610045C1FF /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC6702BACCA610045C1FF /* ScheduleViewModel.swift */; };
 		20FEC6732BACCA6D0045C1FF /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC6722BACCA6D0045C1FF /* ScheduleViewController.swift */; };
@@ -172,11 +173,12 @@
 		2079D5A72B8533150057EA4C /* ABSportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABSportUITests.swift; sourceTree = "<group>"; };
 		2079D5A92B8533150057EA4C /* ABSportUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABSportUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		209754072BE5161400287935 /* ReservationModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModuleType.swift; sourceTree = "<group>"; };
-		209754482BF6B0CB00287935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		209754632BF6B40800287935 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		209754652BF6B41E00287935 /* FirebaseTrainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTrainer.swift; sourceTree = "<group>"; };
 		209754672BF6B43800287935 /* FirebaseReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReservation.swift; sourceTree = "<group>"; };
 		209754692BF6B49800287935 /* FirebaseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDay.swift; sourceTree = "<group>"; };
+		2097546D2BF93D1400287935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2097546F2BF9586B00287935 /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		20FEC66E2BACCA570045C1FF /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		20FEC6702BACCA610045C1FF /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		20FEC6722BACCA6D0045C1FF /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -435,9 +437,9 @@
 				2079D5832B85330F0057EA4C /* AppDelegate.swift */,
 				2079D5852B85330F0057EA4C /* SceneDelegate.swift */,
 				2079D5872B85330F0057EA4C /* ViewController.swift */,
-				209754482BF6B0CB00287935 /* GoogleService-Info.plist */,
 				2079D58F2B8533140057EA4C /* Assets.xcassets */,
 				2079D5942B8533140057EA4C /* Info.plist */,
+				2097546D2BF93D1400287935 /* GoogleService-Info.plist */,
 				04B2A2CC2BF2B1EC000B017D /* ABSport.xcdatamodeld */,
 			);
 			path = ABSport;
@@ -488,6 +490,7 @@
 			children = (
 				20FEC67C2BACD5500045C1FF /* Reservation.swift */,
 				20FEC6832BACD5E10045C1FF /* User.swift */,
+				2097546F2BF9586B00287935 /* Trainer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -720,7 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2079D5902B8533140057EA4C /* Assets.xcassets in Resources */,
-				209754492BF6B0CB00287935 /* GoogleService-Info.plist in Resources */,
+				2097546E2BF93D1400287935 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +805,7 @@
 				1A77F3492B9724A400C0D1F7 /* RegistrationFullView.swift in Sources */,
 				1A2F7DE32BB5D3BE0032657B /* SmsViewController.swift in Sources */,
 				66A599842BB31B5B00E80EEF /* ChooseGroupTrainingViewController.swift in Sources */,
+				209754702BF9586B00287935 /* Trainer.swift in Sources */,
 				20397BC22BB6DC95008455E4 /* CalendarManager.swift in Sources */,
 				664E86532BD918F1001A768D /* IndividualTrainingViewController.swift in Sources */,
 				04B2A2D52BF2C338000B017D /* NSPrediacte+help.swift in Sources */,
@@ -989,7 +993,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6L22T5KT6C;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ABSport/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1002,7 +1006,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSport;
+				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSportFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1019,7 +1023,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6L22T5KT6C;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ABSport/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1032,7 +1036,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSport;
+				PRODUCT_BUNDLE_IDENTIFIER = ABSport.ABSportFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

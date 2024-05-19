@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>ABSport.ABSport</string>
+	<string>ABSport.ABSportFirebase</string>
 	<key>PROJECT_ID</key>
 	<string>absport-68952</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:131781911617:ios:c3d1241f9f3d7129e052c0</string>
+	<string>1:131781911617:ios:16fc22e6b67eb84ee052c0</string>
 </dict>
 </plist>

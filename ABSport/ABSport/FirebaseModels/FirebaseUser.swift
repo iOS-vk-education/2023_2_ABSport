@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseUser {
+struct FirebaseUser: Identifiable, Codable  {
     var id: String
     var reservations: [FirebaseReservation] // or [String] with ids
 }
