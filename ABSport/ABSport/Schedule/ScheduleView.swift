@@ -227,7 +227,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                                                                                 toType: .dayMonthYear)], 
             !reservations.isEmpty {
             VStack {
-                ForEach(reservations) { reservation in
+                ForEach(reservations.sorted(by: { $0.startDate <= $1.startDate })) { reservation in
                     reservationCell(reservation: reservation)
                 }
             }
@@ -258,7 +258,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                 }
                 .padding(.vertical, 14)
                 
-                Text("\(reservation.isIndividual ? "Групповая тренировка" : "Индивидуальная тренировка")")
+                Text("\(reservation.isIndividual ? "Индивидуальная тренировка" : "Групповая тренировка")")
                     .font(.system(size: 14))
                     .frame(height: 24)
                 Text("Тренер: \(reservation.trainerName ?? "не указан")")

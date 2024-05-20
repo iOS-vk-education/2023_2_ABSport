@@ -14,6 +14,7 @@ class TrainingRegistation {
     var trainingRegistation: Training = Training(trainingType: .unknown, trainingDate: Date())
     var trainingArray: [Training] = []
     var trainer: Trainer?
+    var isIndividual = false
     // Список тренеров
     var groupTrainerList: [String] = [
         "Aлексей Жуков",

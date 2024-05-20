@@ -76,7 +76,7 @@ final class ChooseGroupTrainerViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "backIconColor")
-        titleLabel.text = "Групповые тренировки"
+        titleLabel.text = TrainingRegistation.shared.isIndividual ? "Персональные тренировки" : "Групповые тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "backIconColor")

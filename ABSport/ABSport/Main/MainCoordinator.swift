@@ -41,12 +41,14 @@ class MainTabCoordinator: Coordinator {
     func goToGroupTraining() {
         let groupTrainingCoordinator = GroupTrainingCoordinator(rootViewController: rootViewController)
         self.childCoordinators.append(groupTrainingCoordinator)
+        TrainingRegistation.shared.isIndividual = false
         groupTrainingCoordinator.start()
     }
     
     func goToIndividualTraining() {
-        let individualTrainingCoordinator = IndividualTrainingCoordinator(rootViewController: rootViewController)
-        self.childCoordinators.append(individualTrainingCoordinator)
-        individualTrainingCoordinator.start()
+        let groupTrainingCoordinator = GroupTrainingCoordinator(rootViewController: rootViewController)
+        self.childCoordinators.append(groupTrainingCoordinator)
+        TrainingRegistation.shared.isIndividual = true
+        groupTrainingCoordinator.start()
     }
 }

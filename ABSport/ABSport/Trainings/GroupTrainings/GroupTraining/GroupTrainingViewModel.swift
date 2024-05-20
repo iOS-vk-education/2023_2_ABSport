@@ -50,7 +50,7 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
         reservation.type = TrainingRegistation.shared.trainingRegistation.trainingType
         reservation.trainerName = TrainingRegistation.shared.trainingRegistation.trainerName
         reservation.trainerId = TrainingRegistation.shared.trainingRegistation.trainerId
-        reservation.isIndividual = false
+        reservation.isIndividual = TrainingRegistation.shared.isIndividual
         ReservationManager.shared.sendReservations(forDay: dateFormatter.formate(date: date, toType: .dayMonth),
                                                    reservation: reservation)
         if TrainingRegistation.shared.trainingRegistation.trainingType != .unknown {

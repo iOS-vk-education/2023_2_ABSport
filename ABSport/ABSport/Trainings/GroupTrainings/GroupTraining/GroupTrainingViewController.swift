@@ -14,13 +14,14 @@ final class GroupTrainingViewController: UIViewController {
     let groupTrainingView = TrainingView(frame: UIScreen.main.bounds)
     
     var chooseButton = UIButton().configureChooseTrainingButton()
+    var isIndividual = false
     
-    private let navBarTitleStackView: UIStackView = {
+    private var navBarTitleStackView: UIStackView = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
+        titleLabel.text = TrainingRegistation.shared.isIndividual ? "Персональные тренировки" : "Групповые тренировки"
         let stackView = UIStackView(arrangedSubviews: [titleLabel])
         stackView.axis = .vertical
         return stackView
