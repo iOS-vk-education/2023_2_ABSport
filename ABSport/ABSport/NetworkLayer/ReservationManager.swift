@@ -14,8 +14,9 @@ final class ReservationManager {
     
     static let shared = ReservationManager()
     
-    var userReservationsCache: [String:[Reservation]] = [:] // dayMonth : [user reservations with this day]
+    var userReservationsCache: [String: [Reservation]] = [:] // dayMonth : [user reservations with this day]
     var allTrainersCache: [Trainer] = []
+    var userId = "testUserId 103FC930-40D6-4B35-87DB-FD6749CDC305"
     
     private let dateFormatter = DateFormaterManagerImpl()
     
@@ -26,7 +27,6 @@ final class ReservationManager {
     
     func allReservations(complition: @escaping ([String: [Reservation]]) -> Void ) {
         // MARK: to fetch
-        fetchTrainerReservations(withId: "1", forDay: "2", complition: { _ in print("done")})
         DispatchQueue.main.async {
             let fetchedUser = UserManager.shared.user
             var reservationDictionary: [String: [Reservation]] = [:]
@@ -46,7 +46,7 @@ final class ReservationManager {
             return
         }
         
-        database.collection("allTrainers").addSnapshotListener{ [weak self] (documents, error) in
+        database.collection("allTrainers").addSnapshotListener { [weak self] (documents, error) in
             guard let documents = documents else {
                 print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
                 return
@@ -67,31 +67,12 @@ final class ReservationManager {
     
     /// function of fetching all reservation of current trainer for current day
     func fetchTrainerReservations(withId trainerId: String, forDay day: String, complition: @escaping (Result<[Reservation], Error>) -> Void) {
+    
         database.collection("days")
             .document(day)
             .collection("trainers")
             .document(trainerId)
-            .collection("reservations").addSnapshotListener{ [weak self] (documents, error) in
-            guard let documents = documents else {
-                print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
-                return
-            }
-            
-            documents.documents.forEach { (document) in
-                let dataDescription = document.data()
-                let trainer = dataDescription["id"] as? String ?? ""
-                print(trainer)
-            }
-        }
-    }
-    
-    /// function of fetching all reservation of user for current day
-    func fetchUserReservations(withId userId: String, forDay day: String, complition: @escaping (Result<[Reservation], Error>) -> Void) {
-        database.collection("days")
-            .document(day)
-            .collection("users")
-            .document(userId)
-            .collection("reservations").addSnapshotListener{ [weak self] (documents, error) in
+            .collection("reservations").addSnapshotListener { (documents, error) in
             guard let documents = documents else {
                 print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
                 return
@@ -100,14 +81,15 @@ final class ReservationManager {
             documents.documents.forEach { (document) in
                 let dataDescription = document.data()
                 
-                let type: ReservationType = switch dataDescription["reservationType"] as? String ?? "" {
-                case ReservationType.bicycleTraining.rawValue:
+                let stringType = dataDescription["type"] as? String ?? ""
+                let type: ReservationType = switch stringType {
+                case _ where stringType == ReservationType.bicycleTraining.rawValue:
                         .bicycleTraining
-                case ReservationType.equipmentReservation.rawValue:
+                case _ where stringType == ReservationType.equipmentReservation.rawValue:
                         .equipmentReservation
-                case ReservationType.poolTraining.rawValue:
+                case _ where stringType == ReservationType.poolTraining.rawValue:
                         .poolTraining
-                case ReservationType.runningTraining.rawValue:
+                case _ where stringType == ReservationType.runningTraining.rawValue:
                         .runningTraining
                 default:
                         .unknown
@@ -118,20 +100,107 @@ final class ReservationManager {
                                               isIndividual: dataDescription["isIndividual"] as? Bool ?? true,
                                               numberOfFreeSlots: dataDescription["numberOfFreeSlots"] as? Int ?? 0,
                                               trainerName: dataDescription["trainerName"] as? String ?? nil,
+                                              trainerId: dataDescription["trainerId"] as? String ?? nil,
                                               startDate: dataDescription["startDate"] as? Date ?? Date(),
                                               endDate: dataDescription["endDate"] as? Date ?? Date())
-                print(reservation)
             }
         }
     }
     
-    func sendReservation(forDay: String, reservation: FirebaseReservation) {
-        DispatchQueue.main.async {
-            do {
-                try self.database.collection("test").document("test1").setData(from: reservation)
-            } catch {
-                print("Error adding messages to Firestore: \(error.localizedDescription)")
-            }
+    /// function of sending reservation of current trainer and user for current day
+    func sendReservations(forDay day: String, reservation: Reservation) {
+        
+        let firebaseReservation = FirebaseReservation(userId: userId,
+                                                      reservation: reservation)
+        do {
+            try self.database.collection("days")
+                .document(day)
+                .collection("trainers")
+                .document(firebaseReservation.trainerId)
+                .collection("reservations").document(firebaseReservation.id).setData(from: firebaseReservation)
+            
+            try self.database.collection("days")
+                .document(day)
+                .collection("users")
+                .document(firebaseReservation.userId)
+                .collection("reservations").document(firebaseReservation.id).setData(from: firebaseReservation)
+        } catch {
+            print("Error adding messages to Firestore: \(error.localizedDescription)")
         }
+    }
+    
+    /// function of deleting current reservation of current trainer and user for current day
+    func deleteReservation(forDay day: String, reservation: Reservation) {
+        let firebaseReservation = FirebaseReservation(userId: "testUserId 103FC930-40D6-4B35-87DB-FD6749CDC305",
+                                                      reservation: reservation)
+        
+        self.database.collection("days")
+            .document(day)
+            .collection("trainers")
+            .document(firebaseReservation.trainerId)
+            .collection("reservations").document(firebaseReservation.id).delete { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        
+        self.database.collection("days")
+            .document(day)
+            .collection("users")
+            .document(firebaseReservation.userId)
+            .collection("reservations").document(firebaseReservation.id).delete { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+    }
+    
+    /// function of fetching all reservation of user for current day
+    func fetchUserReservations(withId userId: String, forDay day: String, complition: @escaping (Result<[Reservation], Error>) -> Void) {
+        database.collection("days")
+            .document(day)
+            .collection("users")
+            .document(userId)
+            .collection("reservations").addSnapshotListener { (documents, error) in
+                guard let documents = documents else {
+                    print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
+                    return
+                }
+                
+                var reservations: [Reservation] = []
+                
+                documents.documents.forEach { (document) in
+                    let dataDescription = document.data()
+                    
+                    let stringType = dataDescription["type"] as? String ?? ""
+                    let type: ReservationType = switch stringType {
+                    case _ where stringType == ReservationType.bicycleTraining.rawValue:
+                            .bicycleTraining
+                    case _ where stringType == ReservationType.equipmentReservation.rawValue:
+                            .equipmentReservation
+                    case _ where stringType == ReservationType.poolTraining.rawValue:
+                            .poolTraining
+                    case _ where stringType == ReservationType.runningTraining.rawValue:
+                            .runningTraining
+                    default:
+                            .unknown
+                    }
+                    
+                    let reservation = Reservation(id: dataDescription["id"] as? String ?? "",
+                                                  type: type,
+                                                  isIndividual: dataDescription["isIndividual"] as? Bool ?? true,
+                                                  numberOfFreeSlots: dataDescription["numberOfFreeSlots"] as? Int ?? 0,
+                                                  trainerName: dataDescription["trainerName"] as? String ?? nil,
+                                                  trainerId: dataDescription["trainerId"] as? String ?? nil,
+                                                  startDate: Date(timeIntervalSince1970: TimeInterval((dataDescription["startDate"] as? Timestamp)?.seconds ?? 0)),
+                                                  endDate: Date(timeIntervalSince1970: TimeInterval((dataDescription["endDate"] as? Timestamp)?.seconds ?? 0)))
+                    reservations.append(reservation)
+                }
+                complition(.success(reservations))
+            }
     }
 }

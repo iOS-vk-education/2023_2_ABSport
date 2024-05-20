@@ -21,6 +21,7 @@ struct Reservation: Identifiable, Hashable {
     let isIndividual: Bool
     var numberOfFreeSlots: Int
     let trainerName: String?
+    let trainerId: String?
     let startDate: Date
     let endDate: Date
 }

@@ -224,7 +224,7 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
     func tasksAndReservationList(forDate date: Date) -> some View {
         
         if let reservations = viewModel.state.allReservations[viewModel.formate(date: date,
-                                                                                toType: .dayMonthYear)] {
+                                                                                toType: .dayMonthYear)], !reservations.isEmpty {
             VStack {
                 ForEach(reservations) { reservation in
                     reservationCell(reservation: reservation)
@@ -263,14 +263,14 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
                 Text("Тренер: \(reservation.trainerName ?? "не указан")")
                     .font(.system(size: 14))
                     .frame(height: 24)
-                Text("Осталось мест: \(reservation.numberOfFreeSlots)")
-                    .font(.system(size: 14))
-                    .frame(height: 24)
-                    .padding(.bottom, 14)
+//                Text("Осталось мест: \(reservation.numberOfFreeSlots)")
+//                    .font(.system(size: 14))
+//                    .frame(height: 24)
+//                    .padding(.bottom, 14)
             }
             .padding(.horizontal, 5)
             Button {
-                print("viewModel.cancelReservation")
+                viewModel.handle(.tapOnCancelButton(reservation: reservation))
             } label: {
                 Text("Отменить запись")
                     .foregroundColor(Color("RedButtonColor"))

@@ -52,7 +52,8 @@ final class ReservationViewModelImpl: ReservationViewModel {
     
     /// function to choose time slot for reservation
     func chooseTimeSlot(_ reservation: Reservation) {
-        state.choosenTime = formate(date: reservation.startDate, toType: .time)
+        state.choosenTime = reservation.startDate
+        print(reservation.startDate)
         state.chooseButtonDisabled = false
     }
     
@@ -60,7 +61,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     func setNewCurrentDay(withDate date: Date) {
         
         if state.currentDate != date {
-            state.choosenTime = "0"
+            state.choosenTime = Calendar.current.date(bySettingHour: 00, 
+                                                      minute: 00,
+                                                      second: 1,
+                                                      of: Date())!
             state.timeSlotsLoaded = false
             state.chooseButtonDisabled = true
         }
@@ -77,7 +81,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     /// function open next week
     func openNextWeek() {
         
-        state.choosenTime = "0"
+        state.choosenTime = Calendar.current.date(bySettingHour: 00, 
+                                                  minute: 00,
+                                                  second: 1,
+                                                  of: state.currentDate)!
         state.timeSlotsLoaded = false
         state.chooseButtonDisabled = true
         
@@ -88,7 +95,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     /// function open previous week
     func openPreviousWeek() {
         
-        state.choosenTime = "0"
+        state.choosenTime = Calendar.current.date(bySettingHour: 00, 
+                                                  minute: 00,
+                                                  second: 1,
+                                                  of: state.currentDate)!
         state.timeSlotsLoaded = false
         state.chooseButtonDisabled = true
         
@@ -117,6 +127,19 @@ final class ReservationViewModelImpl: ReservationViewModel {
                         title: "Уведомление о записи",
                         subtitle: "",
                         body: "Вы записаны на время: \(date)")
+        
+        let startDate = state.choosenTime
+        let endDate = startDate.addingTimeInterval(TimeInterval(3600))
+        let reservation = Reservation(id: UUID().uuidString,
+                                      type: .bicycleTraining,
+                                      isIndividual: true,
+                                      numberOfFreeSlots: 1,
+                                      trainerName: "obbrnu",
+                                      trainerId: "testTrainerId " + UUID().uuidString,
+                                      startDate: startDate,
+                                      endDate: endDate)
+        ReservationManager.shared.sendReservations(forDay: formate(date: state.currentDate, toType: .dayMonth),
+                                                   reservation: reservation)
     }
     
     func allTimeSlots(forCurrentDate date: Date, complition: @escaping ([Reservation]) -> Void) {
@@ -131,15 +154,19 @@ final class ReservationViewModelImpl: ReservationViewModel {
             }
             
             for index in 0...11 {
-                            let startDate = Calendar.current.date(bySettingHour: 10, minute: 00, second: 0, of: Date())!.addingTimeInterval(TimeInterval(index * 3600))
-                            let endDate = startDate.addingTimeInterval(TimeInterval(3600))
-                            allTimeSlots.append(Reservation(id: UUID().uuidString,
-                                                            type: .bicycleTraining,
-                                                            isIndividual: true,
-                                                            numberOfFreeSlots: 1,
-                                                            trainerName: "obbrnu",
-                                                            startDate: startDate,
-                                                            endDate: endDate))
+                let startDate = Calendar.current.date(bySettingHour: 10,
+                                                      minute: 00,
+                                                      second: 0,
+                                                      of: Date())!.addingTimeInterval(TimeInterval(index * 3600))
+                let endDate = startDate.addingTimeInterval(TimeInterval(3600))
+                allTimeSlots.append(Reservation(id: UUID().uuidString,
+                                                type: .bicycleTraining,
+                                                isIndividual: true,
+                                                numberOfFreeSlots: 1,
+                                                trainerName: "obbrnu",
+                                                trainerId: "1",
+                                                startDate: startDate,
+                                                endDate: endDate))
                         }
             
             complition(allTimeSlots)

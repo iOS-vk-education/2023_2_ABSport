@@ -21,7 +21,7 @@ struct ReservationViewModelState {
     var currentDate = Date()
     var availableTimeSlots: [Reservation] = []
     var currentWeek: [Date] = []
-    var choosenTime = "0"
+    var choosenTime = Calendar.current.date(bySettingHour: 00, minute: 00, second: 1, of: Date())!
     var chooseButtonDisabled = true
     var timeSlotsLoaded = false
 }
