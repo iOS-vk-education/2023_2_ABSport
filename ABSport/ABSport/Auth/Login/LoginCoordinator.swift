@@ -17,10 +17,12 @@ final class LoginCoordinator: Coordinator {
     init(viewModel: AuthViewModel) {
         self.rootViewController = UINavigationController()
         self.viewModel = viewModel
+        self.rootViewController.navigationItem.hidesBackButton = true
     }
     
     lazy var loginViewController: UIViewController = {
         let viewController = UIHostingController(rootView:LoginView(regisrtAction: { [weak self] in self?.goToRegistr()} ).environmentObject(viewModel))
+        viewController.navigationItem.hidesBackButton = true
         return viewController
     }()
     
@@ -29,8 +31,13 @@ final class LoginCoordinator: Coordinator {
     }
     
     func goToRegistr() {
-        let registrationViewController = UIHostingController(rootView: RegistrationView().environmentObject(viewModel))
+        let registrationViewController = UIHostingController(rootView: RegistrationView(loginAction: { [weak self] in self?.goToLogin()}).environmentObject(viewModel))
+        registrationViewController.navigationItem.hidesBackButton = true
         rootViewController.pushViewController(registrationViewController, animated: true)
+    }
+    
+    func goToLogin() {
+        rootViewController.popViewController(animated: true)
     }
 }
 

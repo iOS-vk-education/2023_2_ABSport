@@ -24,10 +24,15 @@ struct Weight: View {
     @State private var selectedButton: SelectButton = .week
     
     @State private var showingSheetInsert: Bool = false
+    @State private var showingSheetDetail: Bool = false
     @State private var showingSheetChange: Bool = false
+    @State private var selectedWeightChart: WeightChart?
     @State private var weight: String = ""
+    
     @State private var showAlertInsert: Bool = false
     @State private var showAlertChange: Bool = false
+    
+    @State private var selectedDate = Date()
     
     var body: some View {
         VStack {
@@ -113,9 +118,55 @@ struct Weight: View {
         .padding()
         .sheet(isPresented: $showingSheetChange) {
             VStack {
-                TextField("Введите вес", text: $weight)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                List(filterData) { data in
+                    Button(action: {showingSheetDetail.toggle()
+                    selectedWeightChart = data}, label: {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Вес:")
+                                    .foregroundStyle(.backIcon)
+                                    .bold()
+                                Text("\(data.weight, specifier: "%.2f") кг")
+                                    .foregroundStyle(.backIcon)
+                            }
+                            HStack {
+                                Text("Дата:")
+                                    .bold()
+                                    .foregroundStyle(.backIcon)
+                                Text("\(data.date, formatter: dateFormatter)")
+                                    .foregroundStyle(.backIcon)
+                            }
+                        }
+                    })
+                }
+                .sheet(isPresented: $showingSheetDetail, content: {
+                    VStack {
+                        VStack {
+                            DatePicker("",
+                                selection: $selectedDate,
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(WheelDatePickerStyle()) // Стиль календаря
+                            .padding()
+                            Text("Выбранная дата: \(selectedDate, formatter: dateFormatter)")
+                        }
+                        TextField("Введите вес", text: $weight)
+                            .padding()
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Button("Готово") {
+                            if let weightFloat = Float(weight), weightFloat > 0 {
+                                let mark = WeightChart(weight: weightFloat, date: selectedDate, context: context)
+                                PersistenceController.shared.save()
+                                showAlertInsert = false
+                                showingSheetDetail = false
+                            } else {
+                                showAlertInsert = true
+                            }
+                        }
+                        .padding()
+                    }
+                    .presentationDetents([.medium])
+                })
                 Button("Готово") {
                     if let weightFloat = Float(weight), weightFloat > 0 {
                         WeightChart.editLast(with: weightFloat, context: context)
@@ -153,12 +204,21 @@ struct Weight: View {
         }
         .sheet(isPresented: $showingSheetInsert) {
             VStack {
+                VStack {
+                    DatePicker("",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(WheelDatePickerStyle()) // Стиль календаря
+                    .padding()
+                    Text("Выбранная дата: \(selectedDate, formatter: dateFormatter)")
+                }
                 TextField("Введите вес", text: $weight)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button("Готово") {
                     if let weightFloat = Float(weight), weightFloat > 0 {
-                        let mark = WeightChart(weight: weightFloat, date: getCurrentDateTimeInLocalTimezone(), context: context)
+                        let mark = WeightChart(weight: weightFloat, date: selectedDate, context: context)
                         PersistenceController.shared.save()
                         showAlertInsert = false
                         showingSheetInsert = false
@@ -189,6 +249,14 @@ struct Weight: View {
         case .year:
             filterData = dataManager.filterDataForYear(data: weightChart)
         }
+    }
+    
+    private var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    formatter.locale = Locale(identifier: "ru_RU")
+    return formatter
     }
 }
 
@@ -226,4 +294,34 @@ extension View {
     func barTextStyle(selectedButton: SelectButton, buttonType: SelectButton) -> some View {
         modifier(BarTextModifier(selectedButton: selectedButton, buttonType: buttonType))
     }
+}
+
+
+struct DatePickerView: View {
+    @State private var selectedDate = Date()
+    
+    var body: some View {
+        VStack {
+            DatePicker("",
+                selection: $selectedDate,
+                displayedComponents: [.date]
+            )
+            .datePickerStyle(WheelDatePickerStyle()) // Стиль календаря
+            .padding()
+            Text("Выбранная дата: \(selectedDate, formatter: dateFormatter)")
+            Text("Реальная дата:\(selectedDate)")
+                .padding()
+        }
+    }
+    private var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    formatter.locale = Locale(identifier: "ru_RU")
+    return formatter
+    }
+}
+
+#Preview {
+    DatePickerView()
 }

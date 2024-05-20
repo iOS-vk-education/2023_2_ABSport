@@ -22,8 +22,9 @@ struct LoginView: View {
                     .foregroundStyle(Color.white)
                 SheetLoginView(viewModel: viewModel, registrRequested: regisrtAction)
             }
-            .frame(height: UIScreen.main.bounds.height / 2)
+            //.frame(height: UIScreen.main.bounds.height / 2)
         }
+        .navigationBarBackButtonHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("LoadColor"))
     }
@@ -48,6 +49,7 @@ struct SheetLoginView: View {
                 VStack(alignment: .leading) {
                     Text("Электронная почта")
                     TextField("", text: $email)
+                        .padding()
                         .frame(height: 40)
                         .textInputAutocapitalization(.never)
                         .background(
@@ -61,6 +63,7 @@ struct SheetLoginView: View {
                 VStack(alignment: .leading) {
                     Text("Пароль")
                     SecureField("", text: $password)
+                        .padding()
                         .frame(height: 40)
                         .background(
                             RoundedRectangle(cornerRadius: 12.0)

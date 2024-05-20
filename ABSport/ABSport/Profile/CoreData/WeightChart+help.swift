@@ -92,6 +92,29 @@ extension WeightChart {
         return lastWeight
     }
     
+    static func editWeightChart(by uuid: UUID, with newWeight: Float, newDate: Date, context: NSManagedObjectContext) {
+        
+        let fetchRequest: NSFetchRequest<WeightChart> = WeightChart.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "uuid_ == %@", uuid as CVarArg)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            
+            let weightCharts = try context.fetch(fetchRequest)
+            if let weightChart = weightCharts.first {
+                
+                weightChart.weight = newWeight
+                weightChart.date = newDate
+                
+                try context.save()
+            } else {
+                print("WeightChart with UUID \(uuid) not found.")
+            }
+        } catch {
+            print("Error editing weight chart: \(error)")
+        }
+    }
+    
     static var example: WeightChart {
         let context = PersistenceController.preview.container.viewContext
         let mark = WeightChart(weight: 78.00, date: Date(), context: context)

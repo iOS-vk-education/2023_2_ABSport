@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    
     @EnvironmentObject var viewModel: AuthViewModel
+    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var fullName: String = ""
+    
+    var loginAction: () -> Void
     
     var body: some View {
         VStack(alignment: .center) {
@@ -22,19 +26,17 @@ struct RegistrationView: View {
                 RoundedRectangle(cornerRadius: 12.0)
                     .ignoresSafeArea()
                     .foregroundStyle(Color.white)
-                //SheetRegistrationView()
                 VStack {
                     Text("Регистрация")
                         .bold()
                         .font(.title)
                         .padding()
-                    
-                    //Spacer()
-                    
+
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Полное имя")
                             TextField("", text: $fullName)
+                                .padding()
                                 .frame(height: 40)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12.0)
@@ -47,6 +49,7 @@ struct RegistrationView: View {
                         VStack(alignment: .leading) {
                             Text("Электронная почта")
                             TextField("", text: $email)
+                                .padding()
                                 .frame(height: 40)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12.0)
@@ -59,6 +62,7 @@ struct RegistrationView: View {
                         VStack(alignment: .leading) {
                             Text("Пароль")
                             SecureField("Введите пароль", text: $password)
+                                .padding()
                                 .textContentType(nil)
                                 .frame(height: 40)
                                 .background(
@@ -73,6 +77,7 @@ struct RegistrationView: View {
                             VStack(alignment: .leading) {
                                 Text("Проверка пароля")
                                 SecureField("Введите пароль", text: $confirmPassword)
+                                    .padding()
                                     .textContentType(nil)
                                     .frame(height: 40)
                                     .background(
@@ -125,7 +130,7 @@ struct RegistrationView: View {
                     
                     Spacer()
                     
-                    Button(action: {}, label: {
+                    Button(action: loginAction, label: {
                         Text("Уже есть аккаунт?")
                             .foregroundStyle(Color("RunningTrainingColor"))
                         Text("Войти")
@@ -135,6 +140,7 @@ struct RegistrationView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("LoadColor"))
     }
@@ -151,86 +157,6 @@ extension RegistrationView: AutentificationFormProtocol {
     }
 }
 
-//struct SheetRegistrationView: View {
-//    @State private var login: String = ""
-//    @State private var password: String = ""
-//    @State private var fullName: String = ""
-//    var body: some View {
-//        VStack {
-//            Text("Регистрация")
-//                .bold()
-//                .font(.title)
-//                .padding()
-//            
-//            Spacer()
-//            
-//            HStack {
-//                VStack(alignment: .leading) {
-//                    Text("Полное имя")
-//                    TextField("", text: $fullName)
-//                        .frame(height: 40)
-//                        .background(
-//                            RoundedRectangle(cornerRadius: 12.0)
-//                                .stroke(Color("DarkGrayColor"), lineWidth: 1)
-//                                .foregroundStyle(Color("LightGreyColor")))
-//                }
-//                .padding(.horizontal, 34)
-//            }
-//            HStack {
-//                VStack(alignment: .leading) {
-//                    Text("Электронная почта")
-//                    TextField("", text: $login)
-//                        .frame(height: 40)
-//                        .background(
-//                            RoundedRectangle(cornerRadius: 12.0)
-//                                .stroke(Color("DarkGrayColor"), lineWidth: 1)
-//                                .foregroundStyle(Color("LightGreyColor")))
-//                }
-//                .padding(.horizontal, 34)
-//            }
-//            HStack {
-//                VStack(alignment: .leading) {
-//                    Text("Пароль")
-//                    SecureField("", text: $password)
-//                        .frame(height: 40)
-//                        .background(
-//                            RoundedRectangle(cornerRadius: 12.0)
-//                                .stroke(Color("DarkGrayColor"), lineWidth: 1)
-//                                .foregroundStyle(Color("LightGreyColor")))
-//                }
-//                .padding(.horizontal, 34)
-//            }
-//            
-//            Spacer()
-//            
-//            Button{
-//                Task {
-//                    try await 
-//                }
-//            }label: {
-//                Text("Зарегестрироваться")
-//            }
-//            .foregroundStyle(Color(.white))
-//            .frame(height: 40)
-//            .frame(maxWidth: .infinity)
-//            .background(
-//                RoundedRectangle(cornerRadius: 12.0)
-//                    .foregroundStyle(Color("BlueButtonColor")))
-//            .padding(.horizontal, 34)
-//            
-//            Spacer()
-//            
-//            Button(action: {}, label: {
-//                Text("Уже есть аккаунт?")
-//                    .foregroundStyle(Color("RunningTrainingColor"))
-//                Text("Войти")
-//                    .foregroundStyle(Color("RunningTrainingColor"))
-//                    .bold()
-//            })
-//        }
-//    }
-//}
-
 #Preview {
-    RegistrationView()
+    RegistrationView(loginAction: {})
 }
