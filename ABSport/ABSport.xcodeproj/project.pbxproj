@@ -73,6 +73,8 @@
 		2097546A2BF6B49800287935 /* FirebaseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754692BF6B49800287935 /* FirebaseDay.swift */; };
 		2097546E2BF93D1400287935 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2097546D2BF93D1400287935 /* GoogleService-Info.plist */; };
 		209754702BF9586B00287935 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2097546F2BF9586B00287935 /* Trainer.swift */; };
+		209754722BFBE23500287935 /* TrainingRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754712BFBE23400287935 /* TrainingRegistration.swift */; };
+		209754742BFBE67B00287935 /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209754732BFBE67B00287935 /* TrainingModel.swift */; };
 		20FEC66F2BACCA570045C1FF /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC66E2BACCA570045C1FF /* ScheduleView.swift */; };
 		20FEC6712BACCA610045C1FF /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC6702BACCA610045C1FF /* ScheduleViewModel.swift */; };
 		20FEC6732BACCA6D0045C1FF /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FEC6722BACCA6D0045C1FF /* ScheduleViewController.swift */; };
@@ -179,6 +181,8 @@
 		209754692BF6B49800287935 /* FirebaseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDay.swift; sourceTree = "<group>"; };
 		2097546D2BF93D1400287935 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2097546F2BF9586B00287935 /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
+		209754712BFBE23400287935 /* TrainingRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingRegistration.swift; sourceTree = "<group>"; };
+		209754732BFBE67B00287935 /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
 		20FEC66E2BACCA570045C1FF /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		20FEC6702BACCA610045C1FF /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		20FEC6722BACCA6D0045C1FF /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -580,6 +584,8 @@
 				66A5997C2BB31A5B00E80EEF /* GroupTrainingViewController.swift */,
 				043545412BC07E9400151ED5 /* GroupTrainingCoordinator.swift */,
 				664E864F2BD6B813001A768D /* GroupTrainingViewModel.swift */,
+				209754712BFBE23400287935 /* TrainingRegistration.swift */,
+				209754732BFBE67B00287935 /* TrainingModel.swift */,
 			);
 			path = GroupTraining;
 			sourceTree = "<group>";
@@ -791,6 +797,7 @@
 				66A599872BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift in Sources */,
 				047D7EEC2BF3723A00E98C55 /* IMTChart.swift in Sources */,
 				1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */,
+				209754742BFBE67B00287935 /* TrainingModel.swift in Sources */,
 				20FEC6752BACCB470045C1FF /* ScheduleCoordinator.swift in Sources */,
 				664E865B2BD91BBF001A768D /* ChooseIndividualTrainingViewController.swift in Sources */,
 				1A907EE92B90A49500FBF281 /* RegistrationViewController.swift in Sources */,
@@ -817,6 +824,7 @@
 				20397BC92BBB08AE008455E4 /* ReservationViewModel.swift in Sources */,
 				20397BC42BB81CE5008455E4 /* ScheduleViewModelImpl.swift in Sources */,
 				047D7EEA2BF371A700E98C55 /* WeightChart.swift in Sources */,
+				209754722BFBE23500287935 /* TrainingRegistration.swift in Sources */,
 				666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */,
 				20397BC02BB6DC6F008455E4 /* CalendarManagerImpl.swift in Sources */,
 				1A907EE52B9092EE00FBF281 /* AuthCoordinator.swift in Sources */,

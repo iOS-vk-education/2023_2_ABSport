@@ -9,11 +9,26 @@ import UIKit
 
 final class ChooseGroupTrainerViewController: UIViewController {
     
+    let viewModel: GroupTrainingViewModel?
+    
+    var trainerName: String = ""
+    var trainerId: String = ""
+    var trainer: Trainer? = nil
+    
     private var chooseButton = UIButton().configureChooseTrainingButton()
     
     private var collectionView: UICollectionView!
     
     private var selectedCellButtonIndexPath: IndexPath?
+    
+    init(viewModel: GroupTrainingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +53,13 @@ final class ChooseGroupTrainerViewController: UIViewController {
     @objc
     private func didTapChooseButton() {
         //
-        print("choose")
+    print("choose")
+        // singleton
+        TrainingRegistation.shared.trainingRegistation.trainerName = trainerName
+        TrainingRegistation.shared.trainingRegistation.trainerId = trainerId
+        TrainingRegistation.shared.trainer = trainer
+        viewModel?.coordinator?.updateTrainer()
+        
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
@@ -70,7 +91,8 @@ final class ChooseGroupTrainerViewController: UIViewController {
 extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //
-        20
+        ReservationManager.shared.allTrainersCache.count
+//        TrainingRegistation.shared.groupTrainerList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,14 +102,20 @@ extension ChooseGroupTrainerViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+//        let trainer = TrainingRegistation.shared.groupTrainerList[indexPath.row]
+        let trainer = ReservationManager.shared.allTrainersCache[indexPath.row]
         cell.configureTrainerCell(
             trainerPhoto: nil,
-            trainerName: "Алексей Жуков",
+            trainerName: trainer.name,
             trainerStatus: "Групповой тренер")
 
         if indexPath == selectedCellButtonIndexPath {
             cell.cellButton.layer.borderWidth = 4
             cell.cellButton.layer.borderColor = UIColor(named: "GroupTrainers/ButtonColor")?.cgColor
+            
+            trainerName = trainer.name
+            trainerId = trainer.id
+            self.trainer = trainer
         } else {
             cell.cellButton.layer.borderWidth = 0
         }

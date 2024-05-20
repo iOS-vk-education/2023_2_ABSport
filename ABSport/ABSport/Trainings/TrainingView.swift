@@ -13,20 +13,24 @@ final class TrainingView: UIView {
     var didTapChooseTrainingButton: (() -> Void)?
     var didTapChooseDateButton: (() -> Void)?
     
-    private lazy var chooseTrainerButton: UIButton = {
+    lazy var chooseTrainerButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/UserMale", title: "Выбрать тренера")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var chooseTrainingButton: UIButton = {
+    lazy var chooseTrainingButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/Shortlist", title: "Выбрать тренировку")
+        button.isEnabled = false
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var chooseDateButton: UIButton = {
+    lazy var chooseDateButton: UIButton = {
         let button = configureChooseButton(imageName: "GroupTrainers/Schedule", title: "Выбрать дату и время")
+        button.isEnabled = false
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -36,10 +40,26 @@ final class TrainingView: UIView {
         self.backgroundColor = UIColor(named: "BackgroundColor")
         configureButtons()
         setUpButtonTargets()
+//        addOKImage(to: chooseTrainerButton)
+//        addOKImage(to: chooseTrainingButton)
+//        addOKImage(to: chooseDateButton)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addOKImage(to button: UIButton) {
+        let okImage = UIImageView()
+        okImage.translatesAutoresizingMaskIntoConstraints = false
+        okImage.image = UIImage(named: "GroupTrainers/OK")
+        button.addSubview(okImage)
+        NSLayoutConstraint.activate([
+            okImage.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            okImage.rightAnchor.constraint(equalTo: button.rightAnchor, constant: -16),
+            okImage.heightAnchor.constraint(equalToConstant: 32),
+            okImage.widthAnchor.constraint(equalToConstant: 32)
+        ])
     }
     
     private func setUpButtonTargets() {

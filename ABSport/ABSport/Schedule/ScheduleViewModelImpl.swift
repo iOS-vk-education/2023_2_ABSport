@@ -98,9 +98,9 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
         
         state.reservationsFetched = false
         // MARK: - delete just mock
-        ReservationManager.shared.fetchUserReservations(withId: "testUserId 103FC930-40D6-4B35-87DB-FD6749CDC305",
-                                                        forDay: formate(date: date, toType: .dayMonth))
-        { [weak self] result in
+        ReservationManager.shared.fetchUserReservations(withId: ReservationManager.shared.userId,
+                                                        forDay: formate(date: date,
+                                                                        toType: .dayMonth)){ [weak self] result in
             guard let self else {
                 return
             }

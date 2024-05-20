@@ -190,7 +190,8 @@ struct ReservationView<ViewModel: ReservationViewModel>: View {
         
         Button(action: {
             withAnimation {
-                viewModel.handle(.tapOnChooseButton(withDate: viewModel.formate(date: viewModel.state.choosenTime, toType: .time)))
+                viewModel.handle(.tapOnChooseButton(withDate: viewModel.formate(date: viewModel.state.choosenTime, 
+                                                                                toType: .time)))
             }
         }, label: {
             Text("Выбрать")

@@ -8,7 +8,7 @@
 import Foundation
 
 enum ReservationType: String {
-    case poolTraining = "Бассейн"
+    case poolTraining = "Силовая тренировка"
     case runningTraining = "Бег"
     case bicycleTraining = "Велосипед"
     case equipmentReservation = "Бронь станка"
@@ -17,11 +17,11 @@ enum ReservationType: String {
 
 struct Reservation: Identifiable, Hashable {
     let id: String
-    let type: ReservationType
-    let isIndividual: Bool
+    var type: ReservationType
+    var isIndividual: Bool
     var numberOfFreeSlots: Int
-    let trainerName: String?
-    let trainerId: String?
-    let startDate: Date
-    let endDate: Date
+    var trainerName: String?
+    var trainerId: String?
+    var startDate: Date
+    var endDate: Date
 }

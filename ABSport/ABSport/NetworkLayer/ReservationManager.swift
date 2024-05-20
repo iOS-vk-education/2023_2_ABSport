@@ -66,45 +66,53 @@ final class ReservationManager {
     }
     
     /// function of fetching all reservation of current trainer for current day
-    func fetchTrainerReservations(withId trainerId: String, forDay day: String, complition: @escaping (Result<[Reservation], Error>) -> Void) {
-    
+    func fetchTrainerReservations(withId trainerId: String, forDay day: String, complition: @escaping ([Reservation]) -> Void) {
+        
         database.collection("days")
             .document(day)
             .collection("trainers")
             .document(trainerId)
             .collection("reservations").addSnapshotListener { (documents, error) in
-            guard let documents = documents else {
-                print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
-                return
-            }
-            
-            documents.documents.forEach { (document) in
-                let dataDescription = document.data()
-                
-                let stringType = dataDescription["type"] as? String ?? ""
-                let type: ReservationType = switch stringType {
-                case _ where stringType == ReservationType.bicycleTraining.rawValue:
-                        .bicycleTraining
-                case _ where stringType == ReservationType.equipmentReservation.rawValue:
-                        .equipmentReservation
-                case _ where stringType == ReservationType.poolTraining.rawValue:
-                        .poolTraining
-                case _ where stringType == ReservationType.runningTraining.rawValue:
-                        .runningTraining
-                default:
-                        .unknown
+                guard let documents = documents else {
+                    print("Error fetching documents: \(String(describing: error)) or documents doesn't exist")
+                    return
                 }
                 
-                let reservation = Reservation(id: dataDescription["id"] as? String ?? "",
-                                              type: type,
-                                              isIndividual: dataDescription["isIndividual"] as? Bool ?? true,
-                                              numberOfFreeSlots: dataDescription["numberOfFreeSlots"] as? Int ?? 0,
-                                              trainerName: dataDescription["trainerName"] as? String ?? nil,
-                                              trainerId: dataDescription["trainerId"] as? String ?? nil,
-                                              startDate: dataDescription["startDate"] as? Date ?? Date(),
-                                              endDate: dataDescription["endDate"] as? Date ?? Date())
+                var reservations: [Reservation] = []
+                
+                documents.documents.forEach { (document) in
+                    let dataDescription = document.data()
+                    
+                    let stringType = dataDescription["type"] as? String ?? ""
+                    let type: ReservationType = switch stringType {
+                    case _ where stringType == ReservationType.bicycleTraining.rawValue:
+                            .bicycleTraining
+                    case _ where stringType == ReservationType.equipmentReservation.rawValue:
+                            .equipmentReservation
+                    case _ where stringType == ReservationType.poolTraining.rawValue:
+                            .poolTraining
+                    case _ where stringType == ReservationType.runningTraining.rawValue:
+                            .runningTraining
+                    default:
+                            .unknown
+                    }
+                    
+                    let reservation = Reservation(id: dataDescription["id"] as? String ?? "",
+                                                  type: type,
+                                                  isIndividual: dataDescription["isIndividual"] as? Bool ?? true,
+                                                  numberOfFreeSlots: dataDescription["numberOfFreeSlots"] as? Int ?? 0,
+                                                  trainerName: dataDescription["trainerName"] as? String ?? nil,
+                                                  trainerId: dataDescription["trainerId"] as? String ?? nil,
+                                                  startDate: Date(timeIntervalSince1970:
+                                                                    TimeInterval((dataDescription["startDate"] as?
+                                                                                  Timestamp)?.seconds ?? 0)),
+                                                  endDate: Date(timeIntervalSince1970:
+                                                                    TimeInterval((dataDescription["endDate"] as?
+                                                                                  Timestamp)?.seconds ?? 0)))
+                    reservations.append(reservation)
+                }
+                complition(reservations)
             }
-        }
     }
     
     /// function of sending reservation of current trainer and user for current day
@@ -131,7 +139,7 @@ final class ReservationManager {
     
     /// function of deleting current reservation of current trainer and user for current day
     func deleteReservation(forDay day: String, reservation: Reservation) {
-        let firebaseReservation = FirebaseReservation(userId: "testUserId 103FC930-40D6-4B35-87DB-FD6749CDC305",
+        let firebaseReservation = FirebaseReservation(userId: ReservationManager.shared.userId,
                                                       reservation: reservation)
         
         self.database.collection("days")
@@ -196,8 +204,12 @@ final class ReservationManager {
                                                   numberOfFreeSlots: dataDescription["numberOfFreeSlots"] as? Int ?? 0,
                                                   trainerName: dataDescription["trainerName"] as? String ?? nil,
                                                   trainerId: dataDescription["trainerId"] as? String ?? nil,
-                                                  startDate: Date(timeIntervalSince1970: TimeInterval((dataDescription["startDate"] as? Timestamp)?.seconds ?? 0)),
-                                                  endDate: Date(timeIntervalSince1970: TimeInterval((dataDescription["endDate"] as? Timestamp)?.seconds ?? 0)))
+                                                  startDate: Date(timeIntervalSince1970:
+                                                                    TimeInterval((dataDescription["startDate"] as?
+                                                                                  Timestamp)?.seconds ?? 0)),
+                                                  endDate: Date(timeIntervalSince1970: 
+                                                                    TimeInterval((dataDescription["endDate"] as?
+                                                                                  Timestamp)?.seconds ?? 0)))
                     reservations.append(reservation)
                 }
                 complition(.success(reservations))

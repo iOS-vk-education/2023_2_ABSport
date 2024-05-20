@@ -224,7 +224,8 @@ struct ScheduleView<ViewModel: ScheduleViewModel>: View {
     func tasksAndReservationList(forDate date: Date) -> some View {
         
         if let reservations = viewModel.state.allReservations[viewModel.formate(date: date,
-                                                                                toType: .dayMonthYear)], !reservations.isEmpty {
+                                                                                toType: .dayMonthYear)], 
+            !reservations.isEmpty {
             VStack {
                 ForEach(reservations) { reservation in
                     reservationCell(reservation: reservation)
