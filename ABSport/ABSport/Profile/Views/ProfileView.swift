@@ -24,6 +24,8 @@ struct Profile {
 // MARK: - Profile View
 struct ProfileView: View {
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var settingsAction: () -> Void
     var myFormAction: () -> Void
     var reciepAction: () -> Void
@@ -31,38 +33,47 @@ struct ProfileView: View {
     var logoutAction: () -> Void
     
     var body: some View {
-        ZStack {
-            Color("BackgroundColor")
-            VStack(spacing: 0) {
-                ProfileHeaderView()
-                ProfileContentView(contentRequested: (myFormAction, settingsAction))
-                Spacer()
-                ProfileFooterView(logoutRequested: logoutAction)
+        if let user = viewModel.curentUser {
+            ZStack {
+                Color("BackgroundColor")
+                VStack(spacing: 0) {
+                    ProfileHeaderView(user: user)
+                    ProfileContentView(contentRequested: (myFormAction, settingsAction))
+                    Spacer()
+                    ProfileFooterView(viewModel: viewModel, logoutRequested: logoutAction)
+                }
             }
+            .navigationTitle("Профиль")
         }
-        .navigationTitle("Профиль")
     }
 }
 
 struct ProfileHeaderView: View {
     
-    let profile = Profile.preview()
+    let user: FirebaseUser
     
     var body: some View {
         HStack(alignment: .center, spacing: 29) {
-            Image(profile.image)
-                .resizable()
+//            Image(profile.image)
+//                .resizable()
+//                .frame(width: 93, height: 93)
+//                .clipShape(Circle())
+            Text(user.initials)
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.white)
                 .frame(width: 93, height: 93)
+                .background(Color(.systemGray3))
                 .clipShape(Circle())
             VStack(alignment: .leading, spacing: 10) {
-                Text(profile.name)
+                Text(user.fullName)
                     .font(.system(size: 20))
                     .foregroundColor(Color("NameColor"))
                     .padding(.top, 2)
-                Text(profile.date)
-                    .font(.system(size: 14))
-                    .foregroundColor(.secondary)
-                Text(profile.number)
+//                Text(profile.date)
+//                    .font(.system(size: 14))
+//                    .foregroundColor(.secondary)
+                Text(user.email)
                     .font(.system(size: 14))
                     .foregroundColor(.secondary)
             }
@@ -117,12 +128,15 @@ struct ButtonView: View {
 }
 
 struct ProfileFooterView: View {
-    
+    var viewModel: AuthViewModel
     var logoutRequested: () -> Void
     
     var body: some View {
         HStack {
-            Button(action: logoutRequested) {
+            Button {
+                viewModel.signOut()
+                //logoutRequested()
+            } label: {
                 Text("Выйти из аккаунта")
                     .font(.system(size: 15))
                     .frame(height: 56)

@@ -78,7 +78,6 @@ struct SettingsFooterView: View {
                     .frame(height: 56)
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(Color(.red))
-                
                     .background(
                         RoundedRectangle(
                             cornerRadius: 12,

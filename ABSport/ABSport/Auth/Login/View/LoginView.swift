@@ -9,23 +9,32 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var isPresented: Bool = true
+    @EnvironmentObject var viewModel: AuthViewModel
+    var regisrtAction: () -> Void
     
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
             Image("LogoImage")
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 12.0)
+                    .ignoresSafeArea()
+                    .foregroundStyle(Color.white)
+                SheetLoginView(viewModel: viewModel, registrRequested: regisrtAction)
+            }
+            .frame(height: UIScreen.main.bounds.height / 2)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("LoadColor"))
-        .sheet(isPresented: $isPresented, content: {
-            SheetLoginView()
-                .presentationDetents([.medium])
-        })
     }
 }
 
 struct SheetLoginView: View {
-    @State private var login: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
+    @StateObject var viewModel: AuthViewModel
+    var registrRequested: () -> Void
+  
     var body: some View {
         VStack {
             Text("Вход")
@@ -37,9 +46,10 @@ struct SheetLoginView: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Логин / номер телефона")
-                    TextField("    +7 777 777 7777", text: $login)
+                    Text("Электронная почта")
+                    TextField("", text: $email)
                         .frame(height: 40)
+                        .textInputAutocapitalization(.never)
                         .background(
                             RoundedRectangle(cornerRadius: 12.0)
                                 .stroke(Color("DarkGrayColor"), lineWidth: 1)
@@ -50,7 +60,7 @@ struct SheetLoginView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("Пароль")
-                    TextField("    ********", text: $password)
+                    SecureField("", text: $password)
                         .frame(height: 40)
                         .background(
                             RoundedRectangle(cornerRadius: 12.0)
@@ -59,45 +69,48 @@ struct SheetLoginView: View {
                 }
                 .padding(.horizontal, 34)
             }
-            HStack(alignment: .bottom) {
-                Button(action: {}, label: {
-                    RoundedRectangle(cornerRadius: 6.0)
-                        .frame(width: 20, height: 20)
-                        .background(RoundedRectangle(cornerRadius: 10.0)
-                            .stroke(Color("DarkGrayColor"))
-                            .foregroundStyle(Color("LightGreyColor"))
-                            .frame(width: 28, height: 28))
-                })
-                Text("Запомнить меня")
-                Spacer()
-            }
-            .padding(.horizontal, 34)
-            .padding(.vertical)
             
             Spacer()
             
-            Button(action: {}, label: {
+            Button {
+                Task {
+                    try await viewModel.signInApp(withEmail: email, password: password)
+                }
+            } label: {
                 Text("Войти")
-            })
+            }
             .foregroundStyle(Color(.white))
             .frame(height: 40)
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12.0)
                     .foregroundStyle(Color("BlueButtonColor")))
+            .disabled(!formIsValid)
+            .opacity(formIsValid ? 1.0 : 0.5)
             .padding(.horizontal, 34)
             
             Spacer()
             
-            Button(action: {}, label: {
-                Text("Забыли пароль?")
+            Button(action: registrRequested, label: {
+                Text("Нет аккаунта?")
                     .foregroundStyle(Color("RunningTrainingColor"))
-                    .underline()
+                Text("Регистрация")
+                    .foregroundStyle(Color("RunningTrainingColor"))
+                    .bold()
             })
         }
     }
 }
 
+extension SheetLoginView: AutentificationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+    }
+}
+
 #Preview {
-    LoginView()
+    LoginView(regisrtAction: {})
 }

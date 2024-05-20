@@ -13,21 +13,24 @@ final class ProfileTabCoordinator: Coordinator {
     
     var rootViewController = UINavigationController()
     
-    init() {
+    var viewModel: AuthViewModel
+    
+    init(viewModel: AuthViewModel) {
         let backIcon = UIImage(systemName: "chevron.backward")?.withTintColor(
             UIColor(named: "backIconColor") ?? .black,
             renderingMode: .alwaysOriginal)
+        self.viewModel = viewModel
         rootViewController = UINavigationController()
         rootViewController.navigationBar.backIndicatorImage = backIcon
         rootViewController.navigationBar.backIndicatorTransitionMaskImage = backIcon
     }
-    lazy var profileViewController = {
+    lazy var profileViewController: UIViewController = {
         let viewController = UIHostingController(rootView: ProfileView(
             settingsAction: { [weak self] in self?.goToSettings() },
             myFormAction: {[weak self] in self?.goToMyForm()},
             reciepAction: { [weak self] in self?.goToReciep() },
             plannerAction: {},
-            logoutAction: {}))
+            logoutAction: {}).environmentObject(viewModel))
         viewController.navigationItem.backButtonTitle = ""
         viewController.view.backgroundColor = UIColor(named: "BackgroundColor")
         return viewController
@@ -44,8 +47,9 @@ final class ProfileTabCoordinator: Coordinator {
     }
     
     func goToMyForm() {
-        let myFowmViewController = UIHostingController(rootView:
-                                                        MyFormView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext))
+        let myFowmViewController = UIHostingController(rootView:MyFormView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        )
         rootViewController.pushViewController(myFowmViewController, animated: true)
     }
     
