@@ -46,8 +46,6 @@ class GroupTrainingCoordinator: Coordinator {
     let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController, type: .groupTraining)
         reservationCoordinator.reservationViewController.viewModel.groupViewModel = viewModel
 
-        let reservationCoordinator = ReservationCoordinator(rootViewController: rootViewController,
-                                                            type: .groupTraining)
         reservationCoordinator.start()
     }
     
