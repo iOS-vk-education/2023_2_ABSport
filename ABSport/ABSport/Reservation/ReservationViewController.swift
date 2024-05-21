@@ -11,7 +11,7 @@ import SwiftUI
 
 class ReservationViewController<ViewModel: ReservationViewModel>: UIViewController {
   
-    private var viewModel: ViewModel
+    var viewModel: ViewModel
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel

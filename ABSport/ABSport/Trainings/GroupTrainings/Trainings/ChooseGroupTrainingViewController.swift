@@ -9,6 +9,10 @@ import UIKit
 
 class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDelegate {
     
+    let viewModel: GroupTrainingViewModel?
+    
+    var trainingType: ReservationType = .unknown
+    
     private let chooseGroupTrainingView = ChooseTrainingView(frame: UIScreen.main.bounds)
     
     private let navBarTitleStackView: UIStackView = {
@@ -17,7 +21,7 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
-        titleLabel.text = "Групповые тренировки"
+        titleLabel.text = TrainingRegistation.shared.isIndividual ? "Персональные тренировки" : "Групповые тренировки"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         subtitleLabel.textAlignment = .left
         subtitleLabel.textColor = UIColor(named: "GroupTrainers/backIconColor")
@@ -26,6 +30,15 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
         stackView.axis = .vertical
         return stackView
     }()
+    
+    init(viewModel: GroupTrainingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -42,17 +55,24 @@ class ChooseGroupTrainingViewController: UIViewController, ChooseTrainingViewDel
     
     func didTapChooseCyclingButton() {
         print("cycling")
+        trainingType = .bicycleTraining
     }
     
     func didTapChooseRunningButton() {
         print("running")
+        trainingType = .runningTraining
     }
     
     func didTapChoosePowerButton() {
         print("power")
+        trainingType = .poolTraining
     }
     
     func didTapChooseButton() {
         print("choose")
+        viewModel?.coordinator?.updateTraining()
+        
+        // singleton
+        TrainingRegistation.shared.trainingRegistation.trainingType = trainingType
     }
 }

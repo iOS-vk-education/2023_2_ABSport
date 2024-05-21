@@ -19,6 +19,7 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
     init(dateFormatterManager: DateFormatterManager, calendarManager: CalendarManager) {
         self.dateFormatterManager = dateFormatterManager
         self.calendarManager = calendarManager
+        getDayReservations(date: state.currentDate)
     }
     
     /// function to formate Date to String
@@ -49,6 +50,8 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
             updateCurrentDay(tappedDay: date)
         case .tapOnShowCalendarButton:
             showOrDismissCalendar()
+        case .tapOnCancelButton(reservation: let reservation):
+            cancelReservation(reservation: reservation)
         }
     }
     
@@ -61,12 +64,14 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
     func openNextMonth() {
         state.currentDate = calendarManager.addMonthToDate(date: state.currentDate)
         getCurrentMonthDays()
+        getDayReservations(date: state.currentDate)
     }
     
     /// function to open previous month
     func openPreviousMonth() {
         state.currentDate = calendarManager.subtractMonthToDate(date: state.currentDate)
         getCurrentMonthDays()
+        getDayReservations(date: state.currentDate)
     }
     
     /// function of updating current day after tap on it
@@ -77,57 +82,46 @@ final class ScheduleViewModelImpl: ScheduleViewModel {
         } else {
             state.currentDate = day
         }
+        getDayReservations(date: state.currentDate)
     }
     
     /// function to get all month days for current month
     func getCurrentMonthDays() {
         state.currentMonthDates = calendarManager.currentMonth(withThisDate: state.currentDate)
-        getCurrentMonthDaysReservations()
+        for day in state.currentMonthDates {
+            getDayReservations(date: day)
+        }
     }
     
-    /// function to get all reservations for current month
-    func getCurrentMonthDaysReservations() {
+    /// function to get reservations for current day
+    func getDayReservations(date: Date) {
         
         state.reservationsFetched = false
         // MARK: - delete just mock
-        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
-                                                       type: .bicycleTraining,
-                                                       isIndividual: true,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate)])
-        UserManager.shared.addReservation(Reservation(id: UUID().uuidString,
-                                                      type: .runningTraining,
-                                                      isIndividual: false,
-                                                      numberOfFreeSlots: 0,
-                                                      trainerName: "obbrnu",
-                                                      startDate: state.currentDate,
-                                                      endDate: state.currentDate))
-        UserManager.shared.addReservation([Reservation(id: UUID().uuidString,
-                                                       type: .equipmentReservation,
-                                                       isIndividual: true,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate),
-                                           Reservation(id: UUID().uuidString,
-                                                       type: .poolTraining,
-                                                       isIndividual: false,
-                                                       numberOfFreeSlots: 0,
-                                                       trainerName: "obbrnu",
-                                                       startDate: state.currentDate,
-                                                       endDate: state.currentDate)])
-        
-        ReservationManager.shared.allReservations { [weak self] dictionary in
-            
+        ReservationManager.shared.fetchUserReservations(withId: ReservationManager.shared.userId,
+                                                        forDay: formate(date: date,
+                                                                        toType: .dayMonth)){ [weak self] result in
             guard let self else {
                 return
             }
             
-            self.state.allReservations = dictionary
+            switch result {
+            case .success(let dictionary):
+                self.state.allReservations[formate(date: date, toType: .dayMonthYear)] = dictionary
+            case .failure(let error):
+                print(error)
+            }
+            
             self.state.reservationsFetched = true
         }
+    }
+    
+    /// function to cancel reservations
+    func cancelReservation(reservation: Reservation) {
+        ReservationManager.shared.deleteReservation(forDay: formate(date: state.currentDate, toType: .dayMonth),
+                                                    reservation: reservation)
+        self.state.allReservations[formate(date: state.currentDate, toType: .dayMonthYear)]?.removeAll(where: { $0.id == reservation.id})
+        print("deleted: \(reservation.id)")
     }
     
 }
