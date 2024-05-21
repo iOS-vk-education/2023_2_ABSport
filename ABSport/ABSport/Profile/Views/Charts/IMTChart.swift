@@ -78,32 +78,32 @@ struct ChartsViewIMT: View {
             }
             .font(.system(size: 14))
             
-            Button(action: { showingSheetChange.toggle()}){
-                Text("Изменить данные")
-                    .foregroundStyle(Color("BlueButtonColor"))
-                    .underline()
-            }
+//            Button(action: { showingSheetChange.toggle()}){
+//                Text("Изменить данные")
+//                    .foregroundStyle(Color("BlueButtonColor"))
+//                    .underline()
+//            }
             .padding()
             HStack {
                 Text("Чтобы узнать данные пармаетры, вы можете воспользоваться бесплатной услугой")
                     .foregroundColor(.secondary)
                 .font(.system(size: 14))
             }
-            Button(action: {}) {
+            Button(action: {}, label: {
                 Text("Биоимпедансный анализ")
                     .foregroundStyle(Color("GreenTextColor"))
                     .font(.system(size: 14))
-            }
+            })
             Spacer()
-            Button(action: { }) {
-                Text("Внести данные")
-                    .font(.system(size: 15))
-                    .frame(height: 56)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.blue))
-            }
-            //.padding()
+//            Button(action: { }) {
+//                Text("Внести данные")
+//                    .font(.system(size: 15))
+//                    .frame(height: 56)
+//                    .frame(maxWidth: .infinity)
+//                    .foregroundColor(.white)
+//                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.blue))
+//            }
+//            .padding()
         }
         .padding()
     }
@@ -121,4 +121,3 @@ struct ChartsViewIMT: View {
             }
         }
 }
-

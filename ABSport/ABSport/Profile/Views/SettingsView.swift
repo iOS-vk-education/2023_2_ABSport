@@ -58,7 +58,7 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                // SettingsFooterView()
+                SettingsFooterView()
             }
             
         }
@@ -72,19 +72,18 @@ struct SettingsFooterView: View {
     
     var body: some View {
         HStack {
-            Button(action: {}){
+            Button(action: {}, label: {
                 Text("Удалить аккаунт")
                     .font(.system(size: 15))
                     .frame(height: 56)
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(Color(.red))
-                    
                     .background(
-                                RoundedRectangle(
-                                    cornerRadius: 12,
-                                    style: .continuous)
-                                .stroke(.red, lineWidth: 1))
-            }
+                        RoundedRectangle(
+                            cornerRadius: 12,
+                            style: .continuous)
+                        .stroke(.red, lineWidth: 1))
+            })
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
         }

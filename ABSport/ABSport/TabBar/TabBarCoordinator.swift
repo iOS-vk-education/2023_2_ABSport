@@ -13,8 +13,11 @@ final class TabBarCoordinator: Coordinator {
     var rootViewController: UITabBarController
     
     var childCoordinators = [Coordinator]()
+    
+    var viewModel: AuthViewModel
 
-    init() {
+    init(viewModel: AuthViewModel) {
+        self.viewModel = viewModel
         self.rootViewController = UITabBarController()
         rootViewController.tabBar.isTranslucent = true
     }
@@ -38,7 +41,7 @@ final class TabBarCoordinator: Coordinator {
               imageName: "Home",
               tag: 1)
         
-        let profileCoordinator = ProfileTabCoordinator()
+        let profileCoordinator = ProfileTabCoordinator(viewModel: viewModel)
         profileCoordinator.start()
         self.childCoordinators.append(profileCoordinator)
         let profileViewController = profileCoordinator.rootViewController

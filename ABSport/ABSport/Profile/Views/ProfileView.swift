@@ -24,6 +24,8 @@ struct Profile {
 // MARK: - Profile View
 struct ProfileView: View {
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var settingsAction: () -> Void
     var myFormAction: () -> Void
     var reciepAction: () -> Void
@@ -31,97 +33,74 @@ struct ProfileView: View {
     var logoutAction: () -> Void
     
     var body: some View {
-        ZStack {
-            Color("BackgroundColor")
-            VStack {
-                ProfileHeaderView(settingRequested: settingsAction)
-                ProfileContentView(contentRequested: (myFormAction, reciepAction, plannerAction))
-                Spacer()
-                // ProfileFooterView(logoutRequested: logoutAction)
+        if let user = viewModel.curentUser {
+            ZStack {
+                Color("BackgroundColor")
+                VStack(spacing: 0) {
+                    ProfileHeaderView(user: user)
+                    ProfileContentView(contentRequested: (myFormAction, settingsAction))
+                    Spacer()
+                    ProfileFooterView(viewModel: viewModel, logoutRequested: logoutAction)
+                }
             }
-            Spacer()
+            .navigationTitle("Профиль")
         }
-        .navigationTitle("Профиль")
     }
 }
 
 struct ProfileHeaderView: View {
     
-    var settingRequested: () -> Void
-    
-    let profile = Profile.preview()
+    let user: FirebaseUser
     
     var body: some View {
-        HStack(alignment: .top, spacing: 29) {
-            VStack {
-                Image(profile.image)
-                    .resizable()
-                    .frame(width: 93, height: 93)
-                    .clipShape(Circle())
-                    
-            }
+        HStack(alignment: .center, spacing: 29) {
+//            Image(profile.image)
+//                .resizable()
+//                .frame(width: 93, height: 93)
+//                .clipShape(Circle())
+            Text(user.initials)
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.white)
+                .frame(width: 93, height: 93)
+                .background(Color(.systemGray3))
+                .clipShape(Circle())
             VStack(alignment: .leading, spacing: 10) {
-                Text(profile.name)
+                Text(user.fullName)
                     .font(.system(size: 20))
                     .foregroundColor(Color("NameColor"))
                     .padding(.top, 2)
-                Text(profile.date)
-                    .font(.system(size: 14))
-                    .foregroundColor(.secondary)
-                Text(profile.number)
+//                Text(profile.date)
+//                    .font(.system(size: 14))
+//                    .foregroundColor(.secondary)
+                Text(user.email)
                     .font(.system(size: 14))
                     .foregroundColor(.secondary)
             }
-            VStack(alignment: .trailing) {
-                Button(action: settingRequested, label: {
-                    Image("SettingsButton")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                })
-            }
+            Spacer()
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
-        .padding(.vertical, 5)
+        .padding(.vertical, 10)
     }
 }
 
 struct ProfileContentView: View {
     // swiftlint:disable large_tuple
     var contentRequested: (myForm: () -> Void,
-                          reciep: () -> Void,
-                          planner: () -> Void)
+                          settings: () -> Void)
     // swiftlint:enable large_tuple
     var body: some View {
         VStack(alignment: .center) {
             Button(action: contentRequested.myForm) {
                 ButtonView(image: "MusculeSymbol", label: "Моя Форма")
             }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
-            Button(action: contentRequested.reciep) {
-                ButtonView(image: "ReciepSymbol", label: "Списки заказов")
+            .buttonStyle()
+            Button(action: contentRequested.settings) {
+                ButtonView(image: "SettingsButton", label: "Настройки")
             }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
-            Button(action: contentRequested.planner) {
-                ButtonView(image: "PlannerSymbol", label: "Мое расписание")
-            }
-            .foregroundColor(.black)
-            .frame(height: 72)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12.0)
-                    .foregroundColor(Color("LightGreyColor")))
+            .buttonStyle()
         }
-        .padding(.top, 45)
         .padding(.horizontal, 15)
     }
 }
@@ -149,12 +128,15 @@ struct ButtonView: View {
 }
 
 struct ProfileFooterView: View {
-    
+    var viewModel: AuthViewModel
     var logoutRequested: () -> Void
     
     var body: some View {
         HStack {
-            Button(action: logoutRequested) {
+            Button {
+                viewModel.signOut()
+                //logoutRequested()
+            } label: {
                 Text("Выйти из аккаунта")
                     .font(.system(size: 15))
                     .frame(height: 56)

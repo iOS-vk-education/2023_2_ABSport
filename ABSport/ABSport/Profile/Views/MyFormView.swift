@@ -20,19 +20,19 @@ struct MyFormView: View {
                 HStack(alignment: .center) {
                     Button(action: {
                         self.isShowingFirstChart = true
-                    }){
+                    }, label: {
                         Text("Вес")
                             .foregroundColor(isShowingFirstChart ? Color("BlueButtonColor") : .black)
                             .underline(isShowingFirstChart)
-                    }
+                    })
                     .padding()
                     Button(action: {
                         self.isShowingFirstChart = false
-                    }) {
+                    }, label: {
                         Text("ИМТ")
                             .foregroundColor(isShowingFirstChart ? .black : Color("BlueButtonColor"))
                             .underline(!isShowingFirstChart)
-                    }
+                    })
                     .padding()
                 }
             }

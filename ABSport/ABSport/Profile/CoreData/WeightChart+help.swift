@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreData
+import SwiftUI
+
 extension WeightChart {
     
     var uuid: UUID {
@@ -68,6 +70,51 @@ extension WeightChart {
         }
     }
     
+    static func delete(task: WeightChart) {
+        guard let context = task.managedObjectContext else { return }
+        context.delete(task)
+    }
+    
+    static func dateWrapper(data: FetchedResults<WeightChart>) -> String {
+        guard let lastElement = data.last else {
+            return "Array is empty"
+        }
+        let lastDate = lastElement.date
+        let formateDate = dateCustomFormatter(date: lastDate)
+        return formateDate
+    }
+    
+    static func weightWrapper(data: FetchedResults<WeightChart>) -> String {
+        guard let lastElement = data.last else {
+            return "Array is empty"
+        }
+        let lastWeight = String(describing: lastElement.weight)
+        return lastWeight
+    }
+    
+    static func editWeightChart(by uuid: UUID, with newWeight: Float, newDate: Date, context: NSManagedObjectContext) {
+        
+        let fetchRequest: NSFetchRequest<WeightChart> = WeightChart.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "uuid_ == %@", uuid as CVarArg)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            
+            let weightCharts = try context.fetch(fetchRequest)
+            if let weightChart = weightCharts.first {
+                
+                weightChart.weight = newWeight
+                weightChart.date = newDate
+                
+                try context.save()
+            } else {
+                print("WeightChart with UUID \(uuid) not found.")
+            }
+        } catch {
+            print("Error editing weight chart: \(error)")
+        }
+    }
+    
     static var example: WeightChart {
         let context = PersistenceController.preview.container.viewContext
         let mark = WeightChart(weight: 78.00, date: Date(), context: context)
@@ -75,4 +122,3 @@ extension WeightChart {
         return mark
     }
 }
-
