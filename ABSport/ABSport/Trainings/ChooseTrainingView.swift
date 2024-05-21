@@ -23,18 +23,33 @@ final class ChooseTrainingView: UIView {
     private lazy var chooseCyclingButton: UIButton = {
         let button = configureTypeButton(imageName: "GroupTrainers/Cycling", title: "Велотренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
+        if !TrainingRegistation.shared.trainer!.reservationTypes.contains(ReservationType.bicycleTraining.rawValue) {
+            button.isEnabled = false
+            button.backgroundColor = UIColor(named: "DarkGrayColor")
+        }
+        
         return button
     }()
     
     private lazy var chooseRunningButton: UIButton = {
         let button = configureTypeButton(imageName: "GroupTrainers/Running", title: "Беговая тренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
+        if !TrainingRegistation.shared.trainer!.reservationTypes.contains(ReservationType.runningTraining.rawValue) {
+            button.isEnabled = false
+            button.backgroundColor = UIColor(named: "DarkGrayColor")
+        }
+        
         return button
     }()
     
     private lazy var choosePowerButton: UIButton = {
         let button = configureTypeButton(imageName: "GroupTrainers/QuickModeOn", title: "Силовая тренировка")
         button.translatesAutoresizingMaskIntoConstraints = false
+        if !TrainingRegistation.shared.trainer!.reservationTypes.contains(ReservationType.poolTraining.rawValue) {
+            button.isEnabled = false
+            button.backgroundColor = UIColor(named: "DarkGrayColor")
+        }
+        
         return button
     }()
     

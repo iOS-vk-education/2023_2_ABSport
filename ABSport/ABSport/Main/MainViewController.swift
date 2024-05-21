@@ -20,6 +20,9 @@ class MainViewController: UIViewController, MainViewDelegate {
     override func loadView() {
         super.loadView()
         self.view = mainView
+        ReservationManager.shared.fetchAllTrainers { _ in
+            print("trainers are fetched")
+        }
     }
 
     override func viewDidLoad() {

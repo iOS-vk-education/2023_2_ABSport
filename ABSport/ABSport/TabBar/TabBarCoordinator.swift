@@ -51,6 +51,7 @@ final class TabBarCoordinator: Coordinator {
               tag: 2)
         
         self.rootViewController.viewControllers = [scheduleViewController, mainViewController, profileViewController]
+        self.rootViewController.selectedIndex = 1
     }
     
     func setup(viewController: UIViewController, title: String, imageName: String, tag: Int) {

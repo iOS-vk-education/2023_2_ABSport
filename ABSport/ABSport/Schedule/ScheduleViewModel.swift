@@ -13,6 +13,7 @@ enum ScheduleViewModelEvent {
     case openPreviousMonth
     case tapOnDay(withDate: Date)
     case tapOnShowCalendarButton
+    case tapOnCancelButton(reservation: Reservation)
 }
 
 struct ScheduleViewModelState {
