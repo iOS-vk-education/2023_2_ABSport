@@ -23,6 +23,7 @@ final class LoginCoordinator: Coordinator {
     lazy var loginViewController: UIViewController = {
         let viewController = UIHostingController(rootView:LoginView(regisrtAction: { [weak self] in self?.goToRegistr()} ).environmentObject(viewModel))
         viewController.navigationItem.hidesBackButton = true
+        viewController.navigationController?.navigationBar.isHidden = true
         return viewController
     }()
     

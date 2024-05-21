@@ -13,6 +13,7 @@ final class ReservationViewModelImpl: ReservationViewModel {
     @Published var state: ReservationViewModelState
     
     weak var coordinator: ScheduleCoordinator?
+    weak var groupViewModel: GroupTrainingViewModel?
     
     private let calendarManager: CalendarManager
     private let dateFormatterManager: DateFormatterManager
@@ -52,7 +53,8 @@ final class ReservationViewModelImpl: ReservationViewModel {
     
     /// function to choose time slot for reservation
     func chooseTimeSlot(_ reservation: Reservation) {
-        state.choosenTime = formate(date: reservation.startDate, toType: .time)
+        state.choosenTime = reservation.startDate
+        print(reservation.startDate)
         state.chooseButtonDisabled = false
     }
     
@@ -60,7 +62,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     func setNewCurrentDay(withDate date: Date) {
         
         if state.currentDate != date {
-            state.choosenTime = "0"
+            state.choosenTime = Calendar.current.date(bySettingHour: 00,
+                                                      minute: 00,
+                                                      second: 1,
+                                                      of: Date())!
             state.timeSlotsLoaded = false
             state.chooseButtonDisabled = true
         }
@@ -77,7 +82,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     /// function open next week
     func openNextWeek() {
         
-        state.choosenTime = "0"
+        state.choosenTime = Calendar.current.date(bySettingHour: 00,
+                                                  minute: 00,
+                                                  second: 1,
+                                                  of: state.currentDate)!
         state.timeSlotsLoaded = false
         state.chooseButtonDisabled = true
         
@@ -88,7 +96,10 @@ final class ReservationViewModelImpl: ReservationViewModel {
     /// function open previous week
     func openPreviousWeek() {
         
-        state.choosenTime = "0"
+        state.choosenTime = Calendar.current.date(bySettingHour: 00, 
+                                                  minute: 00,
+                                                  second: 1,
+                                                  of: state.currentDate)!
         state.timeSlotsLoaded = false
         state.chooseButtonDisabled = true
         
@@ -113,36 +124,68 @@ final class ReservationViewModelImpl: ReservationViewModel {
     
     /// function of reserving timeslot for current week
     func tryToReserve(date: String) {
-        addNotification(time: 0.1,
-                        title: "Уведомление о записи",
-                        subtitle: "",
-                        body: "Вы записаны на время: \(date)")
+        
+        let startDate = state.choosenTime
+        let endDate = startDate.addingTimeInterval(TimeInterval(3600))
+        let reservation = Reservation(id: UUID().uuidString,
+                                      type: .bicycleTraining,
+                                      isIndividual: true,
+                                      numberOfFreeSlots: 1,
+                                      trainerName: "obbrnu",
+                                      trainerId: "testTrainerId " + UUID().uuidString,
+                                      startDate: startDate,
+                                      endDate: endDate)
+        groupViewModel?.coordinator?.updateDate()
+        TrainingRegistation.shared.trainingRegistation.trainingDate = state.currentDate
+        TrainingRegistation.shared.trainingRegistation.reservation = reservation
+//        ReservationManager.shared.sendReservations(forDay: formate(date: state.currentDate, toType: .dayMonth),
+//                                                   reservation: reservation)
     }
     
     func allTimeSlots(forCurrentDate date: Date, complition: @escaping ([Reservation]) -> Void) {
         
         var allTimeSlots: [Reservation] = []
         
-        // MARK: just mock
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             
             guard let self else {
                 return
             }
-            
-            for index in 0...11 {
-                            let startDate = Calendar.current.date(bySettingHour: 10, minute: 00, second: 0, of: Date())!.addingTimeInterval(TimeInterval(index * 3600))
-                            let endDate = startDate.addingTimeInterval(TimeInterval(3600))
-                            allTimeSlots.append(Reservation(id: UUID().uuidString,
-                                                            type: .bicycleTraining,
-                                                            isIndividual: true,
-                                                            numberOfFreeSlots: 1,
-                                                            trainerName: "obbrnu",
-                                                            startDate: startDate,
-                                                            endDate: endDate))
-                        }
-            
-            complition(allTimeSlots)
+            let trainerId = TrainingRegistation.shared.trainer?.id
+            ReservationManager.shared.fetchTrainerReservations(withId: trainerId!,
+                                                               forDay: formate(date: date, toType: .dayMonth)) { reservations in
+                for index in 0...11 {
+                    let startDate = Calendar.current.date(bySettingHour: 10,
+                                                          minute: 00,
+                                                          second: 0,
+                                                          of: Date())!.addingTimeInterval(TimeInterval(index * 3600))
+                    let endDate = startDate.addingTimeInterval(TimeInterval(3600))
+                    
+                    if !reservations.contains(where: { $0.isIndividual && self.formate(date: $0.startDate,
+                                                                    toType: .time) == self.formate(date: startDate,
+                                                                                                   toType: .time)}) {
+                        allTimeSlots.append(Reservation(id: UUID().uuidString,
+                                                        type: .bicycleTraining,
+                                                        isIndividual: true,
+                                                        numberOfFreeSlots: 1,
+                                                        trainerName: "obbrnu",
+                                                        trainerId: "1",
+                                                        startDate: startDate,
+                                                        endDate: endDate))
+                    } else if TrainingRegistation.shared.trainingRegistation.reservation?.isIndividual == false {
+                        allTimeSlots.append(Reservation(id: UUID().uuidString,
+                                                        type: .bicycleTraining,
+                                                        isIndividual: true,
+                                                        numberOfFreeSlots: 1,
+                                                        trainerName: "obbrnu",
+                                                        trainerId: "1",
+                                                        startDate: startDate,
+                                                        endDate: endDate))
+                    }
+                }
+                
+                complition(allTimeSlots)
+            }
         }
     }
     

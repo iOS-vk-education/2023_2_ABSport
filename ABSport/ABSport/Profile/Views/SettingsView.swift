@@ -34,6 +34,8 @@ struct SettingsList: Identifiable {
 
 struct SettingsView: View {
     
+    //var deleteRequested: () -> Void
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var settingsLists = SettingsList.preview()
     
     var body: some View {
@@ -58,7 +60,7 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                SettingsFooterView()
+                SettingsFooterView(viewModel: viewModel)
             }
             
         }
@@ -68,11 +70,15 @@ struct SettingsView: View {
 
 struct SettingsFooterView: View {
     
-    // var deleteRequested: () -> Void
+    var viewModel: AuthViewModel
     
     var body: some View {
         HStack {
-            Button(action: {}, label: {
+            Button{
+                Task {
+                    await viewModel.deleteAccountc()
+                }
+            }label: {
                 Text("Удалить аккаунт")
                     .font(.system(size: 15))
                     .frame(height: 56)
@@ -83,7 +89,7 @@ struct SettingsFooterView: View {
                             cornerRadius: 12,
                             style: .continuous)
                         .stroke(.red, lineWidth: 1))
-            })
+            }
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
         }
