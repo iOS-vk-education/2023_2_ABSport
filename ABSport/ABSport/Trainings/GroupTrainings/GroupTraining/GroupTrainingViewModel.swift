@@ -65,6 +65,12 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
     }
     
     func addNotification(time: Double, title: String, subtitle: String, body: String) {
+        
+        guard UserDefaults.isPushNotificationsEnabled() else {
+                print("Push notifications are disabled")
+                return
+            }
+        
         let center = UNUserNotificationCenter.current()
         
         let addRequest = {
@@ -95,3 +101,4 @@ class GroupTrainingViewModel: GroupTrainingViewModelDelegate {
         }
     }
 }
+

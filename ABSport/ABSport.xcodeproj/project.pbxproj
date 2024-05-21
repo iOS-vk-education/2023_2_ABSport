@@ -15,6 +15,7 @@
 		0456FD022BF6BC8100188375 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0456FD012BF6BC8100188375 /* DataManager.swift */; };
 		047D7EEA2BF371A700E98C55 /* WeightChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D7EE92BF371A700E98C55 /* WeightChart.swift */; };
 		047D7EEC2BF3723A00E98C55 /* IMTChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D7EEB2BF3723A00E98C55 /* IMTChart.swift */; };
+		0482B5142BFCB14500F9452B /* UserDefaults+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482B5132BFCB14500F9452B /* UserDefaults+Extention.swift */; };
 		04847AC62BBF166600BA8542 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */; };
 		04847AC82BBF1D1800BA8542 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */; };
 		0487BAA82BFA5F5F00B8ECE1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487BAA72BFA5F5F00B8ECE1 /* AuthViewModel.swift */; };
@@ -124,6 +125,7 @@
 		0456FD012BF6BC8100188375 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		047D7EE92BF371A700E98C55 /* WeightChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightChart.swift; sourceTree = "<group>"; };
 		047D7EEB2BF3723A00E98C55 /* IMTChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMTChart.swift; sourceTree = "<group>"; };
+		0482B5132BFCB14500F9452B /* UserDefaults+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extention.swift"; sourceTree = "<group>"; };
 		04847AC52BBF166600BA8542 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		0487BAA72BFA5F5F00B8ECE1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -258,6 +260,14 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		0482B5122BFCB11200F9452B /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				0482B5132BFCB14500F9452B /* UserDefaults+Extention.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		0487BAA92BFA5F8100B8ECE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,7 +296,6 @@
 		0496AF852BA111A100058166 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				04B2A2CF2BF2B49B000B017D /* CoreData */,
 				0410031D2BF293BB005CE8D6 /* Views */,
 				04847AC72BBF1D1800BA8542 /* ProfileTabCoordinator.swift */,
 				041A3F6C2BCC61B7002B87E8 /* PetData.swift */,
@@ -415,8 +424,10 @@
 		2079D5822B85330E0057EA4C /* ABSport */ = {
 			isa = PBXGroup;
 			children = (
+				0482B5122BFCB11200F9452B /* UserDefaults */,
 				049DF1C92BFA48B1005A6492 /* Auth */,
 				209754622BF6B3F300287935 /* FirebaseModels */,
+				04B2A2CF2BF2B49B000B017D /* CoreData */,
 				664E864B2BD6ACF7001A768D /* Trainings */,
 				0496AF852BA111A100058166 /* Profile */,
 				20397BBA2BB6CC53008455E4 /* Helpers */,
@@ -780,9 +791,7 @@
 				209754082BE5161400287935 /* ReservationModuleType.swift in Sources */,
 				66A599872BB31BB200E80EEF /* ChooseGroupTrainerViewController.swift in Sources */,
 				047D7EEC2BF3723A00E98C55 /* IMTChart.swift in Sources */,
-				1A77F3472B9721D400C0D1F7 /* RegistrationView.swift in Sources */,
 				209754742BFBE67B00287935 /* TrainingModel.swift in Sources */,
-
 				20FEC6752BACCB470045C1FF /* ScheduleCoordinator.swift in Sources */,
 				664E865B2BD91BBF001A768D /* ChooseIndividualTrainingViewController.swift in Sources */,
 				20FEC66F2BACCA570045C1FF /* ScheduleView.swift in Sources */,
@@ -810,6 +819,7 @@
 				0487BAA82BFA5F5F00B8ECE1 /* AuthViewModel.swift in Sources */,
 				049DF1CC2BFA4DB2005A6492 /* RegistrationView.swift in Sources */,
 				20397BC42BB81CE5008455E4 /* ScheduleViewModelImpl.swift in Sources */,
+				0482B5142BFCB14500F9452B /* UserDefaults+Extention.swift in Sources */,
 				047D7EEA2BF371A700E98C55 /* WeightChart.swift in Sources */,
 				209754722BFBE23500287935 /* TrainingRegistration.swift in Sources */,
 				666F52DC2B93B95E00B113CD /* MainCoordinator.swift in Sources */,

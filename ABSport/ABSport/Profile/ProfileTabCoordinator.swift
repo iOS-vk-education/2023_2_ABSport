@@ -41,7 +41,7 @@ final class ProfileTabCoordinator: Coordinator {
     }
     
     func goToSettings() {
-        let settingsViewController = UIHostingController(rootView: SettingsView())
+        let settingsViewController = UIHostingController(rootView: SettingsView().environmentObject(viewModel))
         settingsViewController.view.backgroundColor = UIColor(named: "BackgroundColor")
         rootViewController.pushViewController(settingsViewController, animated: true)
     }
