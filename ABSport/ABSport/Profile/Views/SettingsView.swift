@@ -34,6 +34,8 @@ struct SettingsList: Identifiable {
 
 struct SettingsView: View {
     
+    //var deleteRequested: () -> Void
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var settingsLists = SettingsList.preview()
     
     var body: some View {
@@ -51,28 +53,44 @@ struct SettingsView: View {
                                     .foregroundColor(.gray)
                             }.layoutPriority(1)
                             VStack {
-                                Toggle(isOn: $list.isOn) {
-                                }
+                                Toggle("", isOn: $list.isOn)
+                                    .onChange(of: list.isOn) { newValue in
+                                        if list.title == "Push уведомления" {
+                                            UserDefaults.setPushNotificationsEnabled(newValue)
+//                                            if newValue {
+//                                                addNotification(time: 5, title: "Тестовое уведомление", subtitle: "", body: "Push уведомления включены!")
+//                                            }
+                                        }
+                                    }
                             }
                         }.padding()
                     }
                 }
                 Spacer()
-                SettingsFooterView()
+                SettingsFooterView(viewModel: viewModel)
             }
             
         }
         .navigationBarTitle("Настройки")
+        .onAppear {
+            if let index = settingsLists.firstIndex(where: { $0.title == "Push уведомления" }) {
+                settingsLists[index].isOn = UserDefaults.isPushNotificationsEnabled()
+            }
+        }
     }
 }
 
 struct SettingsFooterView: View {
     
-    // var deleteRequested: () -> Void
+    var viewModel: AuthViewModel
     
     var body: some View {
         HStack {
-            Button(action: {}, label: {
+            Button{
+                Task {
+                    await viewModel.deleteAccountc()
+                }
+            }label: {
                 Text("Удалить аккаунт")
                     .font(.system(size: 15))
                     .frame(height: 56)
@@ -83,7 +101,7 @@ struct SettingsFooterView: View {
                             cornerRadius: 12,
                             style: .continuous)
                         .stroke(.red, lineWidth: 1))
-            })
+            }
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
         }
