@@ -53,4 +53,3 @@ struct ChartsViewWeight: View {
         .padding()
     }
 }
-
